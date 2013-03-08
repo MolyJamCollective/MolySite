@@ -13,3 +13,45 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#### End of Default Rails gitignore
+
+# https://github.com/github/gitignore/blob/master/Ruby.gitignore
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+# https://github.com/github/gitignore/blob/master/Rails.gitignore
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+#.rvmrc 			# Note: We are using RVM to manage Ruby Versions
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+.project
