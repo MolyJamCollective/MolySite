@@ -38,5 +38,10 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 group :development do
-	gem 'wirble'
+	gem 'wirble'			# Color Syntax in IRB & Rails Console
+
+	gem 'better_errors'		# Built in Debugging
+	gem 'binding_of_caller' # 	Extends Better Errors
+
+	gem 'meta_request'		# For use with Rails Panel, https://github.com/dejan/rails_panel
 end
