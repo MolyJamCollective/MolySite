@@ -45,3 +45,5 @@ group :development do
 
 	gem 'meta_request'		# For use with Rails Panel, https://github.com/dejan/rails_panel
 end
+
+gem 'devise'
