@@ -38,4 +38,7 @@ MolySite::Application.configure do
   # Devise default_url_options
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # Better Errors Trusted IPs
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+  # Usage Example: 'TRUSTED_IP=66.68.96.220 rails s' 
 end
