@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Groups
+Group.new(name: "Webmasters").save
+Group.new(name: "Organizers").save
+Group.new(name: "Hosts").save
+Group.new(name: "Jammers").save
+Group.new(name: "Users").save
+
+if(Rails.env == "development")
+	User.new(email: "webmaster@email.com", password: "password").confirm!
+	User.new(email: "organizer@email.com", password: "password").confirm!
+	User.new(email: "host@email.com", password: "password").confirm!
+	User.new(email: "jammer@email.com", password: "password").confirm!
+	User.new(email: "user@email.com", password: "password").confirm!
+end
