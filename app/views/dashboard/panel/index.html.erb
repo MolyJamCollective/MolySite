@@ -1,5 +1,5 @@
 <h3>Users</h3>
-<table>
+<table class="table table-hover">
   <thead>
   	<tr>
   	  <th>#</th>
@@ -14,14 +14,14 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td>View</td>
-        <td><%= link_to("Edit", edit_user_registration_path(user)) %></td>
+        <td><%= link_to("Edit", edit_user_registration_path(user), class: "btn") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <h3>Groups</h3>
-<table>
+<table class="table table-hover">
   <thead>
   	<tr>
   	  <th>#</th>
@@ -35,8 +35,8 @@
         <td><%= group.id %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
-        <td><%= link_to("View", group_path(group)) %></td>
-        <td><%= link_to("Edit", edit_group_path(group)) %></td>
+        <td><%= link_to("View", group_path(group), class: "btn") %></td>
+        <td><%= link_to("Edit", edit_group_path(group), class: "btn") %></td>
       </tr>
     <% end %>
   </tbody>
