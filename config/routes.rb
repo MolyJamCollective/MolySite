@@ -1,5 +1,7 @@
 MolySite::Application.routes.draw do
 
+
+
   # Temp Static Homepage
   root :to => 'home#index'
 
@@ -10,6 +12,9 @@ MolySite::Application.routes.draw do
     post '/login' => 'devise/sessions#create', :as => :user_session
     delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
+
+  # Groups
+  resources :groups, :only => [:show, :edit, :update]
 
   # Dashboard
   namespace :dashboard do
