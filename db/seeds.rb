@@ -7,16 +7,25 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Groups
-Group.new(name: "Webmasters").save
-Group.new(name: "Organizers").save
-Group.new(name: "Hosts").save
-Group.new(name: "Jammers").save
-Group.new(name: "Users").save
+Group.create!(name: "Webmasters")
+Group.create!(name: "Organizers")
+Group.create!(name: "Hosts")
+Group.create!(name: "Jammers")
+Group.create!(name: "Users")
 
 if(Rails.env == "development")
-	User.new(email: "webmaster@email.com", password: "password").confirm!
-	User.new(email: "organizer@email.com", password: "password").confirm!
-	User.new(email: "host@email.com", password: "password").confirm!
-	User.new(email: "jammer@email.com", password: "password").confirm!
-	User.new(email: "user@email.com", password: "password").confirm!
+
+	# Users
+	User.create!(email: "webmaster@email.com", password: "password").confirm!
+	User.create!(email: "organizer@email.com", password: "password").confirm!
+	User.create!(email: "host@email.com", password: "password").confirm!
+	User.create!(email: "jammer@email.com", password: "password").confirm!
+	User.create!(email: "user@email.com", password: "password").confirm!
+
+	# Memberships
+	Membership.create!(user_id: 1, group_id: 1) #webmaster.groups << webmasters
+	Membership.create!(user_id: 2, group_id: 2) #organizer.groups << organizers
+	Membership.create!(user_id: 3, group_id: 3) #host.groups << hosts
+	Membership.create!(user_id: 4, group_id: 4) #jammer.groups << jammers
+	Membership.create!(user_id: 5, group_id: 5) #user.groups << users
 end
