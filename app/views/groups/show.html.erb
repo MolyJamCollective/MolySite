@@ -1,7 +1,7 @@
 <h1><%= @group.name %></h1>
 <p><%= @group.description %></p>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -18,4 +18,4 @@
   </tbody>
 </table>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn" %>
