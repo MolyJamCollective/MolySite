@@ -35,8 +35,8 @@
         <td><%= group.id %></td>
         <td><%= group.name %></td>
         <td><%= group.description %></td>
-        <td>View</td>
-        <td>Edit</td>
+        <td><%= link_to("View", group_path(group)) %></td>
+        <td><%= link_to("Edit", edit_group_path(group)) %></td>
       </tr>
     <% end %>
   </tbody>
