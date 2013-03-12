@@ -11,4 +11,9 @@ MolySite::Application.routes.draw do
     delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
+  # Dashboard
+  namespace :dashboard do
+    get '', to: 'panel#index', as: '/'
+  end
+
 end

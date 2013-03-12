@@ -1,0 +1,43 @@
+<h3>Users</h3>
+<table>
+  <thead>
+  	<tr>
+  	  <th>#</th>
+  	  <th>Name</th>
+  	  <th>Email</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td>View</td>
+        <td><%= link_to("Edit", edit_user_registration_path(user)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Groups</h3>
+<table>
+  <thead>
+  	<tr>
+  	  <th>#</th>
+  	  <th>Name</th>
+  	  <th>Description</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.id %></td>
+        <td><%= group.name %></td>
+        <td><%= group.description %></td>
+        <td>View</td>
+        <td>Edit</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
