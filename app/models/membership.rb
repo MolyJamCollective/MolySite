@@ -8,4 +8,12 @@ class Membership < ActiveRecord::Base
   	after_initialize do
   		self.role = ROLES[:member]
   	end
+
+  	before_save do
+  		old_membership = Membership.where(user_id: self.user_id, group_id: self.group_id).first
+  		unless old_membership.nil?
+  			raise "Tried to create duplicate membership" 
+  			false
+  		end
+  	end
 end
