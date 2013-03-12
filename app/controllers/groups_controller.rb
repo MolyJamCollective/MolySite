@@ -1,12 +1,12 @@
 class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
+    @memberships = Membership.where(group_id: @group.id)
   end
 
   def edit
     @group = Group.find(params[:id])
-    @memberships = Membership.find(group)
-    @members = User.find(memberships)
+    @memberships = Membership.where(group_id: @group.id)
   end
 
   def update
@@ -14,8 +14,7 @@ class GroupsController < ApplicationController
     if(@group.update_attributes(params[:group]))
       redirect_to :action => 'show', :id => @group
   	else
-      @memberships = Membership.find(group)
-      @members = User.find(memberships)
+      @memberships = Membership.where(group_id: @group.id)
       render :action => 'edit'
     end
   end
