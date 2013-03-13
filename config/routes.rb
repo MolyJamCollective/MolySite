@@ -2,6 +2,9 @@ MolySite::Application.routes.draw do
 
 
 
+  resources :events
+
+
   # Temp Static Homepage
   root :to => 'home#index'
 

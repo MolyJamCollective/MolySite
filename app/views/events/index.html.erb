@@ -1,0 +1,31 @@
+<h1>Listing events</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Published</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.name %></td>
+    <td><%= event.description %></td>
+    <td><%= event.start_date %></td>
+    <td><%= event.end_date %></td>
+    <td><%= event.published %></td>
+    <td><%= link_to 'Show', event, class: "btn" %></td>
+    <td><%= link_to 'Edit', edit_event_path(event), class: "btn" %></td>
+    <td><%= link_to 'Destroy', event, {class: "btn", method: :delete}, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_event_path, class: "btn" %>
