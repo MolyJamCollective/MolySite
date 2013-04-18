@@ -1,12 +1,7 @@
 MolySite::Application.routes.draw do
 
-
-
-  resources :locations
-
-
+  resources :venues
   resources :events
-
 
   # Temp Static Homepage
   root :to => 'home#index'

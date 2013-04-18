@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418080257) do
+ActiveRecord::Schema.define(:version => 20130418090500) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                           :null => false
@@ -26,16 +26,6 @@ ActiveRecord::Schema.define(:version => 20130418080257) do
   create_table "groups", :force => true do |t|
     t.string   "name",        :null => false
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "locations", :force => true do |t|
-    t.string   "name",        :null => false
-    t.text     "description"
-    t.string   "address",     :null => false
-    t.float    "latitude"
-    t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -80,5 +70,15 @@ ActiveRecord::Schema.define(:version => 20130418080257) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
+
+  create_table "venues", :force => true do |t|
+    t.string   "name",        :null => false
+    t.text     "description"
+    t.string   "address",     :null => false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
