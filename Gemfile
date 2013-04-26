@@ -51,6 +51,7 @@ end
 
 # User Auth
 gem 'devise'
+gem 'cancan'
 
 # Geolocation
 gem 'geocoder'
