@@ -23,9 +23,9 @@ if(Rails.env == "development")
 	User.create!(email: "user@email.com", password: "password").confirm!
 
 	# Memberships
-	Membership.create!(user_id: 1, group_id: 1) #webmaster.groups << webmasters
-	Membership.create!(user_id: 2, group_id: 2) #organizer.groups << organizers
-	Membership.create!(user_id: 3, group_id: 3) #host.groups << hosts
-	Membership.create!(user_id: 4, group_id: 4) #jammer.groups << jammers
-	Membership.create!(user_id: 5, group_id: 5) #user.groups << users
+	Membership.create!(user_id: 1, group_id: 1) # webmaster.groups << webmasters
+	Membership.create!(user_id: 2, group_id: 2) # organizer.groups << organizers
+	Membership.create!(user_id: 3, group_id: 3) # host.groups << hosts
+	Membership.create!(user_id: 4, group_id: 4) # jammer.groups << jammers
+	Membership.create!(user_id: 5, group_id: 5) # user.groups << users
 end
