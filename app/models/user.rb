@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   	# attr_accessible :title, :body
 
   	attr_accessible :name, :biography, :location, :website
+
+  def group?(group)
+    self.groups.exists?(name: group.to_s)
+  end
 end
