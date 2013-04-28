@@ -28,4 +28,8 @@ if(Rails.env == "development")
 	Membership.create!(user_id: 3, group_id: 3) # host.groups << hosts
 	Membership.create!(user_id: 4, group_id: 4) # jammer.groups << jammers
 	Membership.create!(user_id: 5, group_id: 5) # user.groups << users
+
+	# Events
+	Event.create!(name: "Event", description: "Description", start_date: DateTime.current() , end_date: DateTime.current(), published: true)
+
 end
