@@ -6,10 +6,12 @@ class Ability
 
     if(user.group? :Webmasters)
       can :manage, :all
+      can :show_current, Event
     else
       can :read, :all
+      can :show_current, Event
     end
-
+    
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

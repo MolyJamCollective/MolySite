@@ -3,7 +3,7 @@ MolySite::Application.routes.draw do
   resources :venues
   resources :events
 
-  match '/', controller: 'events', action: 'show', id: Event.last.id
+  match '/', controller: 'events', action: 'show_current'
 
   # Devise Routes
   devise_for :users, :skip => [:sessions, :registrations]
