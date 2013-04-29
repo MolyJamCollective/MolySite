@@ -3,8 +3,7 @@ MolySite::Application.routes.draw do
   resources :venues
   resources :events
 
-  # Temp Static Homepage
-  root :to => 'home#index'
+  match '/', controller: 'events', action: 'show_current'
 
   # Devise Routes
   devise_for :users, :skip => [:sessions, :registrations]

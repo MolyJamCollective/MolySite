@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource  
 
   # GET /events
   # GET /events.json
@@ -82,4 +82,16 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def show_current
+    @event = Event.last
+
+    if(@event.nil?)
+      @events = Event.all
+      render 'index', :alert => 'No current event found.'
+    else
+      render 'show'
+    end
+  end
+
 end
