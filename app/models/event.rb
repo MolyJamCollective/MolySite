@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :group
+  has_many :venues
+
   after_create :create_group
 
   attr_accessible :end_date, :published, :start_date, :name, :description

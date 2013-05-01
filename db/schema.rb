@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429160905) do
+ActiveRecord::Schema.define(:version => 20130501223131) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                           :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130429160905) do
     t.float    "longitude"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "event_id"
   end
 
 end
