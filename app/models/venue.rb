@@ -14,8 +14,11 @@ class Venue < ActiveRecord::Base
     true
   end
 
-  def register_user(user)
+  def register_user(user, host = false)
     user.groups << self.group
     user.groups << self.event.group
+    if host
+      user.groups << Group.where(name: "Hosts")
+    end
   end
 end
