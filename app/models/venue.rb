@@ -13,4 +13,9 @@ class Venue < ActiveRecord::Base
     self.save
     true
   end
+
+  def register_user(user)
+    user.groups << self.group
+    user.groups << self.event.group
+  end
 end
