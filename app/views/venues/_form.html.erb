@@ -23,6 +23,10 @@
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
+  <div class="field">
+    <%= f.label :event_id %><br />
+    <%= f.select(:event_id, options_for_select(@events.collect{ |event| [event.name, event.id] })) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
