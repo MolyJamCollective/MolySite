@@ -33,7 +33,9 @@ if(Rails.env == "development")
   Event.create!(name: "Event", description: "Description", start_date: DateTime.current() , end_date: DateTime.current(), published: true)
 
   # Venues
-  Venue.create!(name: "New York", address: "New York, New York", description: "Description", event_id: 1)
-  Venue.create!(name: "Orlando", address: "Orlando, FL", description: "Description", event_id: 1)
+  description_raw = "### Description ###"
+
+  Venue.create!(name: "New York", address: "New York, New York", description_raw: description_raw, event_id: 1)
+  Venue.create!(name: "Orlando", address: "Orlando, FL", description_raw: description_raw, event_id: 1)
 
 end
