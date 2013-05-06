@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul>
+    <%= render 'layouts/registration' %>
+    <%= render 'layouts/login' %>
+  </ul>
+
   <% flash.each do |type, message|
     case type 
       when :alert %><div class="alert alert-error"><strong>Alert!</strong><% 
