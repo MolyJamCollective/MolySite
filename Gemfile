@@ -56,3 +56,6 @@ gem 'cancan'
 
 # Geolocation
 gem 'geocoder'
+
+# Markdown
+gem 'redcarpet'

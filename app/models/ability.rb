@@ -4,40 +4,32 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if(user.group? :Webmasters)
+    # Want Cascading 'C' Style Switch Statment
+    if(user.group?(:Webmasters))
       can :manage, :all
-      can :show_current, Event
-    else
-      can :read, :all
-      can :show_current, Event
     end
+
+    if(user.group?(:Organizers) || user.group?(:Webmasters))
+      can :manage, :all
+    end
+
+    if(user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+      user.groups.each do |group|
+        can :manage, Venue, group_id: group.id
+      end
+    end
+
+    if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+
+    end
+
+    if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+      can :create, Venue
+    end
+
+    can :read, :all
+    can :show_current, Event
     
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user 
-    # permission to do.
-    # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. 
-    # If you pass :all it will apply to every resource. Otherwise pass a Ruby
-    # class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the
-    # objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details:
-    # https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
 end
 
