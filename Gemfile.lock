@@ -142,7 +142,8 @@ DEPENDENCIES
   binding_of_caller
   cancan
   coffee-rails (~> 3.2.1)
-  compass-rails
+  compass (>= 0.12.2)
+  compass-rails (>= 1.0.3)
   compass-susy-plugin
   devise
   geocoder

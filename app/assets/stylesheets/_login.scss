@@ -1,0 +1,44 @@
+#login{
+  display: none;
+}
+
+.fancybox-skin{
+  background-color: $sidebarBlack;
+}
+
+.login-section{
+	width: 60%;
+	float: left;
+	.login-input{
+		padding: 5px;
+		font-size: 1.3em;
+		width: 80%;
+	}
+}
+
+.register-section{
+	width: 40%;
+	float: right;
+}
+
+.login-form-button {
+    line-height: .9em;
+    display: block;
+    padding: 5px;
+    vertical-align: middle;
+    height: inherit;
+    background: $green;
+    color: $white;
+    text-align: center;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    @include box-shadow(inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25));
+    //@include single-text-shadow(1px, 1px, 0px, rgba(0, 0, 0, 0.5));
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    @include border-radius(5px);
+
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
+  }

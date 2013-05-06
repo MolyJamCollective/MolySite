@@ -1,0 +1,56 @@
+@import "colors";
+@import "fonts";
+
+body {
+  font-family: $bodyFont;
+  background-color: $black;
+  background-image: url(/assets/img/bg.png);
+}
+
+
+a {
+  font-weight: normal;
+  color: $green;
+  text-decoration: none;
+  
+  &:hover {
+    color: $blue;
+  }
+}
+
+p {
+  color: $offWhite;
+  line-height: 1.1em;
+  margin: 5px 0px;
+}
+
+h2, h3, h4, h5, h6 {
+  color: $white;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: 1.2em;
+}
+
+//Logo Branding
+.brand{
+  height: auto;
+  display: inline-block;
+	.logo {
+		width: 100%;
+	}
+	
+}
+
+.sponsor {
+  
+  img {
+    width: 100%;
+  }
+  
+  figcaption { 
+    display: none;
+  }
+  
+}
