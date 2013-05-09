@@ -1,10 +1,7 @@
-@import "colors";
-@import "fonts";
-
 body {
   font-family: $bodyFont;
   background-color: $black;
-  background-image: url(/assets/img/bg.png);
+  background-image: image-url("bg.png");
 }
 
 

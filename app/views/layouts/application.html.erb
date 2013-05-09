@@ -8,7 +8,7 @@
 <body>
   <header class="header">
       <div class="header-container">
-        <a class="brand" href="#"><img src="assets/img/header-logo.png" class="logo"></a>
+        <a class="brand" href="#"><%= image_tag("header-logo.png",:class => "logo") %><!-- img src="assets/img/header-logo.png" class="logo" --></a>
         <nav class="main">
           <ul class="menu"> 
             <li class="button"><button class="menu">Menu</button></li>
@@ -19,10 +19,11 @@
             <li class="link"><a href="#contact">Contact</a></li>
           </ul>
        </nav>
-	   <ul>
-	     <%= render 'layouts/registration' %>
-	     <%= render 'layouts/login' %>
-	   </ul>
+	   <%# Wait to implement this once everything else works <ul> %>
+			 
+	     <%# render 'layouts/registration' %>
+	     <%# render 'layouts/login' %>
+			 <%# </ul> %>
       </div>
 </header><!--/.header -->
 <div class="page">
