@@ -1,0 +1,62 @@
+.carousel {
+  clear: both;
+  height: auto;
+
+  .item {
+      background: #404040; //move this to the colors file
+
+	  margin-bottom: -2px;
+
+      figure {
+        position: relative;
+
+        figcaption {
+
+          @include filter-gradient(#a60000, #000000, horizontal); // IE6-9 fallback on horizontal gradient
+          @include background-image(linear-gradient(bottom, rgba(0,0,0,.7) 10%,rgba(0,0,0,0) 95%));
+          color: $white;
+          position: absolute;
+		  display: inline-block;
+          bottom: 1px;
+          left: 0px;
+		  padding: 10px;
+          padding-left: 5%;
+          width: 100%;
+
+          h4 {
+            font-weight: 500;
+          }
+        }
+
+	      img {
+	        width: 100%;
+	      }
+    }
+  }
+
+  .looper-nav {
+	  height: auto;
+	  background: #404040;;
+
+	  li {
+		  width: 144 / 1256 * 100%;
+		  height: auto;
+		  margin: 0px;
+		  padding: 0px;
+		  a {
+			  display: inline-block;
+			  overflow: hidden;
+			  width: 100%;
+			  height: 100%;
+			  padding: 0px;
+			  margin: 0px;
+			  text-align: center;
+			  img {
+				  width: 200%;
+				  margin-left: -25%;
+			  }
+		  }
+	  }
+  }
+}
+

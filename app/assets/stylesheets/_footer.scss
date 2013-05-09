@@ -1,0 +1,9 @@
+.footer {
+  max-width: $total-columns * $column-width + $gutter-width * $total-columns - 1;
+  width: 100%;
+  margin: 0px auto;
+  padding: 15px 10px;
+  color: $footerGrey;
+  font-size: 0.9em;
+  text-align: center;
+}
