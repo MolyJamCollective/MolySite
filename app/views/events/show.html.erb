@@ -1,4 +1,4 @@
-<!-- <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -40,33 +40,4 @@
 
 
 <%= link_to 'Edit', edit_event_path(@event), class: "btn" %> |
-<%= link_to 'Back', events_path, class: "btn" %> -->
-
-<div class="masthead">
-  <figure class="location-banner">
-	  <!-- TODO: convert to even thumb rails command at some point  -->
-    <img src="/assets/img/location-losangeles.png" />
-    <figcaption><h1><%= @event.name %></h1></figcaption>
-  </figure>
-</div><!-- end .masthead -->
-
-<div class="left-column">
-	
-	<!-- TODO: Move this to a seperate erb file 
-	-->
-    <div class="inner-content attendance">
-      <a class="attend-link">Attend<br />This Jam</a>
-      <h2>Want to attend this jam site? Sign up here!</h2>
-      <p>Even if you've responded to a Facebook event or registered on this site, your signup is not complete until you click the stupidly large button to the right and receive a confirmation from Eventbrite!</p>
-    </div><!-- end .inner-content.attendance -->
-	
-	<div class="static info">
-	<%= @event.description %>
-	</div><!-- end  .static.info -->
-	
-	
-	
-</div><!-- end .left-column -->
-
-<aside class="right-column">
-</aside><!-- end .right-column -->
+<%= link_to 'Back', events_path, class: "btn" %>

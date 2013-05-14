@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
@@ -16,4 +16,55 @@
 </p>
 
 <%= link_to 'Edit', edit_venue_path(@venue), class: "btn" %> |
-<%= link_to 'Back', venues_path, class: "btn" %>
+<%= link_to 'Back', venues_path, class: "btn" %> -->
+<% content_for :css do %>
+  <%= stylesheet_link_tag 'venues' %>
+<% end %>
+
+<% content_for :javascript do %>
+  
+  <%= javascript_include_tag "venues" %>
+  
+<% end %>
+
+
+<% content_for :masthead do %>
+<figure class="location-banner">
+  <!-- TODO: Talk to Zane about getting Venue banner asset  -->
+  <% if defined? @venue.banner %>
+  <% else %>
+  <%= image_tag("venues/banner-default.png") %>
+  <% end %>
+  <figcaption><h1><%= @venue.name %></h1></figcaption>
+</figure>
+<% end %>
+
+<% content_for :leftColumn do %>	
+	<!-- TODO: Move this to a seperate erb file 
+	-->
+    <!--<div class="inner-content attendance">
+      <a class="attend-link">Attend<br />This Jam</a>
+      <h2>Want to attend this jam site? Sign up here!</h2>
+      <p>Even if you've responded to a Facebook event or registered on this site, your signup is not complete until you click the stupidly large button to the right and receive a confirmation from Eventbrite!</p>
+    </div>--><!-- end .inner-content.attendance -->
+	
+	<div class="static info">
+	<%= raw(@venue.description) %>
+	</div><!-- end  .static.info -->
+
+<% end %>	
+
+
+<% content_for :rightColumn do %>
+  <div class="address"><!-- check for semantic microformats etc -->
+    <h4>Address</h4>
+    <figure>
+      <img class="map-thing" />
+    </figure>
+    <figure class="logo">
+      <img src="" />
+    </figure>
+    <p>
+      <span id="address"><%= @venue.address %></span>
+    </p>
+<% end %>

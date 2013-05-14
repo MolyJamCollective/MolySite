@@ -1,4 +1,8 @@
 .header{
+  /** This height must be no more than
+   * .content padding-top
+   */
+  
   width: 100%;
   margin: 0 auto;
   clear: both;
@@ -11,7 +15,7 @@
   //border-bottom-width: 5px;
   //border-bottom-color: $contentBlack;
   //border-bottom-style: solid;
-
+ 
 }
 
 .header-container {

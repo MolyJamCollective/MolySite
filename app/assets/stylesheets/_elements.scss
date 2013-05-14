@@ -21,9 +21,10 @@ p {
   margin: 5px 0px;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   color: $white;
   font-weight: bolder;
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -38,6 +39,28 @@ h2 {
 		width: 100%;
 	}
 	
+}
+
+table {
+  display: block;
+  clear: both;
+  
+  tr {
+    
+    border-left: thin solid $green;
+    
+    th, td {
+      color: $white;
+      padding: 5px 10px;
+    }
+    
+    
+    th {
+      border-bottom: thin solid $green;
+      font-weight: bold;
+    }
+  }
+  
 }
 
 .sponsor {
