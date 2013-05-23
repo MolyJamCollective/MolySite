@@ -36,14 +36,15 @@
         when :message %><div class="alert alert-info"><strong>Message!</strong><% 
       end %><button type="button" class="close" data-dismiss="alert">&times;</button> <%= message %></div>
     <% end %>
-    <% yield %>
+    
     <%if content_for?(:masthead) %><div class="masthead">
       <%= yield(:masthead)%>
     </div><!-- end .masthead --><% end %>
   
     <%if content_for?(:leftColumn) %><div class="left-column">
       <%= yield(:leftColumn)%>
-    </div><!-- end .left-column --><% end %>
+    </div><!-- end .left-column -->
+    <% end %>
   
     <%if content_for?(:rightColumn) %><aside class="right-column">
       <%= yield(:rightColumn)%>

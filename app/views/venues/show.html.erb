@@ -17,12 +17,13 @@
 
 <%= link_to 'Edit', edit_venue_path(@venue), class: "btn" %> |
 <%= link_to 'Back', venues_path, class: "btn" %> -->
+
 <% content_for :css do %>
   <%= stylesheet_link_tag 'venues' %>
 <% end %>
 
 <% content_for :javascript do %>
-  
+  <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true&amp;language=en" %>
   <%= javascript_include_tag "venues" %>
   
 <% end %>
@@ -56,15 +57,18 @@
 
 
 <% content_for :rightColumn do %>
-  <div class="address"><!-- check for semantic microformats etc -->
-    <h4>Address</h4>
-    <figure>
-      <img class="map-thing" />
-    </figure>
-    <figure class="logo">
-      <img src="" />
-    </figure>
+  <div class="map"></div><!-- container for the Generated map -->
+  <div class="address info"><!-- check for semantic microformats etc -->
+    <h3>Address</h3>
     <p>
-      <span id="address"><%= @venue.address %></span>
+      <span id="address"><%# @venue.address %></span>
     </p>
+  </div>
+  <div class="info contact">
+    <h3>Contact</h4>
+    <p></p>
+  </div>
+  <div class="info sponsors">
+    <h3>Sponsors</h3>
+  </div>
 <% end %>

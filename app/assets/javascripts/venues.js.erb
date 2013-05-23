@@ -29,6 +29,10 @@ var molydeux = (function(md, $) {
       
       address = $('#address').text();
       
+      if(address.trim() === ""){
+        address = "Atlantic Ocean";
+      }
+      
       return address;
       
     };

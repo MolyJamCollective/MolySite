@@ -21,10 +21,9 @@ p {
   margin: 5px 0px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: $white;
+h2, h3, h4, h5, h6 {
+  color: $orange;
   font-weight: bolder;
-  margin-bottom: 5px;
 }
 
 h2 {
@@ -41,6 +40,7 @@ h2 {
 	
 }
 
+//For temp pages
 table {
   display: block;
   clear: both;
