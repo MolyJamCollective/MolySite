@@ -1,3 +1,84 @@
 // Place all the styles related to the Locations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass";
+@import "susy";
+@import "fonts";
+@import "colors";
+@import "users";
+
+.map{
+	clear: both;
+	height: 250px;
+  margin-bottom: $gutter-width;
+}
+
+
+.location-banner {
+  clear: both;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+	  
+  img {
+	  width: 100%;
+  }
+	  
+  figcaption {
+    clear: both;
+	  position: absolute;
+	  left: 0px;
+	  top: 200px;
+    font-size: 4em;
+	  background: $black;
+	  color: $white;
+	  width: 100%;
+	  display: block;
+    text-align: right;
+    padding: 10px;
+    
+    h1 {
+     @include span-columns(10, 14);
+     font-size: .8em;
+    }
+    
+  }
+}
+
+.attendance {
+
+  h2, p {
+    width: 66%;
+  }
+  
+  .attend-link {
+    line-height: .9em;
+    display: block;
+    padding: 5px;
+    vertical-align: middle;
+    float: right;
+    width: 30%;
+    height: inherit;
+    background: $green;
+    color: $white;
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    @include box-shadow(inset 0px -3px 1px rgba(0, 0, 0, 0.45), 0px 2px 2px rgba(0, 0, 0, 0.25));
+    //@include single-text-shadow(1px, 1px, 0px, rgba(0, 0, 0, 0.5));
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+    @include border-radius(20px);
+    
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
+  }
+  
+}
+  
+.sponsor {
+  clear: both;
+  width: auto;
+  margin: $gutter-width / 2;
+}
