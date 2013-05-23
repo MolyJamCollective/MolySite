@@ -1,3 +1,4 @@
+<% content_for :leftColumn do %>
 <h1>Edit Group</h1>
 
 <%= form_for(@group, :url => {:action => "update"}, :html => {:method => :put }) do |f| %>
@@ -12,3 +13,4 @@
 <% end %>
 
 <%= link_to "Back", :back, class: "btn" %>
+<%end%>

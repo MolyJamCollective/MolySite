@@ -22,7 +22,7 @@ p {
 }
 
 h2, h3, h4, h5, h6 {
-  color: $white;
+  color: $orange;
   font-weight: bolder;
 }
 
@@ -38,6 +38,29 @@ h2 {
 		width: 100%;
 	}
 	
+}
+
+//For temp pages
+table {
+  display: block;
+  clear: both;
+  
+  tr {
+    
+    border-left: thin solid $green;
+    
+    th, td {
+      color: $white;
+      padding: 5px 10px;
+    }
+    
+    
+    th {
+      border-bottom: thin solid $green;
+      font-weight: bold;
+    }
+  }
+  
 }
 
 .sponsor {
