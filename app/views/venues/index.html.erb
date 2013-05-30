@@ -1,11 +1,11 @@
 <% content_for :leftColumn do %>
-<h1>Listing venues</h1>
+<h1>Locations</h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Address</th>
+    <th>Location</th>
+    <th>Venue</th>
+    <th>Jammers</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,9 +13,8 @@
 
 <% @venues.each do |venue| %>
   <tr>
-    <td><%= venue.name %></td>
-    <td><%= venue.description %></td>
     <td><%= venue.address %></td>
+    <td><%= venue.name %></td>
     <td><%= link_to 'Show', venue, class: "btn" %></td>
     <td><%= link_to 'Edit', edit_venue_path(venue), class: "btn" %></td>
     <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
