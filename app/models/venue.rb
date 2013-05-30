@@ -2,7 +2,7 @@ class Venue < ActiveRecord::Base
   belongs_to :event
   belongs_to :group
 
-  attr_accessible :address, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
+  attr_accessible :address, :country, :city, :region, :contact, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   after_validation :process_markdown, :if => :description_raw_changed?

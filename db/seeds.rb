@@ -30,12 +30,16 @@ if(Rails.env == "development")
   Membership.create!(user_id: 5, group_id: 5) # user.groups << users
 
   # Events
-  Event.create!(name: "Event", description: "Description", start_date: DateTime.current() , end_date: DateTime.current(), published: true)
+  Event.create!(name: "Molyjam 2013", description: "Description", start_date: DateTime.current() , end_date: DateTime.current(), published: true)
 
   # Venues
   description_raw = "### Description ###"
 
-  Venue.create!(name: "New York", address: "New York, New York", description_raw: description_raw, event_id: 1)
-  Venue.create!(name: "Orlando", address: "Orlando, FL", description_raw: description_raw, event_id: 1)
+  Venue.create!(region: "North America", city: "New York", country: "us", name: "Babycastles", address: "481 Broadway, New York, NY", contact: "George Washington", description_raw: description_raw, event_id: 1)
+  Venue.create!(region: "North America", city: "Los Angeles", country: "us", name: "NextSpace", address: "1212 Washington Blvd, Culver City, CA", contact: "Theodore Roosevelt", description_raw: description_raw, event_id: 1)
+  Venue.create!(region: "Europe", city: "Paris", country: "fr", name: "SomeVenueName", address: "70 Avenue des Champs Elysees, Paris, France", contact: "John Adams", description_raw: description_raw, event_id: 1)
+  Venue.create!(region: "Australia", city: "Adelaide", country: "au", name: "OzVenue", address: "Strangways Terrace
+North Adelaide SA 5006, Australia", contact: "Benjamin Franklin", description_raw: description_raw, event_id: 1)
+
 
 end
