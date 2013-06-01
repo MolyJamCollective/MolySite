@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   	attr_accessible :email, :password, :password_confirmation, :remember_me
   	# attr_accessible :title, :body
 
-  	attr_accessible :name, :biography, :location, :website
+  	attr_accessible :name, :biography, :location, :website, :twitter_username
 
   def group?(group)
     self.groups.exists?(name: group.to_s)

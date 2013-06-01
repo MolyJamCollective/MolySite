@@ -19,6 +19,12 @@
   <div><%= f.label :biography %><br />
   <%= f.text_area :biography %></div>
 
+  <div><%= f.label :twitter_username %><br />
+  <div class="input-prepend">
+    <span class="add-on">@</span>
+    <%= f.text_field :twitter_username, id: "prependedInput" %></div>
+  </div>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
