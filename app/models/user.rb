@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
+  
 	has_many :memberships
 	has_many :groups, :through => :memberships
 
