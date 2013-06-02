@@ -67,7 +67,9 @@
   <div class="info contact">
     <h3>Contact</h4>
     <p>
-      @<%= @venue.hosts.first.twitter_username %>
+      <% @venue.hosts.each do |host| %>
+        @<%= host.twitter_username if host.twitter_username %>
+      <% end %>
     </p>
   </div>
   <div class="info sponsors">
