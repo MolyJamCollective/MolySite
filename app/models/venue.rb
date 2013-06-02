@@ -15,11 +15,31 @@ class Venue < ActiveRecord::Base
     true
   end
 
+  def hosts
+    host_list = Array.new
+
+    self.users.each do |user|
+      host_list.push(user) if user.memberships.where(group_id: self.group_id).first.role >= Membership::ROLES[:officer]
+    end
+  end
+
+  def users
+    self.group.users
+  end
+
   def register_user(user, host = false)
-    user.groups << self.group
-    user.groups << self.event.group
+    
+    Membership.set(user, self.event.group) # Join Event
+
     if host
-      user.groups << Group.where(name: "Hosts")
+      if self.group.users.empty?
+        Membership.set(user, self.group, :founder) # Join Venue as Founder
+      else
+        Membership.set(user, self.group, :officer) # Join Venue as Venue
+      end
+      Membership.set(user, Group.where(name: "Hosts").first)
+    else
+       Membership.set(user, self.group) # Join Venue
     end
   end
 

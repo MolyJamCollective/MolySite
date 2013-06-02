@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530045814) do
+ActiveRecord::Schema.define(:version => 20130601191408) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                           :null => false
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20130530045814) do
     t.text     "biography"
     t.string   "location"
     t.string   "website"
+    t.string   "twitter_username"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
