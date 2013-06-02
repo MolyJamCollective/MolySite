@@ -16,11 +16,21 @@ class Venue < ActiveRecord::Base
   end
 
   def register_user(user, host = false)
-    user.groups << self.group
-    user.groups << self.event.group
+    membership = Membership.new(user_id: user.id, group_id: self.group.id)
+    
     if host
-      user.groups << Group.where(name: "Hosts")
+
+      if self.group.users.empty?
+        membership.role = Membership::ROLES[:founder]
+      else
+        membership.role = Membership::ROLES[:officer]
+      end
+
+      Membership.create!(user_id: user.id, group_id: Group.where(name: "Hosts").first.id)
     end
+    membership.save
+
+    Membership.create!(user_id: user.id, group_id: self.event.group.id)
   end
 
   def process_markdown
