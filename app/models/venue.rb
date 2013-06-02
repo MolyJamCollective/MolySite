@@ -15,22 +15,32 @@ class Venue < ActiveRecord::Base
     true
   end
 
-  def register_user(user, host = false)
-    membership = Membership.new(user_id: user.id, group_id: self.group.id)
-    
-    if host
+  def hosts
+    host_list = Array.new
 
-      if self.group.users.empty?
-        membership.role = Membership::ROLES[:founder]
-      else
-        membership.role = Membership::ROLES[:officer]
-      end
-
-      Membership.create!(user_id: user.id, group_id: Group.where(name: "Hosts").first.id)
+    self.users.each do |user|
+      host_list.push(user) if user.memberships.where(group_id: self.group_id).first.role >= Membership::ROLES[:officer]
     end
-    membership.save
+  end
 
-    Membership.create!(user_id: user.id, group_id: self.event.group.id)
+  def users
+    self.group.users
+  end
+
+  def register_user(user, host = false)
+    
+    Membership.set(user, self.event.group) # Join Event
+
+    if host
+      if self.group.users.empty?
+        Membership.set(user, self.group, :founder) # Join Venue as Founder
+      else
+        Membership.set(user, self.group, :officer) # Join Venue as Venue
+      end
+      Membership.set(user, Group.where(name: "Hosts").first)
+    else
+       Membership.set(user, self.group) # Join Venue
+    end
   end
 
   def process_markdown

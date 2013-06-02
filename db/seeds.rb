@@ -40,6 +40,6 @@ if(Rails.env == "development")
   Venue.create!(region: "Europe", city: "Paris", country: "fr", name: "SomeVenueName", address: "70 Avenue des Champs Elysees, Paris, France", contact: "John Adams", description_raw: description_raw, event_id: 1)
   Venue.create!(region: "Australia", city: "Adelaide", country: "au", name: "OzVenue", address: "Strangways Terrace North Adelaide SA 5006, Australia", contact: "Benjamin Franklin", description_raw: description_raw, event_id: 1)
 
-  Venue.find(1).register_user(User.find(3), true);
+  Venue.find(1).register_user(User.find(3), true)
 
 end
