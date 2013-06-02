@@ -29,7 +29,6 @@ class VenuesController < ApplicationController
   def edit
     @venue = Venue.find(params[:id])
     @events = Event.all
-
   end
 
   def create
@@ -39,7 +38,7 @@ class VenuesController < ApplicationController
     respond_to do |format|
       if @venue.save
         format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
-        @venue.register_user(current_user) if user_signed_in?
+        @venue.register_user(current_user, true) if user_signed_in?
       else
         format.html { render action: "new" }
       end
@@ -53,7 +52,6 @@ class VenuesController < ApplicationController
     respond_to do |format|
       if @venue.update_attributes(params[:venue])
         format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
-        @venue.register_user(current_user) if user_signed_in?
       else
         format.html { render action: "edit" }
       end
