@@ -1,51 +1,27 @@
-<% content_for :css do %>
-  <%= stylesheet_link_tag 'venues' %>
-<% end %>
+<article>
+  <header>
+    <h1 id="locationName"><%= @venue.city %></h1>
+  </header>
 
-<% content_for :javascript do %>
-  <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true&amp;language=en" %>
-  <%= javascript_include_tag "venues" %>
-  
-<% end %>
+  <%= raw(@venue.description) %>
+</article>
 
-<figure class="location-banner">
-  <!-- TODO: Talk to Zane about getting Venue banner asset  -->
-  <% if defined? @venue.banner %>
-  <% else %>
-  <%= image_tag("venues/banner-default.png") %>
-  <% end %>
-  <figcaption><h1><%= @venue.name %></h1></figcaption>
-</figure>
-
-	<!-- TODO: Move this to a seperate erb file 
-	-->
-    <!--<div class="inner-content attendance">
-      <a class="attend-link">Attend<br />This Jam</a>
-      <h2>Want to attend this jam site? Sign up here!</h2>
-      <p>Even if you've responded to a Facebook event or registered on this site, your signup is not complete until you click the stupidly large button to the right and receive a confirmation from Eventbrite!</p>
-    </div>--><!-- end .inner-content.attendance -->
-	
-	<div class="static info">
-	<%= raw(@venue.description) %>
-	</div><!-- end  .static.info -->
-	
-
-
-  <div class="map"></div><!-- container for the Generated map -->
-  <div class="address info"><!-- check for semantic microformats etc -->
+<div class="no-bg">
+  <aside>
     <h3>Address</h3>
     <p>
-      <span id="address"><%# @venue.address %></span>
+      <span id="venueName"><%= @venue.name %></span><br/>
+      <span id="streetAddress"><%= @venue.street %></span><br/>
+      <span id="cityStateZip"><%= @venue.city %>, <%= @venue.state %>, <%= @venue.country %></span><br/>
     </p>
-  </div>
-  <div class="info contact">
-    <h3>Contact</h4>
-    <p>
-      <% @venue.hosts.each do |host| %>
-        @<%= host.twitter_username if host.twitter_username %>
-      <% end %>
-    </p>
-  </div>
-  <div class="info sponsors">
-    <h3>Sponsors</h3>
-  </div>
+  </aside>
+  <aside>
+    <h3>Contact</h3>
+      <p>
+        <% @venue.hosts.each do |host| %>
+          <span id="contactName"><%= host.name %></span><br/>
+          <span id="contactTwitter">@<%= host.twitter_username if host.twitter_username %></span><br/>
+        <% end %>
+      </p>
+  </aside>
+</div>
