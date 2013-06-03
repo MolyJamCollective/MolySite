@@ -9,8 +9,8 @@
         <% @venues.each do |venue| %>
           <%= link_to venue do %>
             <li>
-              <span class="flag-icon"><%= image_tag "flags/US.png" %></span>
-              <h4><span class="name"><%= venue.name %></span> <span class="category">northamerica</span></h4>
+              <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
+              <h4><span class="name"><%= venue.city %></span> <span class="category">northamerica</span></h4>
               <h5><span class="country"><%= venue.country %></span></h5>
             </li>
           <% end %>

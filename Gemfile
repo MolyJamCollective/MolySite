@@ -29,6 +29,7 @@ gem 'cancan'
 
 # Geolocation
 gem 'geocoder'
+gem 'carmen-rails'
 
 # Markdown
 gem 'redcarpet'
