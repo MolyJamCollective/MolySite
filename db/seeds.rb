@@ -35,10 +35,10 @@ if(Rails.env == "development")
   # Venues
   description_raw = "### Description ###"
 
-  Venue.create!(region: "North America", city: "New York", country: "us", name: "Babycastles", address: "481 Broadway, New York, NY", contact: "George Washington", description_raw: description_raw, event_id: 1)
-  Venue.create!(region: "North America", city: "Los Angeles", country: "us", name: "NextSpace", address: "1212 Washington Blvd, Culver City, CA", contact: "Theodore Roosevelt", description_raw: description_raw, event_id: 1)
-  Venue.create!(region: "Europe", city: "Paris", country: "fr", name: "SomeVenueName", address: "70 Avenue des Champs Elysees, Paris, France", contact: "John Adams", description_raw: description_raw, event_id: 1)
-  Venue.create!(region: "Australia", city: "Adelaide", country: "au", name: "OzVenue", address: "Strangways Terrace North Adelaide SA 5006, Australia", contact: "Benjamin Franklin", description_raw: description_raw, event_id: 1)
+  Venue.create!(name: "", street: "481 Broadway",                 city: "New York",     state: "New York",    country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
+  Venue.create!(name: "", street: "1212 Washington Blvd",         city: "Los Angeles",  state: "California",  country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
+  Venue.create!(name: "", street: "70 Avenue des Champs Elysees", city: "Paris",        state: "",            country: "France",        region: "Europe",         description_raw: description_raw, event_id: 1)
+  Venue.create!(name: "", street: "Strangways Terrace",           city: "Adelaide",     state: "",            country: "Australia",     region: "Australia",      description_raw: description_raw, event_id: 1)
 
   Venue.find(1).register_user(User.find(3), true)
 

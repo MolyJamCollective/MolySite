@@ -2,12 +2,20 @@ class Venue < ActiveRecord::Base
   belongs_to :event
   belongs_to :group
 
-  attr_accessible :address, :country, :city, :region, :contact, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
+  attr_accessible :street, :state, :country, :city, :region, :contact, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   after_validation :process_markdown, :if => :description_raw_changed?
 
   after_create :create_group
+
+  def address
+    [self.street, self.city, self.state, self.country].compact.join(', ')
+  end
+
+  def address_changed?
+    self.street_changed? && self.city_changed? && self.state_changed? && self.country_changed?
+  end
 
   def create_group
     self.group_id = Group.create(name: self.name, description: self.description).id
