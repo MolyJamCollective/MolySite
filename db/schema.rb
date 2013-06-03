@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601191408) do
+ActiveRecord::Schema.define(:version => 20130603121629) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                           :null => false
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(:version => 20130601191408) do
   create_table "venues", :force => true do |t|
     t.string   "name",            :null => false
     t.text     "description"
-    t.string   "address",         :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at",      :null => false
@@ -87,7 +86,8 @@ ActiveRecord::Schema.define(:version => 20130601191408) do
     t.string   "region"
     t.string   "country"
     t.string   "city"
-    t.string   "contact"
+    t.string   "street"
+    t.string   "state"
   end
 
 end
