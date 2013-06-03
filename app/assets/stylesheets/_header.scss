@@ -33,7 +33,7 @@
   }
 }
 
-.header-container nav {
+nav {
   margin:  auto 10px;
   display: inline-block;
   height: 40px;
@@ -49,14 +49,11 @@
     background: inherit;
    
     
-   a {
+    a {
       color: $green;
       font-weight: 500;
       width: auto;
       height: auto;
-      &:hover {
-        color: white;
-      }
     }
     
     .link, .button {
@@ -64,27 +61,27 @@
       height: auto;
       vertical-align: middle;
       padding: 10px;
-      
+      border-bottom: transparent 3px solid;
+	
       a {
         width: auto;
         height: inherit;
         display: block;
         vertical-align: middle;
       }
-      
+	
       &:hover, &.active {
-        @include single-box-shadow(#000000, 0, 0, 5px, 1px, true);
-        background: #2b2b2b;
-        @include border-radius(4px, 4px);
+        border-color: $orange;
+        a {
+          color: $blue;
+        }
       }
     }
     
     @include at-breakpoint(29.938em) {
-    
       .button {
         display: none;
       }
-      
     }
   }
   
@@ -132,4 +129,15 @@
 
 nav.user {
   float: right;
+  height: auto;
+  max-height: 40px;
+  font-size: 0.8em;
+  font-weight: normal;
+  display: inline-block;
+  
+  .link, .button {
+    
+    padding: 2px;
+    
+  }
 }

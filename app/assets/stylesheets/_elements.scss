@@ -2,6 +2,7 @@ body {
   font-family: $bodyFont;
   background-color: $black;
   background-image: image-url("bg.png");
+  color: $white;
 }
 
 
@@ -28,6 +29,11 @@ h2, h3, h4, h5, h6 {
 
 h2 {
   font-size: 1.2em;
+}
+
+.centered h2 {
+  text-align: center;
+  font-size: 1.5em;
 }
 
 //Logo Branding
@@ -74,3 +80,110 @@ table {
   }
   
 }
+
+form {
+  display: block;
+  width: auto;
+  max-width: 250px;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 10px;
+  text-align: center;
+  
+  #error_explanation {
+    
+    text-align: left;
+    margin: 10px auto;
+    
+    
+    h2 {
+      font-size: 1em;
+      color: $white;
+      padding: 2px 10px;
+      @include border-radius(10px);
+      margin: 5px 2px;
+      background: $red;
+      text-align: left;
+    }
+    
+    ul {
+      color: $red;
+    }
+    
+  }
+}
+
+label, input {
+  display: block;
+}
+
+input {
+  min-width: 175px;
+  background: $white;
+  color: $black;
+  @include border-radius(10px);
+  padding: 1px 3px;
+  @include single-box-shadow($darkGrey, 1px, 1px 3px, 1px, true);
+  border: none;
+  
+  &:focus {
+    outline: none;
+    @include box-shadow($blue 0px 0px 4px 2px);
+  }
+}
+
+fieldset {
+  text-align: left;
+  display: block;
+  width: auto;
+  max-width: 200px;
+  margin: 0px auto 5px auto;
+  
+  &.small {
+  
+  padding-left: 5px;
+  
+    label, input {
+      display: inline;
+      margin: auto;
+      padding: 0px;
+      vertical-align: middle;
+    }
+  }
+  
+  &.actions {
+    text-align: center;
+    
+    input {
+      display: inline-block;
+      width: auto;
+      min-width: auto;
+      margin: 5px 2px;
+    }
+    
+  }
+  
+}
+
+.button {
+  background: $green;
+  color: $white;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+  @include border-radius(20px);
+  text-transform: uppercase;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 2px 10px;
+  
+  &:hover {
+    @include box-shadow($blue 0px 0px 4px 2px);
+  }
+  
+  &:active {
+    background-color: $blue;
+    color: $orange;
+  }
+}
+
+
+

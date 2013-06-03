@@ -17,3 +17,33 @@
 @import "header";
 @import "footer";
 @import "login";
+
+.alert {
+  
+  margin: 10px auto;
+  text-align: center;
+  @include border-radius(10px);
+  padding: 10px;
+  background: $darkGreen;
+  color: $white;
+  max-width: 300px;
+  position: relative;
+  
+  strong {
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .close {
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  
+  &.alert-error {
+    background-color: $red;
+  }
+  
+}

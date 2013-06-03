@@ -1,10 +1,10 @@
-html{
-    width: 100%;
-  }
+html {
+ width: 100%;
+}
 
-  body{
-    width: 100%;
-  }
+body{
+ width: 100%;
+}
 
 .page {
   @include container;
@@ -28,6 +28,24 @@ html{
   .masthead {
   	clear: both;
   	height: 300px;
+  }
+  
+  .center-column {
+    clear: both;
+    height: auto;
+    background: inherit;
+    
+    .centered {
+      padding: 10px;
+      @include span-columns(8, $total-columns);
+      @include pre(3);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      @include border-radius(10px);
+      border: thin solid $darkGrey;
+      @include single-box-shadow($darkGrey, 1px, 1px, 5px, 0px);
+    }
+    
   }
     
   .left-column {
