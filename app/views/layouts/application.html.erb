@@ -10,11 +10,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag :application, media: :all %>
+    <%= javascript_include_tag :modernizr %>
     <%= csrf_meta_tags %>
-    <% if content_for?(:meta) %><%= yield(:meta) %><% end %>
-    <% if content_for?(:css) %><%= yield(:css) %><% end %>
-
+    
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -26,6 +25,5 @@
     <%= render "layouts/footer" %>
 
     <%= javascript_include_tag "application" %>
-    <% if content_for?(:javascript) %><%= yield(:javascript) %><% end %>
   </body>
 </html>
