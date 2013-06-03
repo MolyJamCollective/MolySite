@@ -1,0 +1,8 @@
+<div class="main-container">
+  <div class="main wrapper clearfix">
+    <% flash.each do |type, message| %>
+      <%= message %>
+    <% end %>
+    <%= yield %>
+  </div> <!-- #main -->
+</div> <!-- #main-container -->
