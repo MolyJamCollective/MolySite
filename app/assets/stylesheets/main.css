@@ -93,7 +93,7 @@ body {
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #51c844;
+    border-top: 5px solid #51c844;
 }
 
 
@@ -358,7 +358,7 @@ th {
   color: #ccc;
   margin-right: 5px;
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: 0;
   border: solid 1px #666;
   display: block;
   float: left;
@@ -410,7 +410,7 @@ li h1,h2,h3,h4,h5{
 #locations-list li:nth-child(2n+1) {
   background-color: rgba(0, 0, 0, 0.1);
   border: solid 1px rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  border-radius: 0;
 }
 #locations-list li:nth-child(2n+1) .thumb {
   border: solid 1px #666;
