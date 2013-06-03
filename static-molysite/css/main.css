@@ -10,8 +10,14 @@ textarea {
     color: #222;
 }
 
+
 ol, ul{
     padding: 0px;
+}
+
+body,html{
+    min-height: 100%;
+    height: 100%;
 }
 
 body {
@@ -68,6 +74,7 @@ textarea {
 body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
     color: #e6e6e6;
+    min-height: 100%;
 }
 
 .wrapper {
@@ -176,6 +183,63 @@ nav a:hover {
 .logo{
     height: 50px;
     padding-top: 10px;
+}
+
+
+.splash{
+    background: url('../img/pixel-bg.jpg');
+    background-size: 100%;
+    background-position:center;
+    background-repeat: no-repeat;
+    overflow:auto;
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cube{
+    background-color: #51c844;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    left: 0;
+    top: 20%;
+    text-align: center;
+}
+
+.cube-contents{
+    margin: 0 auto;
+    position: relative;
+    top: 45%;
+    color: #2e7127;
+
+}
+
+.cube-contents a{
+    text-decoration: none;
+    color: inherit;
+    background-color: #2e7127;
+    font-size: 2em;
+    padding: 10px;
+    color: #FFFFFF;
+    margin-top: 10px;
+    cursor:pointer;
+}
+
+.cube-contents a:hover{
+    text-decoration: none;
+    color: inherit;
+    background-color: #42a237;
+    font-size: 2em;
+    padding: 10px;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+
+.countdown{
+    font-size: 4em;
 }
 
 .livestream{
