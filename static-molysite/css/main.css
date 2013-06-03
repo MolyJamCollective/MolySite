@@ -266,6 +266,19 @@ nav a:hover {
     display: none;
 }
 
+.main .facebook-event-container:hover{
+  background-color: #666666;
+}
+
+aside .facebook-event-area{
+  padding-top: 10px;
+}
+
+.facebook-event-logo{
+  width: 30%;
+  float: left;
+  padding-right: 10px;
+}
 
 aside hr{
     border: 0;
@@ -503,9 +516,9 @@ li h1,h2,h3,h4,h5{
 
     .header-container,
     .main aside {
-        -webkit-box-shadow: 0 5px 10px #000;
-           -moz-box-shadow: 0 5px 10px #000;
-                box-shadow: 0 5px 10px #000;
+        -webkit-box-shadow: 0 0px 8px #000;
+           -moz-box-shadow: 0 0px 8px #000;
+                box-shadow: 0 0px 8px #000;
     }
 
 

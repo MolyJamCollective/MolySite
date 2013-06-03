@@ -12,8 +12,10 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/jquery.tweet.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
     </head>
     <body>
     <div id="fb-root"></div>
@@ -72,30 +74,48 @@
                 <article>
                     <header>
                         <h1 id="locationName">Los Angeles</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec.</p>
+                        <p>Introduction from host and/or message from sponsor goes here!</p>
                     </header>
+                    <hr/>
                     <section>
-                        <h2>Location</h2>
-                        <p>There are multiple public parking garages available around Culver City. The one on Cardiff Ave is closest to the jam site, and is open until 3 AM every night. There is a maximum charge of $8 per day.</p>
+                        <h3>Parking / Transportation</h3>
+                        <p>There are multiple public parking garages available around Culver City. The one on Cardiff Ave is closest to the jam site, and is open until 3 AM every night. There is a maximum charge of $8 per day. The jam site is also just a few blocks from the Expo Line.</p>
                     </section>
+                    <hr/>
                     <section>
-                        <h2>Parking</h2>
-                        <p>There are multiple public parking garages available around Culver City. The one on Cardiff Ave is closest to the jam site, and is open until 3 AM every night. There is a maximum charge of $8 per day.</p>
+                        <h3>Food / Drinks</h3>
+                        <p>Snacks and drinks will be provided. Alcohol is permitted. There are a ton of restaurants within walking distance, such as Tender Greens, Daphne's, and Chipotle.</p>
                     </section>
+                    <hr/>
+                     <section>
+                        <h3>Technology</h3>
+                        <p>No computers are provided at this site. Bring your own laptop or desktop - there will be fast wireless internet access, and limited ethernet connections. Bring a power strip if you plan on having lots of things plugged in. There are also a couple conference rooms and whiteboards you can use for breakout sessions.</p>
+                    </section>
+                    <hr/>
                     <section>
-                        <h2>article section h2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor. Etiam ullamcorper lorem dapibus velit suscipit ultrices. Proin in est sed erat facilisis pharetra.</p>
+                        <h3>Building Access</h3>
+                        <p>This jam site will be open 24 hours. It'll be open when you arrive - come upstairs. Starting at 9 PM, the doors will be locked but there will be a number you can call to get back in. 24 hour-access does not mean you should sleep here, and you're encouraged to go home.</p>
                     </section>
+                    <hr/>
+                     <section>
+                        <h3>Press & Media</h3>
+                        <p>Members of the press are welcome to attend this jam. Contact Holden Link at losangeles@molyjam.com if you plan to bring any recording equipment that may need setup time or space.</p>
+                    </section>
+                    <hr/>
                     <footer>
-                        <h3>article footer h3</h3>
-                        <p id="facebookSpam">orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sodales urna non odio egestas tempor. Nunc vel vehicula ante. Etiam bibendum iaculis libero, eget molestie nisl pharetra in. In semper consequat est, eu porta velit mollis nec. Curabitur posuere enim eget turpis feugiat tempor.</p>
+                        <h2>#molyjamla</h2>
+                        <p><div class="tweet"></div></p>
                     </footer>
                 </article>
 
-                <aside>
-                    <h3>Join this jam!</h3>
-                    There are currently <span id="fb-attendees"></span> people signed up to attend this jam site.
-                </aside>
+                <a href="https://www.facebook.com/events/321794224546563/" target="_blank">
+                    <aside class="facebook-event-container">
+                    <div class="facebook-event-area">
+                        <img src="img/facebook.png" class="facebook-event-logo"/>
+                        <p>Join the Facebook Event for this jam site and tell others you're coming!</p>
+                    </div>
+                    </aside>
+                </a>
 
             <div class="no-bg">
                 <aside>
@@ -114,6 +134,10 @@
                         <span id="contactEmail">losangeles@molyjam.com</span><br/>
                     </p>
                 </aside>
+                <aside>
+                    <h3>Sponsors</h3>
+                    <img src="img/mock-sponsor.jpg" width="100%"/>
+                </aside>
             </div>
 
             </div> <!-- #main -->
@@ -129,6 +153,9 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
         <script src="js/main.js"></script>
+        <script src="js/vendor/jquery.tweet.js"></script>
+
+
 
        
     </body>

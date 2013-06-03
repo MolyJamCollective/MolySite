@@ -8,6 +8,17 @@ $('.livestream').click(function() {
 });
 
 
+jQuery(function($){
+            $(".tweet").tweet({
+                username: ["holdenlink","angusp", "sirW0lfgang"],
+                join_text: "auto",
+                avatar_size: 50,
+                count: 5,
+                loading_text: "loading tweets...",
+                template: "{avatar}{screen_name} » {text}"
+            });
+         });
+
 
   
 

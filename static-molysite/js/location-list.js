@@ -84,12 +84,7 @@ var molydeux = (function(md, $) {
         
         marker: {
             values:[
-              {latLng:[37.77493, -122.419416], data:"San Francisco, US"},
-              {latLng:[28.538336, -81.379236], data:"Orlando, US"},
-              {latLng:[50.819818, -0.109863], data:"Brighton, UK"},
-              {latLng:[-37.814107, 144.96328], data:"Melbourne, AU"},
-              {latLng:[49.899389, 8.840904], data:"Dieburg, DE"},
-              {latLng:[45.50867, -73.553992], data:"Montreal, CA"},
+              {address:"San Francisco, US", data:"San Francisco, US"}
             ],
             options: {
                 icon: this.icon
