@@ -1,18 +1,38 @@
-<h1>Locations</h1>
+<article>
+  <div class="c1">
+    <div id="locations-list">
+      <ul class="sort-by">
+        <li class="sort btn" data-sort="name">Sort by City</li>
+        <li class="sort btn" data-sort="country">Sort by Country</li>
+      </ul>
+      <ul class="list">
+        <% @venues.each do |venue| %>
+          <%= link_to venue do %>
+            <li>
+              <span class="flag-icon"><%= image_tag "flags/US.png" %></span>
+              <h4><span class="name"><%= venue.name %></span> <span class="category">northamerica</span></h4>
+              <h5><span class="country"><%= venue.country %></span></h5>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</article>
+        
+<aside>
+  <h3>Region Filter</h3>
+  <ul class="filter">
+    <li class="btn" id="filter-none">Show all</li>
+    <li class="btn" id="filter-australia">Only Australia</li>
+    <li class="btn" id="filter-northamerica">Only North America</li>
+    <li class="btn" id="filter-southamerica">Only South America</li>
+    <li class="btn" id="filter-europe">Only Europe</li>
+    <li class="btn" id="filter-asia">Only Asia</li>
+  </ul>
 
+  <hr />
 
-<ul>
-<% @venues.each do |venue| %>
-  <li>
-  	<span><%= image_tag("flags/" + venue.country + ".png") %></span>
-    <span><%= link_to venue.city, venue, class: "btn" %></span>
-    <span><%= venue.address %></span>
-  </li>
-    
-
-<% end %>
-</ul>
-
-<br />
-
-<%= link_to 'New Venue', new_venue_path, class: "btn" %>
+  <h3>Want to host a jam site?</h3>
+  <p>We'd love to hear from you! Click here for more information about what it takes to host a site, and how you can get in touch with us to make it official on the site.</p>
+</aside>

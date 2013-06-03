@@ -1,10 +1,10 @@
 <div class="header-container">
   <header class="wrapper clearfix">
-    <a href="#"><%= image_tag("header-logo.png",:class => "logo") %></a>
+    <%= link_to image_tag("header-logo.png", :class => "logo"), '/' %>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Locations</a></li>
+        <li><%= link_to "Home", '/' %></li>
+        <li><%= link_to "Locations", Venue %></a></li>
         <li><a href="#">About</a></li>
       </ul>
     </nav>
