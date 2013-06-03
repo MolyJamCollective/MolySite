@@ -1,3 +1,6 @@
+<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, name, longitude, latitude")} do %>
+<% end %>
+
 <article>
   <div class="c1">
     <div id="locations-list">
