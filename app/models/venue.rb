@@ -9,6 +9,10 @@ class Venue < ActiveRecord::Base
 
   after_create :create_group
 
+  def address
+    [self.street, self.city, self.state, self.country].compact.join(', ')
+  end
+
   def create_group
     self.group_id = Group.create(name: self.name, description: self.description).id
     self.save
