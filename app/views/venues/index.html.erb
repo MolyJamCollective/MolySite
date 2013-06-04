@@ -1,19 +1,42 @@
-<% content_for :leftColumn do %>
-<h1>Locations</h1>
-
-
-<ul>
-<% @venues.each do |venue| %>
-  <li>
-  	<span><%= image_tag("flags/" + venue.country + ".png") %></span>
-    <span><%= link_to venue.city, venue, class: "btn" %></span>
-    <span><%= venue.address %></span>
-  </li>
-    
-
+<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, name, longitude, latitude")} do %>
 <% end %>
-</ul>
 
-<br />
+<article>
+  <div class="c1">
+    <div id="locations-list">
+      <ul class="sort-by">
+        <li class="sort btn" data-sort="name">Sort by City</li>
+        <li class="sort btn" data-sort="country">Sort by Country</li>
+      </ul>
+      <ul class="list">
+        <% @venues.each do |venue| %>
+          <li>
+            <%= link_to venue do %>
+              <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
+              <h4><span class="name"><%= venue.city %></span><span class="category">northamerica</span></h4>
+              <h5><span class="country"><%= venue.country %></span></h5>
+              <span class="address hidden"><%= venue.address %></span>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</article>
+        
+<aside>
+  <h3>Region Filter</h3>
+  <ul class="filter">
+    <li class="btn filter" data-category="none">Show all</li>
+    <li class="btn filter" data-category="australia">Only Australia</li>
+    <li class="btn filter" data-category="northamerica">Only North America</li>
+    <li class="btn filter" data-category="outhamerica">Only South America</li>
+    <li class="btn filter" data-category="europe">Only Europe</li>
+    <li class="btn filter" data-category="asia">Only Asia</li>
+  </ul>
 
-<%= link_to 'New Venue', new_venue_path, class: "btn" %> <%end%>
+  <hr />
+
+  <h3>Want to host a jam site?</h3>
+  <p>We'd love to hear from you! Click here for more information about what it takes to host a jam, and how you can get in touch with us to make it official on the website.</p>
+</aside>

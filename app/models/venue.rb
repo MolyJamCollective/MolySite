@@ -23,6 +23,10 @@ class Venue < ActiveRecord::Base
     true
   end
 
+  def country_code
+    Carmen::Country.named(self.country).code
+  end
+
   def hosts
     host_list = Array.new
 

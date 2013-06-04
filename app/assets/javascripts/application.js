@@ -11,5 +11,5 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-var molydeux = {},
-md = molydeux;
+//= require jquery_ujs
+//= require_tree .

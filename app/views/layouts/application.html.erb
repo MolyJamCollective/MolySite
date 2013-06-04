@@ -1,56 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>MolySite</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= csrf_meta_tags %>
-  <% if content_for?(:meta) %><%= yield(:meta) %><% end %>
-  <% if content_for?(:css) %><%= yield(:css) %><% end %>
-  
-</head>
-<body>
-  <header class="header">
-      <div class="header-container">
-        <a class="brand" href="/"><%= image_tag("header-logo.png",:class => "logo") %><!-- img src="assets/img/header-logo.png" class="logo" --></a>
-        <%= render 'layouts/main-menu' %>
-       <%= render 'layouts/user-menu' %>
-      </div>
-</header><!--/.header -->
-<div class="page">
-  <!-- Begging of in Page elements -->
-  <section class="content">
-    <% flash.each do |type, message|
-      case type 
-        when :alert %><div class="alert alert-error"><strong>Alert!</strong><% 
-        when :notice %><div class="alert alert-success"><strong>Notice!</strong><% 
-        when :message %><div class="alert alert-info"><strong>Message!</strong><% 
-      end %><button type="button" class="close" data-dismiss="alert">&times;</button> <%= message %></div>
-    <% end %>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <%= stylesheet_link_tag :application, media: :all %>
+    <%= csrf_meta_tags %>
     
-    <%if content_for?(:masthead) %><div class="masthead">
-      <%= yield(:masthead)%>
-    </div><!-- end .masthead --><% end %>
-    <%if content_for?(:centerColumn) %><div class="center-column">
-      <%= yield(:centerColumn)%>
-    </div>
-    <% end %>
-  
-    <%if content_for?(:leftColumn) %><div class="left-column">
-      <%= yield(:leftColumn)%>
-    </div><!-- end .left-column -->
-    <% end %>
-  
-    <%if content_for?(:rightColumn) %><aside class="right-column">
-      <%= yield(:rightColumn)%>
-    </aside><!-- end .right-column --><% end %>
-  
-  </section><!-- /.content -->
-</div><!-- /.page -->
-<footer class="footer">
-      This is the footer area, where there will be some text and maybe a link block. It's outside the main container, though.
-</footer>
-	<%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "header" %>
-  <% if content_for?(:javascript) %><%= yield(:javascript) %><% end %>
-</body>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <%= render "layouts/header" %>
+    <%= render "layouts/main" %>
+    <%= render "layouts/footer" %>
+
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

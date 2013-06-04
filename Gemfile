@@ -4,17 +4,11 @@ gem 'rails', '3.2.12'
 gem 'sqlite3'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  gem 'compass', '>= 0.12.2' 
-  gem 'compass-rails', '>= 1.0.3'
-  gem 'compass-susy-plugin'
-  gem 'susy'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
+# CSS Normalize
+gem 'normalize-rails'
 gem 'jquery-rails'
 
 group :development do
@@ -35,6 +29,7 @@ gem 'cancan'
 
 # Geolocation
 gem 'geocoder'
+gem 'carmen-rails'
 
 # Markdown
 gem 'redcarpet'

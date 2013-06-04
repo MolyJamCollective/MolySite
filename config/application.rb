@@ -58,8 +58,5 @@ module MolySite
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # For Compass/Susy
-    config.compass.require "susy"
   end
 end
