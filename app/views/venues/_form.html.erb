@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :region %><br />
-    <%= f.text_field :region %>
+    <%= f.select(:region, Venue::REGIONS) %>
   </div>
   <div class="field">
     <%= f.label :event_id %><br />

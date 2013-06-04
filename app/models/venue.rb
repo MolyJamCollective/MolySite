@@ -9,6 +9,8 @@ class Venue < ActiveRecord::Base
 
   after_create :create_group
 
+  REGIONS = ["Australia", "North America", "South America", "Europe", "Asia"]
+
   def address
     [self.street, self.city, self.state, self.country].compact.join(', ')
   end
