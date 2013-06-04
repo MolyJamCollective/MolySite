@@ -6,7 +6,7 @@
   <%= raw(@venue.description) %>
 </article>
 
-<aside>
+<aside class="map-wrap">
   <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
 </aside>
 <div class="no-bg">

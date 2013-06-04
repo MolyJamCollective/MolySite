@@ -90,43 +90,60 @@ molydeux.location = (function($) {
       updateListMap: function() {
 
         console.log($('#locations-list'));
+        
+        var locations = new Array();
 
         if ($('#locations-list').length == 0)
         {
-          console.log('no location list found');
-          return false;
-        }
-        var locations = new Array();
+          
+          if($('#streetAddress').length == 0)
+          {
+            
+            locations.push({address: "San Francisco, California", data: "San Francisco, California"});
+            
+          } else {
+            
+            locations.push({
+              address : $('#streetAddress').text() + " " + $("#cityStateZip").text(),
+              data: $("#venueName").text()
+            });
+            
+          }
+          
+        } else {
+          
+          console.log("Locations: "+$('#locations-list .list li').length);
 
-        console.log("Locations: "+$('#locations-list .list li').length);
+          $('#locations-list .list li')
+            .each(function(index, element) {
 
-        $('#locations-list .list li')
-          .each(function(index, element) {
+            locations.push({
+              address: $(element)
+                .find('.address')
+                .first()
+                .text(),
+              data: $(element)
+                .find('.name')
+                .first()
+                .text()
+            });
 
-          locations.push({
-            address: $(element)
-              .find('.address')
-              .first()
-              .text(),
-            data: $(element)
-              .find('.name')
-              .first()
-              .text()
           });
-
-        });
+        }
+        console.log("Locations: ");
+        console.log(locations);
 
         $('.map').gmap3('destroy').gmap3({
           map: {
             options: {
-              maxZoom: 14
+              maxZoom: 20
             }
           },
 
           marker: {
             values: locations,
             options: {
-              icon: this.icon
+              icon: that.makeIcon("<%= asset_path('venues/pixel-marker.png') %>", 20, 25) 
             }
           }
         }, "autofit");
