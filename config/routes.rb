@@ -2,8 +2,8 @@ MolySite::Application.routes.draw do
 
   resources :venues
   resources :events
+  resources :groups, :only => [:show, :edit, :update]
 
-  #match '/', controller: 'events', action: 'show_current'
   match '/about' => 'pages#about'
 
   # Devise Routes
@@ -22,12 +22,4 @@ MolySite::Application.routes.draw do
     end
   end
   
-  # Groups
-  resources :groups, :only => [:show, :edit, :update]
-
-  # Dashboard
-  namespace :dashboard do
-    get '', to: 'panel#index', as: '/'
-  end
-
 end
