@@ -4,6 +4,7 @@ MolySite::Application.routes.draw do
   resources :events
 
   match '/', controller: 'events', action: 'show_current'
+  match '/about' => 'pages#about'
 
   # Devise Routes
   devise_for :users, :skip => [:sessions, :registrations]

@@ -248,6 +248,19 @@ nav a:hover {
     font-size: 4em;
 }
 
+section ul{
+  list-style: square;
+  padding-left: 20px;
+}
+
+.main a{
+  color: #FFFFFF;
+}
+
+.img-full-width{
+  width: 100%;
+}
+
 .livestream{
     width: 100%;
     background-color: #444444;
@@ -258,6 +271,40 @@ nav a:hover {
     margin-bottom: 30px;
     cursor: pointer;
 }
+
+.message{
+    width: 50%;
+    background-color: #444444;
+    display: block;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    float: right;
+}
+
+.top-section{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+.top-section-inner{
+  top: 50%;
+  position: absolute;
+}
+
+.hype-1{
+  font-size: 4.5em;
+  line-height: 1em;
+  font-weight: bold;
+}
+
+.hype-2{
+  font-size: 7.9em;
+  font-weight: bold;
+  line-height: 1em;
+}
+
 
 .livestream:hover{
     background: #555555;
@@ -317,7 +364,6 @@ aside h3{
     margin-bottom: 0;
 }
 
-
 aside ul{
     float: none;
     margin-top: 10px;
@@ -344,6 +390,20 @@ aside li{
 
 aside .map {
   margin-bottom: 0px;
+}
+
+footer a{
+  color: #FFFFFF;
+}
+
+footer p{
+  font-size: 0.8em;
+}
+
+.hype-box{
+  width: 50%;
+  float: left;
+  padding-right: 30px;
 }
 
 /* ==========================================================================
