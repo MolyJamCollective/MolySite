@@ -30,7 +30,7 @@ if(Rails.env == "development")
   Membership.create!(user_id: 5, group_id: 5) # user.groups << users
 
   # Events
-  Event.create!(name: "Molyjam 2013", description: "Description", start_date: DateTime.current() , end_date: DateTime.current(), published: true)
+  Event.create!(name: "Molyjam 2013", description: "Description", start_date: DateTime.current() , end_date: DateTime.current())
 
   # Venues
   description_raw = "

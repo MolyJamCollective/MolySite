@@ -6,7 +6,6 @@
     <th>Description</th>
     <th>Start date</th>
     <th>End date</th>
-    <th>Published</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +17,6 @@
     <td><%= event.description %></td>
     <td><%= event.start_date %></td>
     <td><%= event.end_date %></td>
-    <td><%= event.published %></td>
     <td><%= link_to 'Show', event, class: "btn" %></td>
     <td><%= link_to 'Edit', edit_event_path(event), class: "btn" %></td>
     <td><%= link_to 'Destroy', event, {class: "btn", method: :delete}, data: { confirm: 'Are you sure?' } %></td>
