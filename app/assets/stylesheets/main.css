@@ -193,7 +193,7 @@ nav a:hover {
 
 
 .splash{
-    background: url('../img/pixel-bg.jpg');
+    background: url('pixel-bg.jpg');
     background-size: 100%;
     background-position:center;
     background-repeat: no-repeat;
