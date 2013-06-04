@@ -1,43 +1,45 @@
+<div class="centered">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
+  <fieldset><%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true %></fieldset>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <fieldset><%= f.label :email %>
+  <%= f.email_field :email %></fieldset>
 
-  <div><%= f.label :location %><br />
-  <%= f.text_field :location %></div>
+  <fieldset><%= f.label :location %>
+  <%= f.text_field :location %></fieldset>
 
-  <div><%= f.label :website %><br />
-  <%= f.url_field :website %></div>
+  <fieldset><%= f.label :website %>
+  <%= f.url_field :website %></fieldset>
 
-  <div><%= f.label :biography %><br />
-  <%= f.text_area :biography %></div>
+  <fieldset><%= f.label :biography %>
+  <%= f.text_area :biography %></fieldset>
 
-  <div><%= f.label :twitter_username %><br />
+  <fieldset><%= f.label :twitter_username %>
   <div class="input-prepend">
     <span class="add-on">@</span>
     <%= f.text_field :twitter_username, id: "prependedInput" %></div>
-  </div>
+  </fieldset>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <fieldset><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+  <%= f.password_field :password, :autocomplete => "off" %></fieldset>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <fieldset><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></fieldset>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <fieldset><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+  <%= f.password_field :current_password %></fieldset>
 
-  <div><%= f.submit "Update" %></div>
+  <fieldset class="actions"><%= f.submit "Update", :class => 'button' %></fieldset>
 <% end %>
 
 <%= link_to "Back", :back %>
+</div>

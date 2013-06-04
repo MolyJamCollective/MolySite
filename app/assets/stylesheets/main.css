@@ -480,10 +480,10 @@ li h1,h2,h3,h4,h5{
 
     nav a {
         float: left;
-        width: 27%;
+        width: auto;
         margin: 0 1.7%;
         margin-top: 20px;
-        padding: 10px 2%;
+        padding: 10px 5px;
         margin-bottom: 0;
     }
 
