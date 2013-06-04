@@ -1,9 +1,18 @@
 <article>
+  <% if can? :update, @venue %>
+  <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
+            :confirm => 'Are you sure?', :method => :delete %></div>
+  <% end %>
+  
   <header>
     <h1 id="locationName"><%= @venue.city %></h1>
   </header>
 
   <%= raw(@venue.description) %>
+  <% if can? :update, @venue %>
+  <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
+            :confirm => 'Are you sure?', :method => :delete %></div>
+  <% end %>
 </article>
 
 <aside class="map-wrap">

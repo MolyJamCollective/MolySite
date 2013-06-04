@@ -141,3 +141,10 @@ fieldset.actions input {
 .alert.alert-error {
   background-color: #dd2d3d;
 }
+
+.admin-insert {
+  background-color: #222;
+  margin: 0 0 10px 0;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+}
