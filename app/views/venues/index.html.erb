@@ -13,8 +13,9 @@
           <li>
             <%= link_to venue do %>
               <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
-              <h4><span class="name"><%= venue.city %></span> <span class="category">northamerica</span></h4>
+              <h4><span class="name"><%= venue.city %></span><span class="category">northamerica</span></h4>
               <h5><span class="country"><%= venue.country %></span></h5>
+              <span class="address hidden"><%= venue.address %></span>
             <% end %>
           </li>
         <% end %>
@@ -26,12 +27,12 @@
 <aside>
   <h3>Region Filter</h3>
   <ul class="filter">
-    <li class="btn" id="filter-none">Show all</li>
-    <li class="btn" id="filter-australia">Only Australia</li>
-    <li class="btn" id="filter-northamerica">Only North America</li>
-    <li class="btn" id="filter-southamerica">Only South America</li>
-    <li class="btn" id="filter-europe">Only Europe</li>
-    <li class="btn" id="filter-asia">Only Asia</li>
+    <li class="btn filter" data-category="none">Show all</li>
+    <li class="btn filter" data-category="australia">Only Australia</li>
+    <li class="btn filter" data-category="northamerica">Only North America</li>
+    <li class="btn filter" data-category="outhamerica">Only South America</li>
+    <li class="btn filter" data-category="europe">Only Europe</li>
+    <li class="btn filter" data-category="asia">Only Asia</li>
   </ul>
 
   <hr />
