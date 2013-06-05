@@ -1,6 +1,7 @@
 class Venue < ActiveRecord::Base
   belongs_to :event
   belongs_to :group
+  has_many :sponsors
 
   attr_accessible :street, :state, :country, :city, :region, :contact, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
   geocoded_by :address

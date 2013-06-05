@@ -17,6 +17,10 @@ class Ability
       user.groups.each do |group|
         can :manage, Venue, group_id: group.id
       end
+
+      can :manage, Sponsor
+      can :move_up, Sponsor
+      can :move_down, Sponsor
     end
 
     if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))

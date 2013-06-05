@@ -36,3 +36,6 @@ gem 'redcarpet'
 
 # Gravatar
 gem 'gravtastic'
+
+# Paperclip
+gem 'paperclip'

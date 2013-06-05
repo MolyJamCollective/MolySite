@@ -55,6 +55,12 @@ git push -u origin develop
 # > Enter password
 ```
 
+### Installing Gem Dependencies
+The gem paperclip requires ```imagemagick``` to be installed. For OSX installation:
+```shell
+brew install imagemagick
+```
+
 ### Setup Database
 Now you must config and setup your database settings. Copy over the example configuration, edit it if necessary and allow rails to setup the database.
 ```shell
