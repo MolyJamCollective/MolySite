@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<%= @sponsor.event_id %>
+<%= @sponsor.order %>
+<%= @sponsor.url %>
+<%= image_tag @sponsor.image.url %>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor), class: "btn" %>
