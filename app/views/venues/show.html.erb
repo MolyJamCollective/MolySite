@@ -36,7 +36,7 @@
         <% end %>
       </p>
   </aside>
-  <% if (@venue.sponsors.empty?) && can?(:create, Sponsor)%>
+  <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
     <aside>
       <h3>Sponsors</h3>
       <div class="admin-insert"><%= link_to "Add", new_sponsor_path %></div>
@@ -53,7 +53,7 @@
               </div>
             <% end %>
           <% end %>
-          <%= content_tag("div", class: "admin-insert") do link_to("Add", new_sponsor_path) end if can? :create, Sponsor %>
+          <%= content_tag("div", class: "admin-insert") do link_to("Add", new_sponsor_path) end if can?(:create, Sponsor) && can?(:update, @venue) %>
         </p>
     </aside>
   <% end %>

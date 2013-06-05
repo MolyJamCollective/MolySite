@@ -1,6 +1,5 @@
 class SponsorsController < ApplicationController
-  #load_and_authorize_resource
-  skip_authorization_check
+  load_and_authorize_resource
 
   def new
     @sponsor = Sponsor.new
@@ -11,14 +10,6 @@ class SponsorsController < ApplicationController
   end
 
   def edit
-    @sponsor = Sponsor.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def show
     @sponsor = Sponsor.find(params[:id])
 
     respond_to do |format|
