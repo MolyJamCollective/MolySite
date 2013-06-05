@@ -1,8 +1,10 @@
 MolySite::Application.routes.draw do
 
-  resources :sponsors
-  resources :venues
   resources :events
+  resources :venues do
+    resources :sponsors
+  end
+
   resources :groups, :only => [:show, :edit, :update]
 
   match '/about' => 'pages#about'

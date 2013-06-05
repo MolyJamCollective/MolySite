@@ -18,10 +18,7 @@ class Ability
         can :manage, Venue, group_id: group.id
       end
 
-      can :create, Sponsor
-      Sponsor.all.each do |sponsor|
-        can(:manage, sponsor) if can?(:manage, sponsor.venue)
-      end
+      can :manage, Sponsor
     end
 
     if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))

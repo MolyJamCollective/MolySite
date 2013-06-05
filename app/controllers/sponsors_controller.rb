@@ -1,8 +1,10 @@
 class SponsorsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :venue
+  load_and_authorize_resource :sponsor, :through => :venue
 
   def new
-    @sponsor = Sponsor.new
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.new
 
     respond_to do |format|
       format.html
@@ -10,7 +12,8 @@ class SponsorsController < ApplicationController
   end
 
   def edit
-    @sponsor = Sponsor.find(params[:id])
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.find(params[:id])
 
     respond_to do |format|
       format.html
@@ -18,11 +21,12 @@ class SponsorsController < ApplicationController
   end
 
   def create
-    @sponsor = Sponsor.new(params[:sponsor])
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.new(params[:sponsor])
 
     respond_to do |format|
       if @sponsor.save
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully created.' }
+        format.html { redirect_to @venue, notice: 'Sponsor was successfully added.' }
       else
         format.html { render action: "new" }
       end
@@ -30,11 +34,12 @@ class SponsorsController < ApplicationController
   end
 
   def update
-    @sponsor = Sponsor.find(params[:id])
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.find(params[:id])
 
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
-        format.html { redirect_to @sponsor, notice: 'Sponsor was successfully updated.' }
+        format.html { redirect_to @venue, notice: 'Sponsor was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -42,11 +47,12 @@ class SponsorsController < ApplicationController
   end
 
   def destroy
-    @sponsor = Sponsor.find(params[:id])
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.find(params[:id])
     @sponsor.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to @venue }
     end
   end
 

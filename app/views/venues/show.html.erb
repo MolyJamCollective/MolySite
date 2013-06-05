@@ -39,7 +39,7 @@
   <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
     <aside>
       <h3>Sponsors</h3>
-      <div class="admin-insert"><%= link_to "Add", new_sponsor_path %></div>
+      <div class="admin-insert"><%= link_to "Add", new_venue_sponsor_path(@venue) %></div>
     </aside>
   <% elsif !@venue.sponsors.empty? %>
     <aside>
@@ -49,11 +49,11 @@
             <%= image_tag(sponsor.image.url, width: "100%")%>
             <% if can?(:update || :destroy, sponsor) %>
               <div class="admin-insert">
-                <%= link_to("Edit", edit_sponsor_path(sponsor)) if can? :update, sponsor %> - <%= link_to("Remove", sponsor, :confirm => 'Are you sure?', :method => :delete) if can? :destroy, sponsor %>
+                <%= link_to("Edit", edit_venue_sponsor_path(@venue, sponsor)) if can? :update, sponsor %> - <%= link_to("Remove", venue_sponsor_path(@venue, sponsor), :confirm => 'Are you sure?', :method => :delete) if can? :destroy, sponsor %>
               </div>
             <% end %>
           <% end %>
-          <%= content_tag("div", class: "admin-insert") do link_to("Add", new_sponsor_path) end if can?(:create, Sponsor) && can?(:update, @venue) %>
+          <%= content_tag("div", class: "admin-insert") do link_to("Add", new_venue_sponsor_path(@venue)) end if can?(:create, Sponsor) && can?(:update, @venue) %>
         </p>
     </aside>
   <% end %>
