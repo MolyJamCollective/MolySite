@@ -1,5 +1,8 @@
 MolySite::Application.routes.draw do
 
+  resources :sponsors
+
+
   resources :venues
   resources :events
   resources :groups, :only => [:show, :edit, :update]
