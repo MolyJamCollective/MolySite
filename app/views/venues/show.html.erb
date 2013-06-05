@@ -36,4 +36,22 @@
         <% end %>
       </p>
   </aside>
+  <% if (@venue.sponsors.empty?) && can?(:create, Sponsor)%>
+    <aside>
+      <h3>Sponsors</h3>
+      <%= link_to "Add", new_sponsor_path %>
+    </aside>
+  <% elsif !@venue.sponsors.empty? %>
+    <aside>
+      <h3>Sponsors</h3>
+        <p>
+          <% @venue.sponsors.each do |sponsor| %>
+            <%= image_tag(sponsor.image.url, width: "100%")%>
+            <%= link_to("Edit", edit_sponsor_path(sponsor)) if can? :update, sponsor %>
+            <%= link_to("Remove", sponsor, :confirm => 'Are you sure?', :method => :delete) if can? :destroy, sponsor %>
+          <% end %>
+          <%= link_to "Add", new_sponsor_path if can? :create, Sponsor %>
+        </p>
+    </aside>
+  <% end %>
 </div>

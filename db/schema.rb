@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20130605163048) do
   end
 
   create_table "sponsors", :force => true do |t|
-    t.integer  "event_id"
+    t.integer  "venue_id"
     t.integer  "order"
     t.string   "url"
     t.datetime "created_at",         :null => false
