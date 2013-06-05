@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130605163048) do
 
   create_table "sponsors", :force => true do |t|
     t.integer  "venue_id"
-    t.integer  "order"
+    t.integer  "rank"
     t.string   "url"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false

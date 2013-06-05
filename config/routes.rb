@@ -2,7 +2,10 @@ MolySite::Application.routes.draw do
 
   resources :events
   resources :venues do
-    resources :sponsors
+    resources :sponsors do
+      put 'move_up'
+      put 'move_down'
+    end
   end
 
   resources :groups, :only => [:show, :edit, :update]

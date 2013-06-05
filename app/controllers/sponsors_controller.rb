@@ -56,4 +56,24 @@ class SponsorsController < ApplicationController
     end
   end
 
+  def move_up
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.find(params[:sponsor_id])
+    @sponsor.move_up
+
+    respond_to do |format|
+        format.html { redirect_to @venue, notice: 'Sponsor was successfully updated.' }
+    end
+  end
+
+  def move_down
+    @venue = Venue.find(params[:venue_id])
+    @sponsor = @venue.sponsors.find(params[:sponsor_id])
+    @sponsor.move_down
+
+    respond_to do |format|
+        format.html { redirect_to @venue, notice: 'Sponsor was successfully updated.' }
+    end
+  end
+
 end
