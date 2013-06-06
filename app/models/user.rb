@@ -18,4 +18,10 @@ class User < ActiveRecord::Base
   def group?(group)
     self.groups.exists?(name: group.to_s)
   end
+
+  before_update :revert_username_if_changed, :if => Proc.new { |u| u.username_changed? }
+
+  def revert_username_if_changed
+    self.username = self.username_was
+  end
 end
