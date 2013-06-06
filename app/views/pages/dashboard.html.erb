@@ -1,0 +1,4 @@
+<%= render "webmaster" 	if current_user.group? :Webmasters %>
+<%= render "organizer" 	if current_user.group? :Organizers %>
+<%= render "host" 		if current_user.group? :Hosts %>
+<%= render "jammer" 	if current_user.group? :Jammers %>

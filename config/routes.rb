@@ -11,6 +11,7 @@ MolySite::Application.routes.draw do
   resources :groups, :only => [:show, :edit, :update]
 
   match '/about' => 'pages#about'
+  match '/dashboard' => 'pages#dashboard'
 
   # Devise Routes
   devise_for :users, :skip => [:sessions, :registrations]

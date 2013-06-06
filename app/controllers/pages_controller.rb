@@ -7,4 +7,12 @@ class PagesController < ApplicationController
       format.html
     end 
   end
+
+  def dashboard
+    authorize! :dashboard, :page
+
+    respond_to do |format|
+      format.html
+    end 
+  end
 end
