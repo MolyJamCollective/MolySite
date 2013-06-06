@@ -2,144 +2,126 @@
  * Location Sorting
  */
 var options = {
-  valueNames: ['name', 'description', 'category', 'country']
+    valueNames: ['name', 'description', 'category', 'country']
 };
-
 var featureList = new List('locations-list', options);
-
 var molydeux = molydeux || {};
-
 molydeux.location = (function($) {
-
-  var that;
-
+    var that;
     return {
-
-      init: function() {
-
-        that = molydeux.location;
-
-        $('.btn.filter')
-          .click(this.filterList);
-
-          that.updateListMap();
-
-      },
-
-      updateListMap: function() {
-
-        console.log($('#locations-list'));
-        
-        var locations = new Array();
-
-        if ($('#locations-list').length == 0)
-        {
-          
-          if($('#streetAddress').length == 0)
-          {
-            
-            locations.push({address: "San Francisco, California", data: "San Francisco, California"});
-            
-          } else {
-            
-            locations.push({
-              address : $('#streetAddress').text() + " " + $("#cityStateZip").text(),
-              data: $("#venueName").text()
-            });
-            
-          }
-          
-        } else {
-          
-          console.log("Locations: "+$('#locations-list .list li').length);
-
-          $('#locations-list .list li')
-            .each(function(index, element) {
-
-            locations.push({
-              address: $(element)
-                .find('.address')
-                .first()
-                .text(),
-              data: $(element)
-                .find('.name')
-                .first()
-                .text()
-            });
-
-          });
-        }
-        console.log("Locations: ");
-        console.log(locations);
-
-        $('.map').gmap3('destroy').gmap3({
-          map: {
-            options: {
-              maxZoom: 20
+        init: function() {
+            that = molydeux.location;
+            $('.btn.filter').click(this.filterList);
+            that.updateListMap();
+        },
+        updateListMap: function() {
+            console.log($('#locations-list'));
+            var locations = new Array();
+            if ($('#locations-list').length == 0) {
+                if ($('#streetAddress').length == 0) {
+                    locations.push({
+                        address: "San Francisco, California",
+                        data: "San Francisco, California"
+                    });
+                } else {               
+                    locations.push({
+                        address: $('#streetAddress').text() + " " + $("#cityStateZip").text(),
+                        data: '<div class="map-info"><h1>'+$(".venueName").html()+'</h1><p>'+$('#streetAddress').text()+ " " + $("#cityStateZip").text()+"</p></div>"
+                    });
+                }
+            } else {
+                console.log("Locations: " + $('#locations-list .list li').length);
+                
+                $('#locations-list .list li').each(function(index, element) {
+                
+                    var venueURL = $(element).find('a').first().attr('href');
+                    
+                    //console.log($(element).parent());
+                    
+                    console.log('venueURL: '+venueURL);
+                
+                    locations.push({
+                        address: $(element).find('.address').first().text(),
+                        data: '<div class="map-info"><h1><a href="'+venueURL+'">'+$(element).find(".venueName").text()+'</a></h1><p>'+$(element).find('.address').first().text()+"</p></div>"
+                    });
+                });
             }
-          },
-
-          marker: {
-            values: locations,
-            options: {
-              icon: that.makeIcon("<%= asset_path('venues/pixel-marker.png') %>", 20, 25) 
+            console.log("Locations: ");
+            console.log(locations);
+            $('.map').gmap3('destroy').gmap3({
+                map: {
+                    options: {
+                        maxZoom: 18,
+                        
+                    }
+                },
+                marker: {
+                    values: locations,
+                    options: {
+                        icon: that.makeIcon("<%= asset_path('venues/pixel-marker.png') %>", 20, 25),
+                        clickable: true, 
+                    },
+                    events: {
+                      click: that.markerClickHandler
+                    }
+                    
+                }
+            }, "autofit");
+        },
+        makeIcon: function(imagePath, width, height) {
+            var myIcon = null;
+            myIcon = new google.maps.MarkerImage(imagePath, new google.maps.Size(width, height, "px", "px"));
+            return myIcon;
+        },
+        filterList: function(event) {
+            var target = event.target;
+            var category = 'none';
+            event.preventDefault();
+            if (!$(target).hasClass('filter')) {
+                target = $(target).parents('filter').first();
             }
-          }
-        }, "autofit");
-
-      },
-
-      makeIcon: function(imagePath, width, height) {
-        var myIcon = null;
-
-        myIcon = new google.maps.MarkerImage(imagePath,
-        new google.maps.Size(width, height, "px", "px"));
-
-        return myIcon;
-
-      },
-
-      filterList: function(event) {
-
-        var target = event.target;
-
-        var category = 'none';
-
-        event.preventDefault();
-
-        if (!$(target)
-          .hasClass('filter')) {
-
-          target = $(target)
-            .parents('filter')
-            .first();
-
+            category = $(target).attr('data-category');
+            console.log('filter: ' + category);
+            featureList.filter(function(item) {
+                if (category == 'none') return true;
+                if ((item.values().category == category)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            that.updateListMap();
+        },
+        markerClickHandler: function(marker, event, context) {
+            var map = $(this).gmap3("get"),
+                infowindow = $(this).gmap3({
+                    get: {
+                        name: "infowindow"
+                    }
+                });
+                
+            map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng())); 
+            
+            if(map.getZoom() < 12) map.setZoom(12); 
+            
+            console.log(context);
+            
+            if (infowindow) {
+                infowindow.open(map, marker);
+                infowindow.setContent(context.data);
+            } else {
+                $(this).gmap3({
+                    infowindow: {
+                        anchor: marker,
+                        options: {
+                            content: context.data
+                        }
+                    }
+                });
+            }
         }
-
-        category = $(target)
-          .attr('data-category');
-
-        console.log('filter: ' + category);
-
-        featureList.filter(function(item) {
-          if (category == 'none') return true;
-
-          if ((item.values()
-            .category == category)) {
-            return true;
-          } else {
-            return false;
-          }
-        });
-
-        that.updateListMap();
-
-      }
-
     };
-
 })(jQuery);
-
 $(document).ready(function() {
-  molydeux.location.init();
+    molydeux.location.init();
 });

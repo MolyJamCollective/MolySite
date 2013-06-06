@@ -15,6 +15,7 @@
               <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
               <h4><span class="name"><%= venue.city %></span><span class="category"><%= venue.region %></span></h4>
               <h5><span class="country"><%= venue.country %></span></h5>
+              <span class="venueName hidden"><%= venue.name %></span>
               <span class="address hidden"><%= venue.address %></span>
             <% end %>
           </li>

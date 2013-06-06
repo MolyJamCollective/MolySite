@@ -1,0 +1,26 @@
+.map-info {
+  
+  width: auto;
+  padding: 0px;
+  color: #222;
+  max-width: 240px;
+}
+
+.map-info h1 {
+  color: #222;
+  margin: 0px 0px 3px 0px;
+}
+
+.map-info h1 a {
+  color: #50c747;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.map-info h1 a:hover {
+  color: #c76437;
+}
+
+.map-info p {
+  margin: 0px 0px 3px 0px;
+}
