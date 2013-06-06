@@ -33,6 +33,7 @@ class Ability
 
     can :read, :all
     can :show_current, Event
+    can :about, :page
 
   end
 end

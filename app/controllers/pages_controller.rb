@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
-  skip_authorization_check
 
   def about
+    authorize! :about, :page
+
     respond_to do |format|
       format.html
     end 
