@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
+
+  validates :username, :uniqueness => true
   
 	has_many :memberships
 	has_many :groups, :through => :memberships
@@ -8,16 +10,32 @@ class User < ActiveRecord::Base
   	# Include default devise modules. Others available are:
   	# :omniauthable
   	devise 	:database_authenticatable, :registerable,
-  			:recoverable, :rememberable, :trackable, :validatable,
-  			:token_authenticatable, :confirmable, :lockable, :timeoutable
+  		:recoverable, :rememberable, :trackable, :validatable,
+  		:token_authenticatable, :confirmable, :lockable, :timeoutable,
+      :authentication_keys => [:login]
 
   	# Setup accessible (or protected) attributes for your model
-  	attr_accessible :email, :password, :password_confirmation, :remember_me
-  	# attr_accessible :title, :body
+  	attr_accessible :email, :password, :password_confirmation, :remember_me,
+      :username, :name, :biography, :location, :website, :twitter_username, :login
 
-  	attr_accessible :name, :biography, :location, :website, :twitter_username
+    attr_accessor :login
 
   def group?(group)
     self.groups.exists?(name: group.to_s)
   end
+
+  before_update :revert_username_if_changed, :if => Proc.new { |u| u.username_changed? }
+
+  def revert_username_if_changed
+    self.username = self.username_was
+  end
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions).first
+      end
+    end
 end

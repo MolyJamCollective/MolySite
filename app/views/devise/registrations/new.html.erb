@@ -5,18 +5,23 @@
   <%= devise_error_messages! %>
 
   <fieldset>
+  <%= f.label :username %>
+  <%= f.text_field :username, :autofocus => true, :required => true %>
+  </fieldset>
+
+  <fieldset>
   <%= f.label :name %>
-  <%= f.text_field :name, :autofocus => true %>
+  <%= f.text_field :name, :required => true %>
   </fieldset>
 
   <fieldset><%= f.label :email %>
-  <%= f.email_field :email %></fieldset>
+  <%= f.email_field :email, :required => true %></fieldset>
 
   <fieldset><%= f.label :password %>
-  <%= f.password_field :password %></fieldset>
+  <%= f.password_field :password, :required => true %></fieldset>
 
   <fieldset><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></fieldset>
+  <%= f.password_field :password_confirmation, :required => true %></fieldset>
 
   <fieldset class="actions"><%= f.submit "Sign up", :class => 'button' %></fieldset>
 <% end %>
