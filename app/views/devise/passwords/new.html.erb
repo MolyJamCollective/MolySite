@@ -4,8 +4,8 @@
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <fieldset><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></fieldset>
+  <fieldset><%= f.label :login %>
+  <%= f.email_field :login, :autofocus => true %></fieldset>
 
   <fieldset class="actions"><%= f.submit "Send me reset password instructions", :class => 'button' %></fieldset>
 <% end %>
