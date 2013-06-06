@@ -16,11 +16,11 @@ Group.create!(name: "Users")
 if(Rails.env == "development")
 
   # Users
-  User.create!(name: "Webmaster", email: "webmaster@email.com", password: "password", twitter_username: "webmaster").confirm!
-  User.create!(name: "Organizer", email: "organizer@email.com", password: "password", twitter_username: "organizer").confirm!
-  User.create!(name: "Host",      email: "host@email.com", password: "password", twitter_username: "host").confirm!
-  User.create!(name: "Jammer",    email: "jammer@email.com", password: "password", twitter_username: "jammer").confirm!
-  User.create!(name: "User",      email: "user@email.com", password: "password", twitter_username: "user").confirm!
+  User.create!(username: "webmaster", name: "Webmaster", email: "webmaster@email.com", password: "password", twitter_username: "webmaster").confirm!
+  User.create!(username: "organizer", name: "Organizer", email: "organizer@email.com", password: "password", twitter_username: "organizer").confirm!
+  User.create!(username: "host",      name: "Host",      email: "host@email.com", password: "password", twitter_username: "host").confirm!
+  User.create!(username: "jammer",    name: "Jammer",    email: "jammer@email.com", password: "password", twitter_username: "jammer").confirm!
+  User.create!(username: "user",      name: "User",      email: "user@email.com", password: "password", twitter_username: "user").confirm!
 
   # Memberships
   Membership.create!(user_id: 1, group_id: 1) # webmaster.groups << webmasters
