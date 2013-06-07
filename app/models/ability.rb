@@ -31,7 +31,7 @@ class Ability
 
     if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
       can :dashboard, :page
-      can :manage, User, user_id: user.id
+      can :manage, User, id: user.id
     end
 
     can :read, :all
@@ -40,4 +40,3 @@ class Ability
 
   end
 end
-

@@ -1,0 +1,36 @@
+<h2>Edit <%= @user.name.to_s.humanize %></h2>
+
+<%= form_for(@user, url: {action: "update"}, html: { method: :put }) do |f| %>
+
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :website %>
+    <%= f.url_field :website %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :biography %>
+    <%= f.text_area :biography %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :twitter_username %>
+    <%= f.text_field :twitter_username %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.submit "Update", class: "btn" %>
+  </fieldset>
+
+<% end %>
+
+<%= link_to "Back", :back %>
