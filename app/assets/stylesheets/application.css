@@ -1,6 +1,7 @@
 /*
 *= require_self
 *= require normalize-rails
+*= require jquery.ui.autocomplete
 *= require_tree .
 */
 

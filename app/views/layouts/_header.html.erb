@@ -7,7 +7,7 @@
         <li><%= link_to "Locations", Venue %></a></li>
         <li><%= link_to "About", "/about" %></li>
         <% if user_signed_in? %>
-          <li><%= link_to( image_tag(current_user.gravatar_url, height: "46px"), edit_user_registration_path, style: "padding: 0") %></li>
+          <li><%= link_to( image_tag(current_user.gravatar_url, height: "46px"), dashboard_path, style: "padding: 0") %></li>
         <% else %>
           <li><%= link_to "Login", :new_user_session %></li>
         <% end %>
