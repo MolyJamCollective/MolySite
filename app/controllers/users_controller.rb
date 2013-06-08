@@ -3,9 +3,17 @@ class UsersController < ApplicationController
 
   def index
     user = User.search(params[:search])
-
-    return redirect_to user_path(user) unless user.nil?
-    return redirect_to :back, :alert => "User not found!"
+   
+    if user.nil?
+      redirect_to :back, :alert => "User not found!"
+    else
+      if params[:commit] == "Edit"
+        redirect_to edit_user_path(user)
+      else
+        redirect_to user_path(user)
+      end
+    end
+    
   rescue ActionController::RedirectBackError
     redirect_to '/'
   end
