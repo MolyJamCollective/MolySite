@@ -9,7 +9,7 @@ MolySite::Application.routes.draw do
   end
 
   resources :groups, only: [:show, :edit, :update]
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
 
   match '/about' => 'pages#about'
   match '/dashboard' => 'pages#dashboard'

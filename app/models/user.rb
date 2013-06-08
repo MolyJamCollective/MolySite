@@ -24,6 +24,25 @@ class User < ActiveRecord::Base
     self.groups.exists?(name: group.to_s)
   end
 
+  def role
+    return :Webmaster  if self.group? :Webmasters
+    return :Organizer  if self.group? :Organizers
+    return :Host       if self.group? :Hosts
+    return :Jammer     if self.group? :Jammers
+    return :User       if self.group? :Users
+    :Undefined
+  end
+
+  def self.search(search)
+    user = User.where(username: search).first
+    return user unless user.nil?
+
+    user = User.where(name: search).first
+    return user unless user.nil?
+
+    User.where(email: search).first
+  end
+
   before_update :revert_username_if_changed, :if => Proc.new { |u| u.username_changed? }
 
   def revert_username_if_changed
@@ -31,11 +50,11 @@ class User < ActiveRecord::Base
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
-      conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-      else
-        where(conditions).first
-      end
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
     end
+  end
 end

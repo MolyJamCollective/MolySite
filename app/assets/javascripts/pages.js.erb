@@ -1,0 +1,13 @@
+$(function() {
+  var data = $('#user_select').data('usernames');
+  var usernames = new Array();
+  
+  for (var i = 0; i < data.length; i++) {
+      usernames.push(data[i].username)
+      usernames.push(data[i].email)
+  }
+  
+  $( "#user_select" ).autocomplete({
+    source: usernames
+  });
+});

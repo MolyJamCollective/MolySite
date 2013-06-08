@@ -10,6 +10,7 @@ end
 # CSS Normalize
 gem 'normalize-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 group :development do
   # Color Syntax in IRB & Rails Console
