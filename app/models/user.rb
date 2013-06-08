@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   gravtastic
 
   validates :username, :uniqueness => true
+  after_create :add_to_user_group
   
 	has_many :memberships
 	has_many :groups, :through => :memberships
@@ -56,5 +57,9 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def add_to_user_group
+    Membership.create(user_id: self.id, group_id: Group.where(name: :Users).first.id);
   end
 end
