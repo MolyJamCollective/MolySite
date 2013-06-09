@@ -27,18 +27,9 @@
   </div>
   
   <div class="field">
+    <p>This section is <b>required</b>.</p>
     <h3>City (Display)</h3>
     <%= f.text_field :city %> <!-- UPDATE THIS TAG TO CITY DISPLAY NAME -->
-    <hr/>
-
-    <p><h3>Jam Site Venue Name</h3>
-    <%= f.text_field :name %></p>
-
-    <p><h3>Street Address</h3>
-    <%= f.text_field :street %></p>
-
-    <p><h3>City (Address)</h3>
-    <%= f.text_field :city %></p>
 
     <p><h3>State / Province / Region (if applicable)</h3>
     <%= f.text_field :state %></p>
@@ -48,6 +39,18 @@
 
     <p><h3>Continent</h3>
     <%= f.select(:region, Venue::REGIONS) %></p>
+
+    <hr/>
+    <p>Fill out this section only once you have confirmed a physical address / venue where you will host the jam.</p>
+    <p><h3>Jam Site Venue Name</h3>
+    <%= f.text_field :name %></p>
+
+    <p><h3>Street Address</h3>
+    <%= f.text_field :street %></p>
+
+    <p><h3>City (Address)</h3>
+    <%= f.text_field :city %></p>
+
   </div>
 </div>
 <hr/>
