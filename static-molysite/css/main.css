@@ -475,10 +475,14 @@ footer p{
 .form-temp{
   margin: 0;
   padding: 0;
-  display: inline
+  display: inline;
   width: 100%;
   text-align: left;
   padding-bottom: 10px;
+}
+
+.green{
+  color: #51c844;
 }
 
 /* ==========================================================================
