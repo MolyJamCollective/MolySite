@@ -59,7 +59,7 @@
   padding-bottom: 10px;
 }
 
-.edit_venue, .edit_user input[type="submit"] {
+.edit_venue input[type="submit"], .edit_user input[type="submit"] {
   background: #50C747;
   border: 0px;
   cursor: pointer;
