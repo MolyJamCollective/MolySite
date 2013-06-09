@@ -24,7 +24,7 @@
   margin: 0px 0px 3px 0px;
 }
 
-.edit_venue{
+.edit_venue, .button_to, .edit_user{
   width: 100%;
   max-width: 100%;
   text-align: left;
@@ -35,6 +35,11 @@
   float: right;
   width: 45%;
   margin-bottom: 30px;
+}
+
+.edit_venue, .edit_user .field-full{
+  width: 100%;
+  max-width: 100%;
 }
 
 .small-text{
@@ -54,8 +59,7 @@
   padding-bottom: 10px;
 }
 
-
-.edit_venue input[type="submit"] {
+.edit_venue, .edit_user input[type="submit"] {
   background: #50C747;
   border: 0px;
   cursor: pointer;
@@ -69,4 +73,9 @@
   box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
   display: inline;
   margin-top: 5px;
+}
+
+.admin_panel{
+  background-color: #222222;
+  float: left;
 }

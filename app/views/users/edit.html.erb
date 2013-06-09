@@ -1,8 +1,8 @@
-<h2>Edit <%= @user.name.to_s.humanize %></h2>
+<h2>Editing "<%= @user.name.to_s.humanize %>"'s Profile</h2>
 
 
 <% if can?(:create, Membership) || can?(:destroy, Membership) %>
-  <section>
+  <section class="admin_panel">
     <h3>Group Management</h3>
     <% #TODO Clean up view, this code is gross %>
     <% webmasters_group = Group.where(name: :Webmasters).first %>
@@ -25,35 +25,35 @@
 
 <%= form_for(@user, url: {action: "update"}, html: { method: :put }) do |f| %>
 
-  <fieldset>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+
+  <fieldset class="field-full">
+    <p>These sections are all <b>optional</b>, but will be displayed next to your games!</p>
+    <p><h3><%= f.label :name %></h3>
+    <%= f.text_field :name %></p>
+
+    <p><h3><%= f.label :twitter_username %></h3>
+    <span style="float:left">@</span><%= f.text_field :twitter_username %></p>
+
+    <hr/>
+    <p>These sections are also <b>optional</b>, but only appear on your profile page!</p>
+    <p><h3><%= f.label :location %></h3>
+    <%= f.text_field :location %></p>
+
+    <p><h3><%= f.label :website %></h3>
+    <%= f.url_field :website %></p>
+
+    <p><h3><%= f.label :biography %></h3>
+    <%= f.text_area :biography %></p>
   </fieldset>
 
-  <fieldset>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :website %>
-    <%= f.url_field :website %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :biography %>
-    <%= f.text_area :biography %>
-  </fieldset>
-
-  <fieldset>
-    <%= f.label :twitter_username %>
-    <%= f.text_field :twitter_username %>
-  </fieldset>
+  
 
   <fieldset>
     <%= f.submit "Update", class: "btn" %>
   </fieldset>
 
+  <fieldset>
+    <p><%= link_to "Back", :back %></p>
+  </fieldset>
 <% end %>
 
-<%= link_to "Back", :back %>
