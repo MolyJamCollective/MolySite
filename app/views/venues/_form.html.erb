@@ -11,35 +11,70 @@
     </div>
   <% end %>
 
+<div class="form-section">
+  <h2>Address</h2>
+  <div class="form-instruction">
+    <p>If you don't have a physical location with an address nailed down yet, that's OK - just be sure to give attendees a week's notice if possible.</p>
+    <h3>City Address vs City Display Name</h3>
+    <p>If you're hosting your jam in a suburb of a city, you may want your city display name to be different from the actual city of your jam venue. If this does not apply to you, just set them to the same thing.</p>
+    <p>Examples:</p>
+    <div class="small-text">
+      <p>City (Address):<br/>
+      Brooklyn, Culver City, Greenwich, Fairfield</p>
+      <p>City (Display):<br/>
+      New York, Los Angeles, London, Sydney</p>
+    </div>
+  </div>
+  
   <div class="field">
-    <%= f.label :description_raw %><br />
+    <h3>City (Display)</h3>
+    <%= f.text_field :city %> <!-- UPDATE THIS TAG TO CITY DISPLAY NAME -->
+    <hr/>
+
+    <p><h3>Jam Site Venue Name</h3>
+    <%= f.text_field :name %></p>
+
+    <p><h3>Street Address</h3>
+    <%= f.text_field :street %></p>
+
+    <p><h3>City (Address)</h3>
+    <%= f.text_field :city %></p>
+
+    <p><h3>State / Province / Region (if applicable)</h3>
+    <%= f.text_field :state %></p>
+    
+    <p><h3>Country</h3>
+    <%= f.country_select :country, {priority: %w(US CA)} %></p>
+
+    <p><h3>Continent</h3>
+    <%= f.select(:region, Venue::REGIONS) %></p>
+  </div>
+</div>
+<hr/>
+
+
+<div class="form-section">
+  <h2>Description</h2>
+  <div class="form-instruction">
+    <p>This is where you can write all the information relevant to your venue. We don't know exactly what you need here (depends on what you plan to do), but we have some suggestions for information you should pass on to your attendees: Parking / Transportation, Food / Drinks (provided, nearby access), Technology (computer availability, etc), Building Acccess (hours, security, etc), and Press / Media (ability to host journalists or cameras).</p>
+    <p>Example:</p>
+    <div class="small-text">
+      ###Food / Drinks###<br/>
+      Snacks and drinks will be provided. Alcohol is permitted. There are a ton of restaurants within walking distance, such as Tender Greens, Daphne's, and Chipotle.<br/>
+      ***<br/>
+      ###Technology###<br/>
+      No computers are provided at this site....</p>
+    </div>
+  </div>
+  <div class="field">
     <%= f.text_area :description_raw %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.country_select :country, {priority: %w(US CA)} %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br />
-    <%= f.select(:region, Venue::REGIONS) %>
-  </div>
-  <div class="field">
+</div>
+
+
+
+
+  <div class="field" style="display:none">
     <%= f.label :event_id %><br />
     <%= f.select(:event_id, options_for_select(@events.collect{ |event| [event.name, event.id] })) %>
   </div>

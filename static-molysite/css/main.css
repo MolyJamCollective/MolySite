@@ -180,10 +180,14 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
-.logo{
-    height: 50px;
-    padding-top: 10px;
-}
+.logo {
+      margin: 0 auto;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      display: block;
+      width: 100%;
+      height: inherit;
+    }
 
 
 .splash{
@@ -450,6 +454,18 @@ footer p{
     z-index: 1;
 }
 
+
+.video-container-youtube iframe,
+.video-container-youtube object,
+.video-container-youtube embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    z-index: 1;
+}
+
 .input-text{
   padding: 4px;
   font-size: 1.5em;
@@ -475,7 +491,6 @@ footer p{
 .form-temp{
   margin: 0;
   padding: 0;
-  display: inline;
   width: 100%;
   text-align: left;
   padding-bottom: 10px;
@@ -628,7 +643,7 @@ li h1,h2,h3,h4,h5{
    ==================== */
 
     nav a {
-        float: left;
+        float: right;
         width: 27%;
         margin: 0 1.7%;
         margin-top: 20px;
@@ -637,12 +652,22 @@ li h1,h2,h3,h4,h5{
     }
 
     nav li:first-child a {
-        margin-left: 0;
+        margin-right: 0;
     }
 
     nav li:last-child a {
-        margin-right: 0;
+        margin-left: 0;
     }
+
+    .logo {
+      height: 50px;
+      width: inherit;
+      display: inline;
+      margin: 0;
+      padding-bottom: 0;
+    }
+
+
 
 /* ========================
     INTERMEDIATE: IE Fixes
@@ -669,6 +694,8 @@ li h1,h2,h3,h4,h5{
            -moz-box-shadow: 0 0px 8px #000;
                 box-shadow: 0 0px 8px #000;
     }
+
+    
 
 
 .no-bg aside {
