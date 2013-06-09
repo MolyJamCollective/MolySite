@@ -1,11 +1,16 @@
 $(function() {
   var data = $('#user_select').data('users');
+
+  if (!data) {
+    return;
+  }
+
   var users = new Array();
   
   for (var i = 0; i < data.length; i++) {
-      users.push(data[i].name)
-      users.push(data[i].username)
-      users.push(data[i].email)
+      users.push(data[i].name);
+      users.push(data[i].username);
+      users.push(data[i].email);
   }
   
   $( "#user_select" ).autocomplete({

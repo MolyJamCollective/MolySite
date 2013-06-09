@@ -8,9 +8,10 @@ MolySite::Application.routes.draw do
     end
   end
 
-  resources :groups, only: [:show, :edit, :update]
   resources :users, only: [:index, :show, :edit, :update]
-
+  resources :groups, only: [:show, :edit, :update]
+  resources :memberships, only: [:create, :destroy]
+  
   match '/about' => 'pages#about'
   match '/dashboard' => 'pages#dashboard'
 
@@ -20,7 +21,7 @@ MolySite::Application.routes.draw do
     get '/login' => 'devise/sessions#new', :as => :new_user_session
     post '/login' => 'devise/sessions#create', :as => :user_session
     delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-    get '/user/sign_out' => 'devise/sessions#destroy'
+    get '/logout' => 'devise/sessions#destroy'
     resource :registration,
       only: [:new, :create, :edit, :update],
       path: 'user',

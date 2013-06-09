@@ -1,0 +1,11 @@
+<article>
+  <header>
+    <h2>Venue Administration</h2>
+  </header>
+  <section>
+    <% Venue.all.each do |venue| %>
+      <%= link_to "Edit #{venue.city}", edit_venue_path(venue) if can? :update, venue %><br />
+    <% end %>
+    <%= link_to "Registor New Venue", new_venue_path %>
+  </section>
+</article>
