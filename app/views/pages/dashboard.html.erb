@@ -8,7 +8,5 @@
   </section>
 </article>
 
-<br /><br /><br /><br />
-
 <%= render "admin_user" if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
-
+<%= render "admin_venue" if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
