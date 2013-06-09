@@ -312,6 +312,14 @@ section ul{
     display: none;
 }
 
+.video-container-youtube { /* Container that makes video iFrames full width at proper aspect ratio */
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
 .main .facebook-event-container:hover{
   background-color: #666666;
 }
@@ -424,6 +432,53 @@ footer p{
   margin: 0;
   font-size: 0.75em;
   font-color: #555555;
+}
+
+.news-padding{
+  padding: 10px;
+}
+
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    z-index: 1;
+}
+
+.input-text{
+  padding: 4px;
+  font-size: 1.5em;
+}
+
+.button-temp {
+  background: #50C747;
+  border:1px solid #3B9435;
+  cursor:pointer;
+  padding: 8px 14px 10px;
+  font-size:1.5em;
+  font-weight: bold;
+  letter-spacing:.1em;
+  text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  -webkit-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  -moz-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  display: inline;
+  margin-top: 5px;
+}
+
+.form-temp{
+  margin: 0;
+  padding: 0;
+  display: inline
+  width: 100%;
+  text-align: left;
+  padding-bottom: 10px;
 }
 
 /* ==========================================================================
