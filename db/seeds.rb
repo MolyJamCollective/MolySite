@@ -49,10 +49,10 @@ This jam site will be open 24 hours. It'll be open when you arrive - come upstai
 Members of the press are welcome to attend this jam. Contact Holden Link at losangeles@molyjam.com if you plan to bring any recording equipment that may need setup time or space.
 "
 
-  Venue.create!(name: "Name", street: "1212 Washington Blvd",         city: "Los Angeles",  state: "California",  country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
-  Venue.create!(name: "Name", street: "481 Broadway",                 city: "New York",     state: "New York",    country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
-  Venue.create!(name: "Name", street: "70 Avenue des Champs Elysees", city: "Paris",        state: "",            country: "France",        region: "Europe",         description_raw: description_raw, event_id: 1)
-  Venue.create!(name: "Name", street: "Strangways Terrace",           city: "Adelaide",     state: "",            country: "Australia",     region: "Australia",      description_raw: description_raw, event_id: 1)
+  Venue.create!(display_name: "Los Angeles",  name: "Name", street: "1212 Washington Blvd",         city: "Los Angeles",  state: "California",  country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
+  Venue.create!(display_name: "New York",     name: "Name", street: "481 Broadway",                 city: "New York",     state: "New York",    country: "United States", region: "North America",  description_raw: description_raw, event_id: 1)
+  Venue.create!(display_name: "Paris",        name: "Name", street: "70 Avenue des Champs Elysees", city: "Paris",        state: "",            country: "France",        region: "Europe",         description_raw: description_raw, event_id: 1)
+  Venue.create!(display_name: "Adelaide",     name: "Name", street: "Strangways Terrace",           city: "Adelaide",     state: "",            country: "Australia",     region: "Australia",      description_raw: description_raw, event_id: 1)
 
   Venue.find(1).register_user(User.find(3), true)
 

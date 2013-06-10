@@ -27,13 +27,15 @@
         <tbody class="list">
           
          <% Venue.all.each do |venue| %>
-          <tr>
-            <td class="venue-id"><%= venue.id %></td>
-            <td class="city"><%= venue.city %></td>
-            <td class="country"><%= venue.country %></td>
-            <td class="region"><%= venue.region %></td>
-            <td class="edit"><%= link_to "Edit", edit_venue_path(venue) if can? :update, venue , class: "btn" %></td>
-          </tr>
+          <% if can? :update, venue %>
+            <tr>
+              <td class="venue-id"><%= venue.id %></td>
+              <td class="city"><%= venue.city %></td>
+              <td class="country"><%= venue.country %></td>
+              <td class="region"><%= venue.region %></td>
+              <td class="edit"><%= link_to "Edit", edit_venue_path(venue), class: "btn" %></td>
+            </tr>
+          <% end %> 
         <% end %>
         </tbody>
     </table>

@@ -1,4 +1,4 @@
-<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, name, longitude, latitude")} do %>
+<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, display_name, longitude, latitude")} do %>
 <% end %>
 
 <article>
@@ -13,7 +13,7 @@
           <li>
             <%= link_to venue do %>
               <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
-              <h4><span class="name"><%= venue.city %></span><span class="category"><%= venue.region %></span></h4>
+              <h4><span class="name"><%= venue.display_name %></span><span class="category"><%= venue.region %></span></h4>
               <h5><span class="country"><%= venue.country %></span></h5>
               <span class="venueName hidden"><%= venue.name %></span>
               <span class="address hidden"><%= venue.address %></span>
