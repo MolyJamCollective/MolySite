@@ -1,41 +1,35 @@
-<article>
   <header>
     <h2>User Administration</h2>
   </header>
   
   <section>
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Icon</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users_last5.each do |user| %>
+    <div id="contacts">
+      <table>
+        <thead>
+            <tr>
+                <th class="sort" data-sort="id">ID</th>
+                <th class="sort" data-sort="name">Name</th>
+                <th class="sort" data-sort="email">Email</th>
+                <th class="sort" data-sort="role">Role</th>
+                <th>
+                    <input type="text" class="search" placeholder="Search by Name or Email" />
+                </th>
+            </tr>
+        </thead>
+        <tbody class="list">
+          
+         <% @users_last5.each do |user| %>
           <tr>
-            <td><%= user.id %></td>
-            <td><%= image_tag user.gravatar_url, width: "25px" %></td>
-            <td><%= user.name %></td>
-            <td><%= user.email %></td>
-            <td><%= user.role %></td>
-            <td><%= link_to "Edit", edit_user_path(user), class: "btn" %></td>
+            <td class="id"><%= user.id %></td>
+            <td class="name"><%= user.name %></td>
+            <td class="email"><%= user.email %></td>
+            <td class="role"><%= user.role %></td>
+            <td class="edit"><%= link_to "Edit", edit_user_path(user), class: "btn" %></td>
           </tr>
         <% end %>
-      </tbody>
-      <tfoot>
-        <tr>
-          <%= form_tag users_path, method: "get" do %>
-            <td colspan="3"><%= text_field_tag(:search, params[:search], id: "user_select", data: {users: User.find(:all, select: "name, username, email")}) %></td>
-            <td><%= submit_tag("Edit", class: "btn") %></td>
-          <% end %>
-        </tr>
-      </tfoot>
+        </tbody>
     </table>
+  </div>
   </section>
 
-</article>
+  <div class="admin-panel-closer" id="admin-user-link-close">Collapse User Administration</div>

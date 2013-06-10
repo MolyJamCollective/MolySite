@@ -1,0 +1,82 @@
+
+.admin-panel #contacts, .admin-panel #venues {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.admin-panel .green-btn{
+  background: #50C747;
+  border: 0px;
+  cursor: pointer;
+  padding: 8px 14px 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  -webkit-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  -moz-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  display: inline;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+#contacts table, #venues table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 30px;
+}
+#contacts th, #venues th {
+  background-color: #555555;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  padding: 10px 10px;
+  text-align: left;
+  font-weight: bold;
+  color: #dddddd;
+  cursor: pointer;
+}
+
+.search{
+  width: 100%;
+}
+
+#contacts tr:nth-child(even), #venues tr:nth-child(even) {
+    background-color: #333333;
+}
+
+#contacts tr:nth-child(odd), #venues tr:nth-child(odd)  {
+    background-color: #222222;
+}
+
+#contacts td, #venues td {
+  padding: 10px 10px;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.admin-panel-expander{
+  padding: 10px;
+  width: 100%;
+  background-color: #51c844;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.admin-panel-closer{
+  padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #51c844;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.admin-panel{
+  display: none;
+  padding: 20px;
+  background-color: #111111;
+  width: 100%;
+}

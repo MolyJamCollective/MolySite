@@ -3,10 +3,19 @@
     <h2>Dashboard</h2>
   </header>
   <section>
+  	<p>
   	<%= link_to "Edit Profile", edit_user_path(current_user) %><br />
   	<%= link_to "Change Password/Email", edit_user_registration_path %>
+  	</p>
   </section>
 </article>
-
-<%= render "admin_user" if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
-<%= render "admin_venue" if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+<hr/>
+<div class="admin-panel-expander" id="admin-user-link">User Administration</div>
+<div class="admin-panel" id="admin-user-section">
+	<%= render "admin_user" if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+</div>
+<hr/>
+<div class="admin-panel-expander" id="admin-venue-link">Venue Administration</div>
+<div class="admin-panel" id="admin-venue-section">
+	<%= render "admin_venue" if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+</div>
