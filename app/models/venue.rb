@@ -3,7 +3,8 @@ class Venue < ActiveRecord::Base
   belongs_to :group
   has_many :sponsors
 
-  attr_accessible :street, :state, :country, :city, :region, :contact, :description, :description_raw, :latitude, :longitude, :name, :event_id, :group_id
+  attr_accessible :street, :state, :country, :city, :region, :contact, :description, 
+    :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   after_validation :process_markdown, :if => :description_raw_changed?
