@@ -56,16 +56,15 @@
 
 .admin-panel-expander{
   padding: 10px;
-  width: 100%;
   background-color: #51c844;
   display: block;
   cursor: pointer;
   text-align: center;
+  margin: 0 auto;
 }
 
 .admin-panel-closer{
   padding: 10px;
-  width: 90%;
   margin: 0 auto;
   background-color: #51c844;
   display: block;
@@ -74,9 +73,13 @@
   margin-top: 30px;
 }
 
+#admin-venue-section, #admin-user-section{
+  display: block;
+  margin: 0 auto;
+}
+
 .admin-panel{
   display: none;
   padding: 20px;
   background-color: #111111;
-  width: 100%;
 }
