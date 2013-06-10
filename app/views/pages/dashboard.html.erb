@@ -10,12 +10,18 @@
   </section>
 </article>
 <hr/>
-<div class="admin-panel-expander" id="admin-user-link">User Administration</div>
-<div id="admin-user-section" class="admin-panel" style="display:none">
-	<%= render "admin_user" if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
-</div>
-<hr/>
-<div class="admin-panel-expander" id="admin-venue-link">Venue Administration</div>
-<div id="admin-venue-section" class="admin-panel" style="display: none">
-	<%= render "admin_venue" if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
-</div>
+
+<% if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+  <div class="admin-panel-expander" id="admin-user-link">User Administration</div>
+  <div id="admin-user-section" class="admin-panel" style="display:none">
+  	<%= render "admin_user"%>
+  </div>
+  <hr/>
+<% end %>
+
+<% if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+  <div class="admin-panel-expander" id="admin-venue-link">Venue Administration</div>
+  <div id="admin-venue-section" class="admin-panel" style="display: none">
+  	<%= render "admin_venue"  %>
+  </div>
+<% end %>
