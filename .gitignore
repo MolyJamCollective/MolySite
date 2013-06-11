@@ -57,5 +57,7 @@ pickle-email-*.html
 .project
 *.DS_store*
 
-# Database Settings
+# Configuration Files
 config/database.yml
+config/environments/production.rb
+config/environments/staging.rb
