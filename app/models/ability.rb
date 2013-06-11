@@ -11,6 +11,8 @@ class Ability
 
     if(user.group?(:Organizers) || user.group?(:Webmasters))
       can :manage, :all
+      can :approve, Venue
+      can :show, Venue
     end
 
     if(user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
@@ -37,6 +39,7 @@ class Ability
     can :read, :all
     can :show_current, Event
     can :about, :page
+    can :show, Venue, approved: true
 
   end
 end

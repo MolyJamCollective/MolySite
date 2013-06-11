@@ -66,4 +66,14 @@ class VenuesController < ApplicationController
       format.html { redirect_to venues_url }
     end
   end
+
+  def approve
+    @venue = Venue.find(params[:venue_id])
+    @venue.approved = true;
+    @venue.save
+
+    respond_to do |format|
+      format.html { render action: "show" }
+    end
+  end
 end

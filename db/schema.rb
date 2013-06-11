@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610160733) do
+ActiveRecord::Schema.define(:version => 20130610230246) do
 
   create_table "events", :force => true do |t|
     t.string   "name",        :null => false
@@ -86,12 +86,12 @@ ActiveRecord::Schema.define(:version => 20130610160733) do
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
   create_table "venues", :force => true do |t|
-    t.string   "name",            :null => false
+    t.string   "name",                               :null => false
     t.text     "description"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "event_id"
     t.integer  "group_id"
     t.text     "description_raw"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130610160733) do
     t.string   "state"
     t.string   "twitch_username"
     t.string   "display_name"
+    t.boolean  "approved",        :default => false
   end
 
 end

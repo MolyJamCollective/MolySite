@@ -2,6 +2,7 @@ MolySite::Application.routes.draw do
 
   resources :events
   resources :venues do
+    post 'approve'
     resources :sponsors do
       put 'move_up'
       put 'move_down'
