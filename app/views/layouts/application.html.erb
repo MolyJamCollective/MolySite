@@ -13,6 +13,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
     <%= stylesheet_link_tag :application, media: :all %>
     <%= csrf_meta_tags %>
+    <%= analytics_init if Rails.env.production? %>
     
   </head>
   <body>

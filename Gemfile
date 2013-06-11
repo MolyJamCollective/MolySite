@@ -40,3 +40,6 @@ gem 'gravtastic'
 
 # Paperclip
 gem 'paperclip'
+
+#Analytics
+gem 'google-analytics-rails'
