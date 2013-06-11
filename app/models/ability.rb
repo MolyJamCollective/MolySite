@@ -36,10 +36,10 @@ class Ability
       can :manage, User, id: user.id
     end
 
-    can :read, :all
     can :show_current, Event
     can :about, :page
     can :show, Venue, approved: true
+    can :index, Venue
 
   end
 end
