@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
 
   validates :username, :uniqueness => true
   after_create :add_to_user_group
-  
+
 	has_many :memberships
 	has_many :groups, :through => :memberships
+  has_many :user_file_uploads
 
   	# Include default devise modules. Others available are:
   	# :omniauthable
@@ -62,4 +63,15 @@ class User < ActiveRecord::Base
   def add_to_user_group
     Membership.create(user_id: self.id, group_id: Group.where(name: :Users).first.id);
   end
+
+  # File upload quota in MB
+  # In the future if this is per event we may want to move this off user
+  def upload_quota
+    return 2000
+  end
+
+  def upload_quota_used
+    self.user_file_uploads.sum(:file_size)
+  end
+
 end
