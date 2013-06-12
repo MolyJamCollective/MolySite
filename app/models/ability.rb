@@ -37,7 +37,7 @@ class Ability
     end
 
     can :show_current, Event
-    can :about, :page
+    can [:news, :about], :page
     can :show, Venue, approved: true
     can :index, Venue
 

@@ -16,6 +16,7 @@ MolySite::Application.routes.draw do
   get '/user_file_uploads' => 'user_file_uploads#index'
   get '/user_file_uploads/upload' => 'user_file_uploads#upload'
 
+  match '/news' => 'pages#news'
   match '/about' => 'pages#about'
   match '/dashboard' => 'pages#dashboard'
 
