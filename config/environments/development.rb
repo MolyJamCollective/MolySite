@@ -41,4 +41,11 @@ MolySite::Application.configure do
   # Better Errors Trusted IPs
   BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
   # Usage Example: 'TRUSTED_IP=66.68.96.220 rails s' 
+
+  # AWS SES
+  #config.action_mailer.delivery_method = :ses
+
 end
+
+AWS_SES_KEY_ID = ''
+AWS_SES_ACCESS_KEY = ''
