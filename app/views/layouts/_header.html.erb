@@ -1,16 +1,10 @@
 <div class="header-container">
   <header class="wrapper clearfix">
-    <%= link_to image_tag("header-logo.png", :class => "logo"), '/' %>
+    <%= link_to image_tag("header-logo.png", :class => "logo"), '/news' %>
     <nav>
       <ul>
-        
-        
-       
         <% if user_signed_in? %>
           <li>
-            <!--Commented out gravitar b/c we aren't using it elsewhere...doesn't really fit this IMO - HL 
-            <%= link_to( image_tag(current_user.gravatar_url, height: "46px"), dashboard_path, style: "padding: 0") %>
-          -->
           <%= link_to "My Account", dashboard_path %>
         </li>
         <% else %>
@@ -18,7 +12,7 @@
         <% end %>
          <li><%= link_to "About", "/about" %></li>
          <li><%= link_to "Locations", Venue %></a></li>
-        <li><%= link_to "News", '/' %></li>
+        <li><%= link_to "News", '/news' %></li>
       </ul>
     </nav>
   </header>

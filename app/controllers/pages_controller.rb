@@ -17,4 +17,12 @@ class PagesController < ApplicationController
       format.html
     end 
   end
+
+  def news 
+    authorize! :about, :page
+
+    respond_to do |format|
+      format.html
+    end 
+  end 
 end
