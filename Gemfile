@@ -44,3 +44,6 @@ gem 'paperclip'
 #Analytics
 gem 'google-analytics-rails'
 gem 'newrelic_rpm'
+
+#AWS
+gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
