@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(:version => 20130612012947) do
   create_table "user_file_uploads", :force => true do |t|
     t.integer  "user_id"
     t.integer  "file_size"
+    t.string   "file_bucket"
     t.string   "file_path"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
