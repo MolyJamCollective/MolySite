@@ -56,4 +56,7 @@ Members of the press are welcome to attend this jam. Contact Holden Link at losa
 
   Venue.find(1).register_user(User.find(3), true)
 
+  #fake file upload for webmaster
+  UserFileUpload.create!(user_id: 1, file_size: 30, file_path: "http://www.google.com/1.jpg")
+
 end

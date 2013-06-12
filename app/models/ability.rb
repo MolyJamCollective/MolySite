@@ -6,7 +6,6 @@ class Ability
 
     # Want Cascading 'C' Style Switch Statment
     if(user.group?(:Webmasters))
-      
     end
 
     if(user.group?(:Organizers) || user.group?(:Webmasters))
@@ -28,7 +27,8 @@ class Ability
     end
 
     if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
-
+      can :create, UserFileUpload
+      can :show, UserFileUpload
     end
 
     if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))

@@ -17,11 +17,11 @@ group :development do
 	gem 'wirble'
 
   # Built in Debugging
-	gem 'better_errors'		
+	gem 'better_errors'
 	gem 'binding_of_caller'
 
   # Rails Panel
-	gem 'meta_request'		
+	gem 'meta_request'
 end
 
 # User Auth
@@ -47,3 +47,4 @@ gem 'newrelic_rpm'
 
 #AWS
 gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
+gem 'carrierwave_direct'

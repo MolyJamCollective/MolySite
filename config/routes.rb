@@ -12,7 +12,10 @@ MolySite::Application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :groups, only: [:show, :edit, :update]
   resources :memberships, only: [:create, :destroy]
-  
+
+  get '/user_file_uploads' => 'user_file_uploads#index'
+  get '/user_file_uploads/upload' => 'user_file_uploads#upload'
+
   match '/about' => 'pages#about'
   match '/dashboard' => 'pages#dashboard'
 
@@ -35,5 +38,5 @@ MolySite::Application.routes.draw do
     resource :confirmations,  only: [:new, :create, :show],           path: 'user/confirmation',  controller: 'devise/confirmations',   as: 'user_confirmation'
     resource :unlocks,        only: [:new, :create, :show],           path: 'user/unlock',        controller: 'devise/unlocks',         as: 'user_unlock'
   end
-  
+
 end
