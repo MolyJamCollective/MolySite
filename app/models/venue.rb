@@ -4,7 +4,7 @@ class Venue < ActiveRecord::Base
   has_many :sponsors
 
   attr_accessible :street, :state, :country, :city, :region, :contact, :description, 
-    :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name
+    :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name, :approved
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
   after_validation :process_markdown, :if => :description_raw_changed?
@@ -27,8 +27,8 @@ class Venue < ActiveRecord::Base
     true
   end
 
-  def country_code
-    Carmen::Country.named(self.country).code
+  def country_name
+    Carmen::Country.coded(self.country).name
   end
 
   def hosts

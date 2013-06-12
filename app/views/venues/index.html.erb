@@ -13,9 +13,9 @@
           <% if can?(:approve, venue) || venue.approved %>
             <li>
               <%= link_to venue do %>
-                <span class="flag-icon"><%= image_tag "flags/#{venue.country_code}.png" %></span>
+                <span class="flag-icon"><%= image_tag "flags/#{venue.country}.png" %></span>
                 <h4><span class="name"><%= venue.display_name %></span><span class="category"><%= venue.region %></span></h4>
-                <h5><span class="country"><%= venue.country %></span></h5>
+                <h5><span class="country"><%= venue.country_name %></span></h5>
                 <span class="venueName hidden"><%= venue.name %></span>
                 <span class="address hidden"><%= venue.address %></span>
                 <% if can? :approve, venue %>
