@@ -59,5 +59,6 @@ pickle-email-*.html
 
 # Configuration Files
 config/database.yml
+config/newrelic.yml
 config/environments/production.rb
 config/environments/staging.rb
