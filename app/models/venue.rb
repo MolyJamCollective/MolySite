@@ -13,6 +13,10 @@ class Venue < ActiveRecord::Base
 
   REGIONS = ["Australia", "North America", "South America", "Europe", "Asia"]
 
+  def email
+    "#{self.display_name.gsub(/\s+/, "")}@MolyJam.com"
+  end
+
   def address
     [self.street, self.city, self.state, self.country].compact.join(', ')
   end
