@@ -27,4 +27,38 @@ module ApplicationHelper
 
     return raw buffer.join('')
   end
+
+  def sponsor_tag(sponsor)
+    buffer = []
+
+    if(sponsor.url.blank? == false)
+      buffer.push('<a href="')
+      buffer.push(sponsor.url)
+      if(sponsor.name.blank? == false)
+        buffer.push('" ')
+        buffer.push('alt="')
+        buffer.push(sponsor.name)
+      end
+      buffer.push('">')
+    end
+
+    if(sponsor.has_logo?)
+      buffer.push('<img width="100%" ')
+      buffer.push('src="')
+      buffer.push(sponsor.image_path)
+      buffer.push('" />')
+    else
+      if(sponsor.name.blank? == false)
+        buffer.push(sponsor.name)
+      else
+        buffer.push(sponsor.url)
+      end
+    end
+
+    if(sponsor.url.blank? == false)
+      buffer.push("</a>")
+    end
+
+    return raw buffer.join('')
+  end
 end

@@ -11,18 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
+  <h3><%= f.label :name %></h3>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
+
+  <h3><%= f.label :website %></h3>
     <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    Logo (will be rendered at ? x 100px): <br />
+
+  <h3>Logo</h3>
     <%= attachment_link(@sponsor, "sponsor") %>
-  </div>
+
   <div class="actions">
     <%= f.submit "Save", class: "btn" %>
   </div>
