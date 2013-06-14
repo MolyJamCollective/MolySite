@@ -8,7 +8,7 @@ class Attachment < ActiveRecord::Base
   validate :validate_path_set
 
   def file_path
-    return this.remote_path || user_file_upload.file_path
+    return remote_path || user_file_upload.file_path
   end
 
   ###
