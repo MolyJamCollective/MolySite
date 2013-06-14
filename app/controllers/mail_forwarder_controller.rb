@@ -4,7 +4,7 @@ class MailForwarderController < ApplicationController
 
   def create
     message = Mail.new(params[:message])
-    if(MailForwarder.receive(message))
+    if(MailForwarder.forward_email(message).deliver)
   	  render nothing: true, status: 204
   	else
       render nothing: true, status: 400
