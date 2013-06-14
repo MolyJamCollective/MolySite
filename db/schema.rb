@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614020237) do
+ActiveRecord::Schema.define(:version => 20130614132200) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130614020237) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "name"
   end
 
   create_table "user_file_uploads", :force => true do |t|
