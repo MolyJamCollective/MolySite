@@ -69,5 +69,12 @@ cp config/database.yml.example config/database.yml
 rake db:setup
 ```
 
+### Setup Amazon S3 uploader using Fog (optional)
+The user file uploader and attachments system requires
+```shell
+cp config/fog.yml.example config/fog.yml
+```
+# Edit config/fog.yml if needed
+
 ### Test Application
 Everything should be up and working at this point, to start the rails app server run `rails s` and navigate to [http://localhost:3000/](http://localhost:3000/)
