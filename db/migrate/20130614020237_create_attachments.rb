@@ -2,8 +2,8 @@ class CreateAttachments < ActiveRecord::Migration
   def change
     create_table :attachments do |t|
       #polymorphic fields
-      t.integer :attachable_id, :null => false
-      t.integer :attachable_type, :null => false
+      t.integer :attachable_id
+      t.integer :attachable_type
 
       t.string :attachment_type, :null => false
 
