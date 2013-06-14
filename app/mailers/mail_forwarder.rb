@@ -27,6 +27,8 @@ class MailForwarder < ActionMailer::Base
     mail(subject: mail.subject, to: mail_to, from: mail.from, ) do |format|
       format.text {render text: mail.body}
     end
+
+    return true
   end
 
 end
