@@ -1,0 +1,58 @@
+<style>
+  #attach_file > div {
+    float: left;
+  }
+  .or_delim {
+    margin: 20px;
+  }
+
+  #select_file {
+    margin-top: 40px;
+  }
+  #files {
+    margin-top: 10px;
+    border: 1px solid white;
+    padding: 0 10px;
+  }
+
+  #files li {
+    /*border-bottom: 1px solid white;*/
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+</style>
+<div id="attach_file" class="clearfix">
+  <div>
+    <h3>Remote file:</h3>
+    <%= form_for(@attachment) do |f| %>
+      <%= f.text_field :remote_path %>
+      <%= f.hidden_field :attachable_id %>
+      <%= f.hidden_field :attachable_type %>
+      <%= f.hidden_field :attachment_type %>
+      <br />
+      <%= f.submit "Link", :class => "btn" %>
+    <% end %>
+  </div>
+  <div class="or_delim">
+    OR
+  </div>
+  <div>
+    <h3>Upload a file:</h3>
+      <%#= render "user_file_uploads/form" %>
+  </div>
+</div>
+<% if @files.count > 0 %>
+<div id="select_file">
+  <h3>Select an uploaded file</h3>
+  <ul id="files">
+    <% @files.each do |user_file| %>
+      <li>
+        TODO render a user facing asset here
+        <a href="<%= user_file.file_path %>"><%= user_file.file_path %></a>
+        -
+        <%= link_to "Select", {:action => :create, :file_id => user_file.id}, :method => :post %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

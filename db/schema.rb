@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20130614020237) do
 
   create_table "attachments", :force => true do |t|
-    t.integer  "attachable_id",       :null => false
-    t.integer  "attachable_type",     :null => false
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
     t.string   "attachment_type",     :null => false
     t.string   "remote_path"
     t.integer  "user_file_upload_id"

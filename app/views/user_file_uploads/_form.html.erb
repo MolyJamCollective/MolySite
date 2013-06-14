@@ -1,8 +1,4 @@
-Ugly Upload Form
-<section>
-<h3>Upload new file:</h3>
 <%= direct_upload_form_for @uploader do |f| %>
-  <%= f.file_field :file_path %> <br /><br />
+  <%= f.file_field :file_path %> <br />
   <%= f.submit "Upload", :class => "btn" %>
 <% end %>
-</section>

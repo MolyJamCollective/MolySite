@@ -3,7 +3,7 @@ class CreateAttachments < ActiveRecord::Migration
     create_table :attachments do |t|
       #polymorphic fields
       t.integer :attachable_id
-      t.integer :attachable_type
+      t.string :attachable_type
 
       t.string :attachment_type, :null => false
 

@@ -1,7 +1,7 @@
 class Attachment < ActiveRecord::Base
 
   belongs_to :attachable, :polymorphic => true
-  has_one :user_file_upload
+  belongs_to :user_file_upload  #reverse relationship since attachment holds fk
 
   attr_accessible :attachment_type, :attachable_id, :attachable_type, :remote_path
 

@@ -13,8 +13,11 @@ MolySite::Application.routes.draw do
   resources :groups, only: [:show, :edit, :update]
   resources :memberships, only: [:create, :destroy]
 
+  resources :attachments, only: [:create, :new]
+
   get '/user_file_uploads' => 'user_file_uploads#index'
   get '/user_file_uploads/upload' => 'user_file_uploads#upload'
+
 
   match '/news' => 'pages#news'
   match '/about' => 'pages#about'
