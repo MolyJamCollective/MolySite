@@ -4,6 +4,7 @@
   </header>
   <section>
   	<p>
+    <%= link_to "Logout", logout_path %><br />
   	<%= link_to "Edit Profile", edit_user_path(current_user) %><br />
   	<%= link_to "Change Password/Email", edit_user_registration_path %>
   	</p>
