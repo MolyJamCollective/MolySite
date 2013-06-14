@@ -45,17 +45,17 @@ class Venue < ActiveRecord::Base
 
   def register_user(user, host = false)
     
-    Membership.set(user, self.event.group) # Join Event
+    Membership.set(user, self.event.group_id) # Join Event
 
     if host
       if self.group.users.empty?
-        Membership.set(user, self.group, :founder) # Join Venue as Founder
+        Membership.set(user, self.group_id, :founder) # Join Venue as Founder
       else
-        Membership.set(user, self.group, :officer) # Join Venue as Venue
+        Membership.set(user, self.group_id, :officer) # Join Venue as Venue
       end
       Membership.set(user, Group.where(name: "Hosts").first)
     else
-       Membership.set(user, self.group) # Join Venue
+       Membership.set(user, self.group_id) # Join Venue
     end
   end
 
