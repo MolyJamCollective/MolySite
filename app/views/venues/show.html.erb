@@ -3,7 +3,7 @@
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
             :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
   <% end %>
-  
+
   <header>
     <h1 id="locationName"><%= @venue.display_name %></h1>
   </header>
@@ -48,9 +48,9 @@
           <% sponsors_list = @venue.sponsors.sort{ |x,y| x.rank <=> y.rank } %>
           <% sponsors_list.each do |sponsor| %>
             <% if sponsor.url.nil? %>
-              <%= image_tag(sponsor.image.url, width: "100%") %>
+              <%= image_tag(sponsor.image_path, width: "100%") %>
             <% else %>
-              <%= link_to(image_tag(sponsor.image.url, width: "100%"), sponsor.url) %>
+              <%= link_to(image_tag(sponsor.image_path, width: "100%"), sponsor.url) %>
             <% end %>
             <% if can?(:update || :destroy, sponsor) %>
               <div class="admin-insert">

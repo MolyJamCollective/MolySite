@@ -15,7 +15,10 @@
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
-  <%= f.file_field :image %>
+  <div class="field">
+    Logo (will be rendered at ? x 100px): <br />
+    <%= attachment_link(@sponsor, "sponsor") %>
+  </div>
   <div class="actions">
     <%= f.submit "Save", class: "btn" %>
   </div>

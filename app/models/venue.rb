@@ -3,8 +3,6 @@ class Venue < ActiveRecord::Base
   belongs_to :group
   has_many :sponsors
 
-  has_many :attachments, :as => :attachable, :dependent => :destroy
-
   attr_accessible :street, :state, :country, :city, :region, :contact, :description,
     :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name, :approved
   geocoded_by :address
@@ -80,10 +78,6 @@ class Venue < ActiveRecord::Base
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
 
     self.description = redcarpet.render(self.description_raw)
-  end
-
-  def sponsor_logos
-    return attachments.where(:attachment_type => "sponsor_logo")
   end
 
 end

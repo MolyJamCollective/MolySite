@@ -1,10 +1,19 @@
 class Sponsor < ActiveRecord::Base
   belongs_to :venue
 
-  attr_accessible :venue_id, :rank, :image, :url
-  has_attached_file :image
+  attr_accessible :venue_id, :rank, :url
+
+  has_many :attachments, :as => :attachable, :dependent => :destroy
 
   before_save :sort
+
+  def image_path
+    if(attachments.first.nil? == false)
+      return attachments.first.file_path
+    end
+    return ""
+  end
+
 
   def sort
     if self.rank.nil?

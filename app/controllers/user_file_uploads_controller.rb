@@ -7,7 +7,6 @@ class UserFileUploadsController < ApplicationController
     @user_file_upload = UserFileUpload.new
     @uploader = @user_file_upload.file_path
     @uploader.success_action_redirect = user_file_uploads_upload_url
-
   end
 
   def upload
