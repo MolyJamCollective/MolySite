@@ -11,6 +11,8 @@ class UserFileUploadsController < ApplicationController
 
   def upload
 
+puts params.inspect
+
     ##
     # Uploads when using Amazon S3 will give you params simliar to this:
     #
@@ -21,9 +23,19 @@ class UserFileUploadsController < ApplicationController
 
     log.user_id = current_user.id
     log.file_bucket = params[:bucket]
-    log.file_path = log.file_path.direct_fog_url(:with_path => true)
+
+    puts "* #{params[:key]}"
+    puts "*#{log.file_path.inspect}*"
+    puts "8#{log.file_path.direct_fog_url(:with_path => true)}7"
+
+    log.remote_file_path_url = log.file_path.direct_fog_url(:with_path => true)
+
+    puts "9#{log.remote_file_path_url}9"
+
     log.file_size = 20 #todo find a way to get thie uploaded file size
     log.save!
+
+    puts log.inspect
 
     redirect_to(user_file_uploads_url)
   end
