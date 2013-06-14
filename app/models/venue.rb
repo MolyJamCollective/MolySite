@@ -3,7 +3,9 @@ class Venue < ActiveRecord::Base
   belongs_to :group
   has_many :sponsors
 
-  attr_accessible :street, :state, :country, :city, :region, :contact, :description, 
+  has_many :attachments, :as => :attachable, :dependent => :destroy
+
+  attr_accessible :street, :state, :country, :city, :region, :contact, :description,
     :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name, :approved
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
@@ -44,7 +46,7 @@ class Venue < ActiveRecord::Base
   end
 
   def register_user(user, host = false)
-    
+
     Membership.set(user, self.event.group_id) # Join Event
 
     if host
@@ -67,8 +69,8 @@ class Venue < ActiveRecord::Base
       safe_links_only: true,
       hard_wrap: true
       )
-    extensions = { 
-      no_intra_emphasis: true, 
+    extensions = {
+      no_intra_emphasis: true,
       autolink: true,
       strikethrough: true,
       lax_spacing: true,
@@ -79,4 +81,9 @@ class Venue < ActiveRecord::Base
 
     self.description = redcarpet.render(self.description_raw)
   end
+
+  def sponsor_logos
+    return attachments.where(:attachment_type => "sponsor_logo")
+  end
+
 end
