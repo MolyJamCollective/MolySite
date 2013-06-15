@@ -43,7 +43,7 @@ MolySite::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -52,7 +52,7 @@ MolySite::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Enable threaded mode
-  # config.threadsafe!
+  config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
@@ -67,15 +67,12 @@ MolySite::Application.configure do
 
   # Devise default_url_options
   # Note: In production, :host should be set to the actual host of your application.
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Analytics
-  #GA.tracker = "UA-XXXXXXXX-X"
+  GA.tracker = "UA-XXXXXXXX-X"
 
   # AWS SES
   config.action_mailer.delivery_method = :ses
 
 end
-
-AWS_SES_KEY_ID = ''
-AWS_SES_ACCESS_KEY = ''

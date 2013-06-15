@@ -46,6 +46,3 @@ MolySite::Application.configure do
   #config.action_mailer.delivery_method = :ses
 
 end
-
-AWS_SES_KEY_ID = ''
-AWS_SES_ACCESS_KEY = ''
