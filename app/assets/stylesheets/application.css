@@ -20,11 +20,6 @@
 form {
   display: block;
   width: auto;
-  max-width: 250px;
-  padding: 10px;
-  margin: auto;
-  margin: 10px auto;
-  text-align: center;
 }
 
 input, label {
