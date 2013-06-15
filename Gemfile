@@ -1,11 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'sqlite3'
+
+group :production do
+  gem 'puma'
+  gem 'mysql2'
+end
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
+  gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
   gem 'asset_sync'
 end
@@ -16,6 +21,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 group :development do
+  gem 'sqlite3'
+
   # Color Syntax in IRB & Rails Console
 	gem 'wirble'
 
