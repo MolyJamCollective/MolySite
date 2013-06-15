@@ -12,6 +12,7 @@ MolySite::Application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :groups, only: [:show, :edit, :update]
   resources :memberships, only: [:create, :destroy]
+  resources :mail_forwarder, only: :create
 
   resources :attachments, only: [:create, :new]
 

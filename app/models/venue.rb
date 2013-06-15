@@ -13,6 +13,10 @@ class Venue < ActiveRecord::Base
 
   REGIONS = ["Australia", "North America", "South America", "Europe", "Asia"]
 
+  def email
+    "#{self.display_name.gsub(/\s+/, "")}@MolyJam.com"
+  end
+
   def address
     [self.street, self.city, self.state, self.country].compact.join(', ')
   end
@@ -44,18 +48,17 @@ class Venue < ActiveRecord::Base
   end
 
   def register_user(user, host = false)
-
-    Membership.set(user, self.event.group_id) # Join Event
+    Membership.set(user, self.event.group_id) unless self.event.nil? # Join Event
 
     if host
       if self.group.users.empty?
-        Membership.set(user, self.group_id, :founder) # Join Venue as Founder
+        Membership.set(user, self.group, :founder) # Join Venue as Founder
       else
-        Membership.set(user, self.group_id, :officer) # Join Venue as Venue
+        Membership.set(user, self.group, :officer) # Join Venue as Venue
       end
       Membership.set(user, Group.where(name: "Hosts").first)
     else
-       Membership.set(user, self.group_id) # Join Venue
+       Membership.set(user, self.group) # Join Venue
     end
   end
 

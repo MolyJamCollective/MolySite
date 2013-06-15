@@ -34,6 +34,7 @@
           <span id="contactName"><%= host.name %></span><br/>
           <span id="contactTwitter">@<%= host.twitter_username if host.twitter_username %></span><br/>
         <% end %>
+        <%= mail_to @venue.email, nil, :encode => "javascript", :replace_at => "_at_", :replace_dot => "_dot_" %>
       </p>
   </aside>
   <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
