@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614132200) do
+ActiveRecord::Schema.define(:version => 20130615030022) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20130614132200) do
     t.string   "twitch_username"
     t.string   "display_name"
     t.boolean  "approved",        :default => false
+    t.string   "url"
   end
 
 end
