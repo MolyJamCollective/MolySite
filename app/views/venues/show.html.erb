@@ -3,7 +3,7 @@
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
             :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
   <% end %>
-  
+
   <header>
     <h1 id="locationName"><%= @venue.display_name %></h1>
   </header>
@@ -48,11 +48,14 @@
         <p>
           <% sponsors_list = @venue.sponsors.sort{ |x,y| x.rank <=> y.rank } %>
           <% sponsors_list.each do |sponsor| %>
-            <% if sponsor.url.nil? %>
-              <%= image_tag(sponsor.image.url, width: "100%") %>
-            <% else %>
-              <%= link_to(image_tag(sponsor.image.url, width: "100%"), sponsor.url) %>
-            <% end %>
+            <%
+            if(sponsor.temporary? && can?(:edit, Sponsor) == false)
+              next
+            end
+            %>
+
+            <%= sponsor_tag(sponsor) %>
+
             <% if can?(:update || :destroy, sponsor) %>
               <div class="admin-insert">
                 <%= link_to("Edit", edit_venue_sponsor_path(@venue, sponsor)) if can? :update, sponsor %> - <%= link_to("Remove", venue_sponsor_path(@venue, sponsor), :confirm => 'Are you sure?', :method => :delete) if can? :destroy, sponsor %> - <%= link_to("Up", venue_sponsor_move_up_path(@venue, sponsor), method: :put) if can? :move_up, sponsor %> - <%= link_to("Down", venue_sponsor_move_down_path(@venue, sponsor), method: :put) if can? :move_down, sponsor %>

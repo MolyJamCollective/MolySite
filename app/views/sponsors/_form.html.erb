@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :url %><br />
+  <h3><%= f.label :name %></h3>
+    <%= f.text_field :name %>
+
+  <h3><%= f.label :website %></h3>
     <%= f.text_field :url %>
-  </div>
-  <%= f.file_field :image %>
+
+  <h3>Logo</h3>
+    <%= attachment_link(@sponsor, "sponsor") %>
+
   <div class="actions">
     <%= f.submit "Save", class: "btn" %>
   </div>

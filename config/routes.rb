@@ -14,8 +14,11 @@ MolySite::Application.routes.draw do
   resources :memberships, only: [:create, :destroy]
   resources :mail_forwarder, only: :create
 
+  resources :attachments, only: [:create, :new]
+
   get '/user_file_uploads' => 'user_file_uploads#index'
   get '/user_file_uploads/upload' => 'user_file_uploads#upload'
+
 
   match '/news' => 'pages#news'
   match '/about' => 'pages#about'

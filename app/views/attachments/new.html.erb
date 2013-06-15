@@ -1,0 +1,108 @@
+<style>
+  #attach_file > div {
+    float: left;
+  }
+  .or_delim {
+    margin: 20px;
+  }
+
+  #select_file {
+    margin-top: 40px;
+  }
+  #files {
+    margin-top: 10px;
+    border: 1px solid white;
+    padding: 0 10px;
+  }
+
+  #files li {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+  }
+
+  #files li:last-child {
+    border: none;
+  }
+
+  #quota {
+    float: right;
+    clear: both;
+  }
+
+  #apology {
+    border: 1px solid green;
+    padding: 10px;
+  }
+
+  #files li.selected {
+    -webkit-animation-name: selectedFileFlash;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;
+  }
+
+  @-webkit-keyframes selectedFileFlash {
+   from {
+     background: transparent;
+   }
+   to {
+     background: green;
+   }
+  }
+
+</style>
+<h2>Attach a file</h2>
+<p id="apology">
+  Sorry for the pop-up, we're working on some flashy styling.<br />
+  To attach a file, either link a remote path, upload a new file or select
+  a file you've previously uploaded.
+</p>
+<div id="attach_file" class="clearfix">
+  <div>
+    <h3>Remote file:</h3>
+    <%= form_for(@attachment) do |f| %>
+      <%= f.text_field :remote_path %>
+      <%= f.hidden_field :attachable_id %>
+      <%= f.hidden_field :attachable_type %>
+      <%= f.hidden_field :attachment_type %>
+      <br />
+      <%= f.submit "Link", :class => "btn" %>
+    <% end %>
+  </div>
+  <div class="or_delim">
+    OR
+  </div>
+  <div>
+    <h3>Upload a file:</h3>
+      <%= render "user_file_uploads/form" %>
+  </div>
+</div>
+<% if @files.count > 0 %>
+<div id="select_file">
+  <div id="quota">
+    <%= current_user.upload_quota_used %> MB
+  </div>
+  <h3>Select an uploaded file</h3>
+  <ul id="files">
+    <% @files.each do |user_file|
+      class_str = ""
+      if params[:file_id].present? && user_file.id == params[:file_id].to_i
+        class_str = "selected"
+      end
+    %>
+      <li class="<%= class_str %>">
+        <%= user_file.file_name %>
+        <% if user_file.is_an_image? %>
+        -
+        <img src="<%= user_file.file_path %>" />
+        <% end %>
+        -
+        Uploaded <%= time_ago_in_words(user_file.created_at) %> ago
+        -
+        <%= link_to "Select", {:action => :create, :file_id => user_file.id}, :method => :post %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

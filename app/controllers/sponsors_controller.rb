@@ -4,11 +4,26 @@ class SponsorsController < ApplicationController
 
   def new
     @venue = Venue.find(params[:venue_id])
-    @sponsor = @venue.sponsors.new
 
-    respond_to do |format|
-      format.html
+    @sponsor = nil
+
+    ##
+    # Use a temporary sponsor if one exists, if not, create one.  This will
+    # make it easier for sponsors to add attachments
+    #
+    @venue.sponsors.each do |s|
+      if(s.temporary?)
+        @sponsor = s
+        break;
+      end
     end
+
+    if(@sponsor.nil?)
+      @sponsor = @venue.sponsors.new
+      @sponsor.save!()
+    end
+
+    redirect_to edit_venue_sponsor_path(@venue.id, @sponsor.id)
   end
 
   def edit

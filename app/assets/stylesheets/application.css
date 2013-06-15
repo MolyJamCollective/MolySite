@@ -33,10 +33,10 @@ input, label {
 }
 
 form #error_explanation {
-    
+
     text-align: left;
     margin: 10px auto;
-    
+
 }
 
 form #error_explanation h2 {
@@ -47,7 +47,7 @@ form #error_explanation h2 {
   background: #dd2d3d;
   text-align: left;
 }
-    
+
 form #error_explanation ul {
   color: #dd2d3d;
 }
@@ -75,7 +75,7 @@ fieldset {
 fieldset.small {
   padding-left: 5px;
 }
-  
+
 fieldset.small label,
 fieldset.small input {
   display: inline;
@@ -86,7 +86,7 @@ fieldset.small input {
 
 fieldset.actions {
   text-align: center;
-  
+
 }
 fieldset.actions input {
   display: inline-block;
@@ -132,8 +132,8 @@ fieldset.actions input {
   font-weight: bold;
   display: block;
 }
-  
-.alert .close {  
+
+.alert .close {
   text-transform: uppercase;
   font-weight: bold;
   vertical-align: middle;
@@ -148,4 +148,8 @@ fieldset.actions input {
   margin: 0 0 10px 0;
   padding: 5px 10px 5px 10px;
   text-align: center;
+}
+
+a.attachment_link {
+  margin-left: 14px;
 }

@@ -6,10 +6,11 @@
 
 <% @files.each do |user_file| %>
   <li>
-    <a href="<%= user_file.file_path %>"><%= user_file.file_path %></a> - <%= user_file.file_size %> MB
+    <a href="<%= user_file.file_path %>"><%= user_file.file_name %></a> - <%= user_file.file_size %> MB
   </li>
 <% end %>
 
+**
 <%= render "form" %>
 
 </ul>

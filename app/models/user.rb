@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
 	has_many :memberships
 	has_many :groups, :through => :memberships
-  has_many :user_file_uploads
+  has_many :user_file_uploads, :order => 'created_at DESC'
 
   	# Include default devise modules. Others available are:
   	# :omniauthable
