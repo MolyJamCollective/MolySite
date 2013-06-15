@@ -6,6 +6,13 @@ class UserFileUpload < ActiveRecord::Base
 
   mount_uploader :file_uploader, UserFileUploader
 
+  def file_name
+    if(file_path.nil?)
+      return ""
+    end
+    return file_path.split("/").last
+  end
+
   def is_an_image?
     return media_type.equals(:image)
   end
