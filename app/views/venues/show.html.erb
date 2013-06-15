@@ -18,7 +18,15 @@
 <aside class="map-wrap">
   <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
 </aside>
+
 <div class="no-bg">
+<% unless @venue.url.nil? %>
+  <br />
+  <aside>
+    <%= link_to "Sign Up!", @venue.url, class: "green-btn" %>
+  </aside>
+<% end %>
+
   <aside>
     <h3>Address</h3>
     <p>
@@ -34,7 +42,7 @@
           <span id="contactName"><%= host.name %></span><br/>
           <span id="contactTwitter">@<%= host.twitter_username if host.twitter_username %></span><br/>
         <% end %>
-        <%= mail_to @venue.email, nil, :encode => "javascript", :replace_at => "_at_", :replace_dot => "_dot_" %>
+        <%= mail_to @venue.email, nil, :encode => "javascript" %>
       </p>
   </aside>
   <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
