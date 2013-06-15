@@ -16,11 +16,26 @@
   }
 
   #files li {
-    /*border-bottom: 1px solid white;*/
     margin: 10px 0;
     padding: 10px 0;
+    border-bottom: 1px solid white;
+  }
+
+  #files li:last-child {
+    border: none;
+  }
+
+  #apology {
+    border: 1px solid green;
+    padding: 10px;
   }
 </style>
+<h2>Attach a file</h2>
+<p id="apology">
+  Sorry for the pop-up, we're working on some flashy styling.<br />
+  To attach a file, either link a remote path, upload a new file or select
+  a file you've previously uploaded.
+</p>
 <div id="attach_file" class="clearfix">
   <div>
     <h3>Remote file:</h3>
@@ -47,8 +62,11 @@
   <ul id="files">
     <% @files.each do |user_file| %>
       <li>
-        TODO render a user facing asset here
-        <a href="<%= user_file.file_path %>"><%= user_file.file_path %></a>
+        <%= user_file.file_name %>
+        <% if user_file.is_an_image? %>
+        -
+        <img src="<%= user_file.file_path %>" />
+        <% end %>
         -
         <%= link_to "Select", {:action => :create, :file_id => user_file.id}, :method => :post %>
       </li>

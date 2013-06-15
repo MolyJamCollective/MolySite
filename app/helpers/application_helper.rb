@@ -23,7 +23,7 @@ module ApplicationHelper
 
     # TODO use javascript to do this in a sexier way than a popup
     # Link to attachments popup
-    buffer.push(link_to "Add Attachment", new_attachment_path(:at_id => source_model.id, :at_type => source_model.class.to_s, :type_cd => attachment_type), :target => "_blank")
+    buffer.push(link_to "Add Attachment", new_attachment_path(:at_id => source_model.id, :at_type => source_model.class.to_s, :type_cd => attachment_type), :class => "attachment_link")
 
     return raw buffer.join('')
   end

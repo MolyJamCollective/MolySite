@@ -14,7 +14,7 @@ class UserFileUpload < ActiveRecord::Base
   end
 
   def is_an_image?
-    return media_type.equals(:image)
+    return media_type == :image
   end
 
   def media_type
