@@ -115,6 +115,14 @@ body {
     color: white;
 }
 
+.main article ul {
+  padding-left: 22px;
+}
+
+.main article li {
+  list-style: disc;
+}
+
 /* ==============
     MOBILE: Menu
    ============== */
