@@ -25,10 +25,32 @@
     border: none;
   }
 
+  #quota {
+    float: right;
+    clear: both;
+  }
+
   #apology {
     border: 1px solid green;
     padding: 10px;
   }
+
+  #files li.selected {
+    -webkit-animation-name: selectedFileFlash;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 2;
+    -webkit-animation-direction: alternate;
+  }
+
+  @-webkit-keyframes selectedFileFlash {
+   from {
+     background: transparent;
+   }
+   to {
+     background: green;
+   }
+  }
+
 </style>
 <h2>Attach a file</h2>
 <p id="apology">
@@ -53,20 +75,30 @@
   </div>
   <div>
     <h3>Upload a file:</h3>
-      <%#= render "user_file_uploads/form" %>
+      <%= render "user_file_uploads/form" %>
   </div>
 </div>
 <% if @files.count > 0 %>
 <div id="select_file">
+  <div id="quota">
+    <%= current_user.upload_quota_used %> MB
+  </div>
   <h3>Select an uploaded file</h3>
   <ul id="files">
-    <% @files.each do |user_file| %>
-      <li>
+    <% @files.each do |user_file|
+      class_str = ""
+      if params[:file_id].present? && user_file.id == params[:file_id].to_i
+        class_str = "selected"
+      end
+    %>
+      <li class="<%= class_str %>">
         <%= user_file.file_name %>
         <% if user_file.is_an_image? %>
         -
         <img src="<%= user_file.file_path %>" />
         <% end %>
+        -
+        Uploaded <%= time_ago_in_words(user_file.created_at) %> ago
         -
         <%= link_to "Select", {:action => :create, :file_id => user_file.id}, :method => :post %>
       </li>

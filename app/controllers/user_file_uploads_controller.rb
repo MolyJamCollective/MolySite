@@ -27,7 +27,14 @@ class UserFileUploadsController < ApplicationController
 
     log.file_size = 20 #todo find a way to get thie uploaded file size
     log.save!
-    redirect_to(user_file_uploads_url)
+
+    if(params[:attach_redirect].present?)
+      redirect_to(new_attachment_url(:file_id => log.id))
+    else
+      redirect_to(user_file_uploads_url)
+    end
+
+
   end
 
 end

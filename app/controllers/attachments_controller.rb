@@ -11,6 +11,10 @@ class AttachmentsController < ApplicationController
       :attachable_type => params[:at_type]
     }
 
+    @user_file_upload = UserFileUpload.new
+    @uploader = @user_file_upload.file_uploader
+    @uploader.success_action_redirect = user_file_uploads_upload_url(:attach_redirect => true)
+
     @files = current_user.user_file_uploads
   end
 
