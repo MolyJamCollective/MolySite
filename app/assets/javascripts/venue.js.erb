@@ -23,7 +23,7 @@ molydeux.location = (function($) {
                         address: "San Francisco, California",
                         data: "San Francisco, California"
                     });
-                } else {               
+                } else {
                     locations.push({
                         address: $('#streetAddress').text() + " " + $("#cityStateZip").text(),
                         data: '<div class="map-info"><h1>'+$(".venueName").html()+'</h1><p>'+$('#streetAddress').text()+ " " + $("#cityStateZip").text()+"</p></div>"
@@ -31,15 +31,15 @@ molydeux.location = (function($) {
                 }
             } else {
                 console.log("Locations: " + $('#locations-list .list li').length);
-                
+
                 $('#locations-list .list li').each(function(index, element) {
-                
+
                     var venueURL = $(element).find('a').first().attr('href');
-                    
+
                     //console.log($(element).parent());
-                    
+
                     console.log('venueURL: '+venueURL);
-                
+
                     locations.push({
                         address: $(element).find('.address').first().text(),
                         data: '<div class="map-info"><h1><a href="'+venueURL+'">'+$(element).find(".venueName").text()+'</a></h1><p>'+$(element).find('.address').first().text()+"</p></div>"
@@ -51,20 +51,21 @@ molydeux.location = (function($) {
             $('.map').gmap3('destroy').gmap3({
                 map: {
                     options: {
-                        maxZoom: 18,
-                        
+                        maxZoom: 6,
+                        minZoom: 2
+
                     }
                 },
                 marker: {
                     values: locations,
                     options: {
                         icon: that.makeIcon("<%= asset_path('venues/pixel-marker.png') %>", 20, 25),
-                        clickable: true, 
+                        clickable: true,
                     },
                     events: {
                       click: that.markerClickHandler
                     }
-                    
+
                 }
             }, "autofit");
         },
@@ -99,13 +100,13 @@ molydeux.location = (function($) {
                         name: "infowindow"
                     }
                 });
-                
-            map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng())); 
-            
-            if(map.getZoom() < 12) map.setZoom(12); 
-            
+
+            map.setCenter(new google.maps.LatLng(marker.position.lat(), marker.position.lng()));
+
+            if(map.getZoom() < 12) map.setZoom(12);
+
             console.log(context);
-            
+
             if (infowindow) {
                 infowindow.open(map, marker);
                 infowindow.setContent(context.data);
