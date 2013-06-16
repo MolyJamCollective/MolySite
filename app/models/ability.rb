@@ -23,6 +23,8 @@ class Ability
       can :move_up, Sponsor
       can :move_down, Sponsor
 
+      can :manage, Attachment
+
       can :create, Venue
     end
 
