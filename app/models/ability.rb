@@ -29,8 +29,7 @@ class Ability
     end
 
     if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
-      can :create, UserFileUpload
-      can :show, UserFileUpload
+      can :manage, UserFileUpload, user_id: user.id
     end
 
     if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
