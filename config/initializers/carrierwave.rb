@@ -10,7 +10,7 @@ begin
       #host:                  's3.example.com',             # optional, defaults to nil
       #endpoint:              'https://s3.example.com:8080' # optional, defaults to nil
     }
-    config.fog_directory  = "#{fog_config["bucket"]}/uploads"
+    config.fog_directory   = fog_config["bucket"]
     #config.fog_public     = false                                   # optional, defaults to true
     #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   end
