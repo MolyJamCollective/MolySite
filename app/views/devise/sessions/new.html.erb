@@ -3,7 +3,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <fieldset>
-  <%= f.label :login %>
+  <%= f.label :login, "Username or e-mail" %>
   <%= f.text_field :login, :autofocus => true %>
   </fieldset>
   <fieldset>
