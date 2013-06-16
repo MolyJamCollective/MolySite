@@ -35,6 +35,19 @@ class Venue < ActiveRecord::Base
     Carmen::Country.coded(self.country).name
   end
 
+  def has_eventbrite?
+    return url.nil? == false && url.match(/eventbrite\.com.*eid/).nil? == false
+  end
+
+  # Returns a facebook or eventbrite id based on the url attribute
+  def remote_event_id
+    if(has_eventbrite?)
+      remote_params = CGI::parse(url.split("?").last)
+      return remote_params["eid"].first
+    end
+    return nil
+  end
+
   def hosts
     host_list = Array.new
 

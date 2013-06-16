@@ -111,8 +111,20 @@ body {
     margin-top: 30px;
 }
 
+.no-bg aside.venue_register {
+  padding-top: 10px;
+}
+
 .title {
     color: white;
+}
+
+.main article ul {
+  padding-left: 22px;
+}
+
+.main article li {
+  list-style: disc;
 }
 
 /* ==============
@@ -695,7 +707,7 @@ li h1,h2,h3,h4,h5{
                 box-shadow: 0 0px 8px #000;
     }
 
-    
+
 
 
 .no-bg aside {
