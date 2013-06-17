@@ -23,22 +23,28 @@
             :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
   <% end %>
 </article>
+<div class="map-container">
+  <div class="map-wrap">
+    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
+  </div>
+</div>
 
-<aside class="map-wrap">
-  <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
-</aside>
+<% unless @venue.url.nil? %>
+  <a href="<%= @venue.url %>" target="_blank">
+      <aside class="facebook-event-container">
+        <div class="facebook-event-area">
+          <% if @venue.has_eventbrite? %>
+            <img src="https://www.eventbrite.com/custombutton?eid=7028284789" alt="Eventbrite" /></a>
+          <% else %>
+            <img src="/assets/facebook.png" class="facebook-event-logo"/>
+            <p>Join the Facebook Event for this jam site and tell others you're coming!</p>
+          <% end %>
+        </div>
+      </aside>
+  </a>
+<% end %>
 
 <div class="no-bg">
-<% unless @venue.url.nil? %>
-  <br />
-  <aside class="venue_register">
-    <% if @venue.has_eventbrite? %>
-      <a href="<%= @venue.url %>" target="_blank"><img src="https://www.eventbrite.com/custombutton?eid=7028284789" alt="Eventbrite" /></a>
-    <% else %>
-      <%= link_to "Sign Up!", @venue.url, class: "green-btn" %>
-    <% end %>
-  </aside>
-<% end %>
 
   <aside>
     <h3>Address</h3>
