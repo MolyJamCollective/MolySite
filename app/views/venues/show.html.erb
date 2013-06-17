@@ -1,4 +1,4 @@
-<article>
+<article style="min-height: 800px">
   <% if can? :update, @venue %>
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
             :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
