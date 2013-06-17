@@ -25,7 +25,7 @@
 </article>
 <div class="map-container">
   <div class="map-wrap">
-    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
+    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, display_name, longitude, latitude")} do %><% end %>
   </div>
 </div>
 
