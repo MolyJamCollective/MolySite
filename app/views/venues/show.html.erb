@@ -58,8 +58,12 @@
     <h3>Contact</h3>
       <p>
         <% @venue.hosts.each do |host| %>
-          <span id="contactName"><%= host.name %></span><br/>
-          <span id="contactTwitter">@<%= host.twitter_username if host.twitter_username %></span><br/>
+          <span id="contactName"><%= host.name %></span><br />
+          <% if host.twitter_username.blank? == false %>
+            <span id="contactTwitter">
+              <a href="http://twitter.com/<%=host.twitter_username%>">@<%= host.twitter_username %></a>
+            </span><br/>
+          <% end %>
         <% end %>
         <%= mail_to @venue.email, nil, :encode => "javascript" %>
       </p>
