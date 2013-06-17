@@ -42,7 +42,7 @@ class Venue < ActiveRecord::Base
   end
 
   def address_changed?
-    self.street_changed? && self.city_changed? && self.state_changed? && self.country_changed?
+    self.street_changed? || self.city_changed? || self.display_name_changed? || self.state_changed? || self.country_changed?
   end
 
   def create_group
