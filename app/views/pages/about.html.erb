@@ -1,20 +1,20 @@
 <%= image_tag "molydeux.png", class: "img-full-width" %>
 <header>
   <h1 id="locationName">About Molyjam</h1>
-  <p>What Would Molydeux, affectionately referred to as “Molyjam,” is a 48 hour <a href="http://en.wikipedia.org/wiki/Game_jam" target="_blank">game jam</a> inspired by the works of  <a href="http://www.twitter.com/petermolydeux" target="_blank">@petermolydeux</a>, a loving parody of the legendary Game Designer, Peter Molyneux. It started in 2012 with <a href="https://twitter.com/doubleanna/status/179660697163137025" target="_blank">a tweet</a>.</p>
-  <p>Two and a half weeks later, on March 30th 2012, the jam was held in 32 cities worldwide. To learn more about how it all came together, please visit our <a href="#History">History</a> section.</p>
+  <p>What Would Molydeux, affectionately referred to as “Molyjam,” is a 48 hour <%= link_to "game jam", "http://en.wikipedia.org/wiki/Game_jam", target: "blank" %> inspired by the works of <%= link_to "@petermolydeux", "http://www.twitter.com/petermolydeux", target: "blank" %>, a loving parody of the legendary Game Designer, Peter Molyneux. It started in 2012 with <%= link_to "a tweet", "https://twitter.com/doubleanna/status/179660697163137025" %>.</p>
+  <p>Two and a half weeks later, on March 30th 2012, the jam was held in 32 cities worldwide. To learn more about how it all came together, please visit our <%= link_to "History", "#History" %> section.</p>
 </header>
 <hr/>
                     
 <section>
   <h2>2013 Jam</h2>
-  <p>The <span style="font-weight:bold">2013 Molyjam</span> will take place over the weekend of <span style="font-weight:bold">July 5th-7th</span> local time. Details coming soon!  Follow <a href="http://www.twitter.com/molyjam" target="_blank">@molyjam</a> on Twitter</p>
+  <p>The <span style="font-weight:bold">2013 Molyjam</span> will take place over the weekend of <span style="font-weight:bold">July 5th-7th</span> local time. Details coming soon!  Follow <%= link_to "@molyjam", "http://www.twitter.com/molyjam", target: "blank" %> on Twitter</p>
 </section>
 <hr/>
                    
 <section>
   <h2>Hosting a Jam Site</h2>
-  <p>We had over 30 locations worldwide last year, but we'd love to add more!  If you're interested in hosting, please contact us at <a href="mailto:organizers@molyjam.com">organizers@molyjam.com</a>.</p>
+  <p>We had over 30 locations worldwide last year, but we'd love to add more!  If you're interested in hosting, please contact us at <%= mail_to "organizers@molyjam.com", nil, :encode => "javascript" %>.</p>
   <p>Here is what you'll need to provide as a host:</p>
   <ul>
     <li>workspace</li>
@@ -42,25 +42,25 @@
 
 <section>
   <h2>Sponsoring Molyjam</h2>
-  <p>Thanks to companies and individuals who support independent game development communities, our jam participants are able to have access to free food and snacks, cheap or free jam locations, temporary development licenses, and more. If you would like to become our esteemed sponsor, please contact us at <a href="mailto:organizers@molyjam.com">organizers@molyjam.com</a>.</p>
+  <p>Thanks to companies and individuals who support independent game development communities, our jam participants are able to have access to free food and snacks, cheap or free jam locations, temporary development licenses, and more. If you would like to become our esteemed sponsor, please contact us at <%= mail_to "organizers@molyjam.com", nil, :encode => "javascript" %>.</p>
 </section>
 
 <section>
   <h2>History</h2>
   <p>Want to look back at last year's jam? Our friends in the press have you covered:</p>
   <ul>
-    <li><a href="http://www.gamasutra.com/view/news/167882/Postmortem_What_Would_Molydeux__a_global_game_jam.php" target="_blank">Postmortem: What Would Molydeux - a global game jam</a> (Gamasutra)</li>
-    <li><a href="http://www.gamasutra.com/view/news/188965/" target="_blank">Molyjam: How Twitter Can Save Video Games</a> (GDC 2012 talk)</li>
-    <li><a href="http://www.wired.com/gamelife/2012/10/ff-peter-molyneux/all/" target="_blank">How a Videogame God Inspired a Twitter Doppelgänger — and Resurrected His Career</a> (Wired)</li>
-    <li><a href="http://www.g4tv.com/thefeed/blog/post/722308/what-would-molydeux-how-one-tweet-started-a-revolution/" target="_blank">What Would Molydeux? - How One Tweet Started a Revolution</a> (G4)</li>
-    <li><a href="http://www.joystiq.com/2012/04/02/how-game-design-works-doesnt-work-a-lesson-from-the-what-wo/" target="_blank">How Game Design Works / Doesn't Work: A Lesson From the 'What Would Molydeux?' Gamejam</a> (Joystiq)</li>
-    <li><a href="http://www.eurogamer.net/articles/2012-04-05-what-would-molydeux" target="_blank">What Would Molydeux?</a> (Eurogamer)</li>
-    <li><a href="http://kotaku.com/5898401/play-more-than-200-ridiculous-peter-molydeux-games-right-now?tag=molyjam-2012" target="_blank">Play More Than 200 Ridiculous Peter Molydeux Games Right Now</a> (Kotaku)</li>
+    <li><%= link_to "Postmortem: What Would Molydeux - a global game jam", "http://www.gamasutra.com/view/news/167882/Postmortem_What_Would_Molydeux__a_global_game_jam.php", target: "blank" %> (Gamasutra)</li>
+    <li><%= link_to "Molyjam: How Twitter Can Save Video Games", "http://www.gamasutra.com/view/news/188965/", target: "blank" %> (GDC 2012 talk)</li>
+    <li><%= link_to "How a Videogame God Inspired a Twitter Doppelgänger — and Resurrected His Career", "http://www.wired.com/gamelife/2012/10/ff-peter-molyneux/all/", target: "blank" %> (Wired)</li>
+    <li><%= link_to "What Would Molydeux? - How One Tweet Started a Revolution", "http://www.g4tv.com/thefeed/blog/post/722308/what-would-molydeux-how-one-tweet-started-a-revolution/", target: "blank" %> (G4)</li>
+    <li><%= link_to "How Game Design Works / Doesn't Work: A Lesson From the 'What Would Molydeux?' Gamejam", "http://www.joystiq.com/2012/04/02/how-game-design-works-doesnt-work-a-lesson-from-the-what-wo/", target: "blank" %> (Joystiq)</li>
+    <li><%= link_to "What Would Molydeux?", "http://www.eurogamer.net/articles/2012-04-05-what-would-molydeux", target: "blank" %> (Eurogamer)</li>
+    <li><%= link_to "Play More Than 200 Ridiculous Peter Molydeux Games Right Now", "http://kotaku.com/5898401/play-more-than-200-ridiculous-peter-molydeux-games-right-now?tag=molyjam-2012", target: "blank" %> (Kotaku)</li>
   </ul>
 </section>
 <hr/>
 
  <footer>
   <h3>Press Inquiries</h3>
-  <p>Writing about the Molyjam and want to ask us some questions? Get in touch here.</p>
+  <p>Writing about the Molyjam and want to ask us some questions? Get in touch with <%= mail_to "organizers@molyjam.com", nil, :encode => "javascript" %>.</p>
 </footer>
