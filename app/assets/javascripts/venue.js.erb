@@ -1,5 +1,5 @@
 /*
- * Location Sorting
+ * Venue Sorting and Mapping
  */
 var options = {
     valueNames: ['name', 'description', 'category', 'country']
@@ -18,12 +18,7 @@ molydeux.location = (function($) {
             console.log($('#locations-list'));
             var locations = new Array();
             if ($('#locations-list').length == 0) {
-                if ($('#streetAddress').length == 0) {
-                    locations.push({
-                        address: "San Francisco, California",
-                        data: "San Francisco, California"
-                    });
-                } else {
+                if ($('#streetAddress').length != 0) {
                     locations.push({
                         address: $('#streetAddress').text() + " " + $("#cityStateZip").text(),
                         data: '<div class="map-info"><h1>'+$(".venueName").html()+'</h1><p>'+$('#streetAddress').text()+ " " + $("#cityStateZip").text()+"</p></div>"
@@ -53,7 +48,6 @@ molydeux.location = (function($) {
                     options: {
                         maxZoom: 6,
                         minZoom: 2
-
                     }
                 },
                 marker: {
