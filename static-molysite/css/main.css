@@ -325,7 +325,7 @@ section ul{
     margin-bottom: 30px;
 }
 
-.main .facebook-event-container:hover{
+.main .facebook-event-container:hover, .main .download-link:hover{
   background-color: #666666;
 }
 
@@ -499,6 +499,112 @@ footer p{
 
 .green{
   color: #51c844;
+}
+
+
+
+
+
+
+
+
+.download-area aside{
+  background-color: ##555555;
+  border-width: 0px;
+  padding: 10px 4%;
+  margin-bottom: 10px;
+  float: right;
+  position: relative;
+}
+
+.download-link img{
+  float: right;
+  width: 15%;
+
+}
+
+.download-link p{
+  float:left;
+  position: absolute;
+  top: 30%;
+  font-size: 1.2em;
+}
+
+
+.html_carousel {
+}
+.html_carousel div.slide {
+  position: relative;
+} 
+.html_carousel div.slide img {
+  width: 100%;
+  height: 100%;
+}
+.html_carousel div.slide div {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+.html_carousel div.slide h1 {
+  font-size: 35px;
+  padding: 30px 0 0 100px;
+}
+.html_carousel div.slide p {
+  font-size: 16px;
+  padding: 0 0 30px 100px;
+}
+.html_carousel div.slide h1, .html_carousel div.slide p {
+  color: white;
+  margin: 0;
+}
+
+#header-image{
+    position: relative;
+    padding-bottom: 25%;
+    height: 0;
+    overflow: hidden;
+    z-index: 1;
+    
+    filter: alpha(opacity = 0); /* required for opacity to work in IE */
+    webkit-filter: blur(5px); filter: url(#blur-effect-1); 
+    
+}
+
+
+#css-filter-blur { margin: 0px;
+  -webkit-transition: all 0.3s ease-out; 
+     -moz-transition: all 0.3s ease-out; 
+      -ms-transition: all 0.3s ease-out; 
+       -o-transition: all 0.3s ease-out; 
+          transition: all 0.3s ease-out;
+ }
+
+.stretch {
+    width:100%;
+}
+
+.game-title{
+  z-index: 4;
+  position: absolute;
+  margin-top: -125px;
+  font-size: 2.8em;
+  /* Fallback for web browsers that doesn't support RGBa */
+  background: rgb(0, 0, 0);
+  /* RGBa with 0.6 opacity */
+  background: rgba(0, 0, 0, 0.75);
+  padding: 30px 20px;
+  border-top: 10px solid #51c844;
+}
+
+
+
+.info-category{
+  float: left;
+}
+.info-fill{
+  float:right;
 }
 
 /* ==========================================================================
