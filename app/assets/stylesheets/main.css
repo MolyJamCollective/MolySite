@@ -148,6 +148,10 @@ body {
   list-style: disc;
 }
 
+.main #locations-list ul li {
+  list-style: none;
+}
+
 /* ==============
     MOBILE: Menu
    ============== */
