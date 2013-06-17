@@ -49,9 +49,9 @@
   <aside>
     <h3>Address</h3>
     <p>
-      <span id="venueName" class="venueName"><%= @venue.name %></span><br/>
-      <span id="streetAddress"><%= @venue.street %></span><br/>
-      <span id="cityStateZip"><%= @venue.city %>, <%= @venue.state %>, <%= @venue.country_name %></span><br/>
+      <% unless @venue.name.empty? %><span id="venueName" class="venueName"><%= @venue.name %></span><br/><% end %>
+      <% unless @venue.address_street.empty? %><span id="streetAddress"><%= @venue.address_street %></span><br/><% end %>
+      <span id="cityStateZip"><%= @venue.address_city_state_zip %></span><br/>
     </p>
   </aside>
   <aside>
