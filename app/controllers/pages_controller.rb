@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def dashboard
     authorize! :dashboard, :page
 
-    @users_last5 = User.find(:all, order: "id DESC", limit: 5)
+    @users = User.find(:all, order: "id DESC")
 
     respond_to do |format|
       format.html

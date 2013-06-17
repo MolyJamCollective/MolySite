@@ -18,7 +18,7 @@ class Venue < ActiveRecord::Base
   end
 
   def address
-    [self.street, self.city, self.state, self.country].compact.join(', ')
+    [self.street, self.city, self.state, self.country_name].compact.join(', ')
   end
 
   def address_changed?

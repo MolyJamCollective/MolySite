@@ -16,7 +16,7 @@ class Ability
 
     if(user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
       user.groups.each do |group|
-        can :manage, Venue, group_id: group.id
+        can [:read, :update, :destroy], Venue, group_id: group.id
       end
 
       can :manage, Sponsor
