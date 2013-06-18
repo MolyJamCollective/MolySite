@@ -1,0 +1,35 @@
+  <header>
+    <h2>User Administration</h2>
+  </header>
+  
+  <section>
+    <div id="contacts">
+      <table>
+        <thead>
+            <tr>
+                <th class="sort" data-sort="id">ID</th>
+                <th class="sort" data-sort="name">Name</th>
+                <th class="sort" data-sort="email">Email</th>
+                <th class="sort" data-sort="role">Role</th>
+                <th>
+                    <input type="text" class="search" placeholder="Search by Name or Email" />
+                </th>
+            </tr>
+        </thead>
+        <tbody class="list">
+          
+         <% @users.each do |user| %>
+          <tr>
+            <td class="id"><%= user.id %></td>
+            <td class="name"><%= user.name %></td>
+            <td class="email"><%= user.email %></td>
+            <td class="role"><%= user.role %></td>
+            <td class="edit"><%= link_to "Edit", edit_user_path(user), class: "btn" %></td>
+          </tr>
+        <% end %>
+        </tbody>
+    </table>
+  </div>
+  </section>
+
+  <div class="admin-panel-closer" id="admin-user-link-close">Collapse User Administration</div>

@@ -1,0 +1,48 @@
+<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, display_name, longitude, latitude")} do %>
+<% end %>
+
+<article>
+  <div class="c1">
+    <div id="locations-list">
+      <ul class="sort-by">
+        <li class="sort btn" data-sort="name">Sort by City</li>
+        <li class="sort btn" data-sort="country">Sort by Country</li>
+      </ul>
+      <ul class="list">
+        <% @venues.each do |venue| %>
+          <% if can?(:approve, venue) || venue.approved %>
+            <li>
+              <%= link_to venue do %>
+                <span class="flag-icon"><%= image_tag "flags/#{venue.country}.png" %></span>
+                <h4><span class="name"><%= venue.display_name %></span><span class="category"><%= venue.region %></span></h4>
+                <h5><span class="country"><%= venue.country_name %></span></h5>
+                <span class="venueName hidden"><%= venue.display_name %></span>
+                <span class="address hidden"><%= venue.address %></span>
+                <% if can? :approve, venue %>
+                  <span>Status: <%= venue.approved ? "Approved" : "Pending" %></span>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</article>
+        
+<aside>
+  <h3>Region Filter</h3>
+  <ul class="filter">
+    <li class="btn filter" data-category="none">Show all</li>
+    <li class="btn filter" data-category="Australia">Only Australia</li>
+    <li class="btn filter" data-category="North America">Only North America</li>
+    <li class="btn filter" data-category="South America">Only South America</li>
+    <li class="btn filter" data-category="Europe">Only Europe</li>
+    <li class="btn filter" data-category="Asia">Only Asia</li>
+  </ul>
+
+  <hr />
+
+  <h3>Want to host a jam site?</h3>
+  <p>We'd love to hear from you! <%= link_to "Click here", about_path %> for more information about what it takes to host a jam, and how you can get in touch with us to make it official on the website.</p>
+</aside>

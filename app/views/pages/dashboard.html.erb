@@ -1,0 +1,28 @@
+<article>
+  <header>
+    <h2>Dashboard</h2>
+  </header>
+  <section>
+  	<p>
+    <%= link_to "Logout", logout_path %><br />
+  	<%= link_to "Edit Profile", edit_user_path(current_user) %><br />
+  	<%= link_to "Change Password/Email", edit_user_registration_path %>
+  	</p>
+  </section>
+</article>
+<hr/>
+
+<% if current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+  <div class="admin-panel-expander" id="admin-user-link">User Administration</div>
+  <div id="admin-user-section" class="admin-panel" style="display:none">
+  	<%= render "admin_user"%>
+  </div>
+  <hr/>
+<% end %>
+
+<% if current_user.group?(:Hosts) || current_user.group?(:Organizers) || current_user.group?(:Webmasters) %>
+  <div class="admin-panel-expander" id="admin-venue-link">Venue Administration</div>
+  <div id="admin-venue-section" class="admin-panel" style="display: none">
+  	<%= render "admin_venue"  %>
+  </div>
+<% end %>

@@ -1,0 +1,81 @@
+.map-info {
+  width: auto;
+  padding: 0px;
+  color: #222;
+  max-width: 240px;
+}
+
+.map-info h1 {
+  color: #222;
+  margin: 0px 0px 3px 0px;
+}
+
+.map-info h1 a {
+  color: #50c747;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.map-info h1 a:hover {
+  color: #56d64c;
+}
+
+.map-info p {
+  margin: 0px 0px 3px 0px;
+}
+
+.new_venue, .edit_venue, .button_to, .edit_user{
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+  float: left;
+}
+
+.new_venue .field, .edit_venue .field{
+  float: right;
+  width: 45%;
+  margin-bottom: 30px;
+}
+
+.new_venue, .edit_venue, .edit_user .field-full{
+  width: 100%;
+  max-width: 100%;
+}
+
+.small-text{
+  font-size: 0.7em;
+  line-height: 1.0em;
+}
+
+.form-instruction{
+  float: left;
+  width: 48%;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.form-section{
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.new_venue input[type="submit"], .edit_venue input[type="submit"], .edit_user input[type="submit"] {
+  background: #50C747;
+  border: 0px;
+  cursor: pointer;
+  padding: 8px 14px 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  -webkit-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  -moz-box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  box-shadow: inset 0px 1px 0px #50C747, 0px 5px 0px 0px #3B9435;
+  display: inline;
+  margin-top: 5px;
+}
+
+.admin_panel{
+  background-color: #222222;
+  float: left;
+}

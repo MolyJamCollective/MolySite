@@ -1,0 +1,26 @@
+<%= form_for([@venue, @sponsor], :html => {:multipart => true}) do |f| %>
+  <% if @sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% @sponsor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3><%= f.label :name %></h3>
+    <%= f.text_field :name %>
+
+  <h3><%= f.label :website %></h3>
+    <%= f.text_field :url %>
+
+  <h3>Logo</h3>
+    <%= attachment_link(@sponsor, "sponsor") %>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn" %>
+  </div>
+<% end %>

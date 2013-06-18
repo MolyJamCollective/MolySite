@@ -1,0 +1,16 @@
+<div id="quota">
+  <%= current_user.upload_quota_used %> MB of <%= current_user.upload_quota %> MB
+</div>
+<br />
+<ul id="files">
+
+<% @files.each do |user_file| %>
+  <li>
+    <a href="<%= user_file.file_path %>"><%= user_file.file_name %></a> - <%= user_file.file_size %> MB
+  </li>
+<% end %>
+
+**
+<%= render "form" %>
+
+</ul>

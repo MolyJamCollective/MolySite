@@ -55,6 +55,13 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 .project
+*.DS_store*
 
-# Database Settings
+# Configuration Files
 config/database.yml
+config/newrelic.yml
+config/fog.yml
+config/environments/production.rb
+config/environments/staging.rb
+config/initializers/devise.rb
+

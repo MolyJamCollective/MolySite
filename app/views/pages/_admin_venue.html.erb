@@ -1,0 +1,46 @@
+  <header>
+    <h2>Venue Administration</h2>
+  </header>
+  <section>
+    
+ 
+    
+  </section>
+
+
+<section>
+	
+    <div id="venues">
+    	
+      <table>
+        <thead>
+            <tr>
+                <th class="sort" data-sort="venue-id">ID</th>
+                <th class="sort" data-sort="city">Display Name</th>
+                <th class="sort" data-sort="country">Country</th>
+                <th class="sort" data-sort="region">Region</th>
+                <th>
+                    <input type="text" class="search" placeholder="Search by City, Country, or Region" />
+                </th>
+            </tr>
+        </thead>
+        <tbody class="list">
+          
+         <% Venue.all.each do |venue| %>
+          <% if can? :update, venue %>
+            <tr>
+              <td class="venue-id"><%= venue.id %></td>
+              <td class="city"><%= venue.city %></td>
+              <td class="country"><%= venue.country %></td>
+              <td class="region"><%= venue.region %></td>
+              <td class="edit"><%= link_to "Edit", edit_venue_path(venue), class: "btn" %></td>
+            </tr>
+          <% end %> 
+        <% end %>
+        </tbody>
+    </table>
+  </div>
+  <p><%= link_to "New Venue", new_venue_path, class: "green-btn" %></p>
+  </section>
+
+  <div class="admin-panel-closer" id="admin-venue-link-close">Collapse Venue Administration</div>

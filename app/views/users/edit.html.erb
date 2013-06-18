@@ -1,0 +1,59 @@
+<h2>Editing "<%= @user.name.to_s.humanize %>"'s Profile</h2>
+
+
+<% if can?(:create, Membership) || can?(:destroy, Membership) %>
+  <section class="admin_panel">
+    <h3>Group Management</h3>
+    <% #TODO Clean up view, this code is gross %>
+    <% webmasters_group = Group.where(name: :Webmasters).first %>
+    <% organizers_group = Group.where(name: :Organizers).first %>
+    <% hosts_group = Group.where(name: :Hosts).first %>
+
+    <%= button_to("Add to Webmasters", memberships_path(membership:{user_id: @user.id, group_id: webmasters_group.id}), method: :post) if can?(:create, Membership) && !@user.group?(:Webmasters) %>
+    <%= button_to("Remove from Webmasters", Membership.where(user_id: @user.id, group_id: webmasters_group.id).first, method: :delete) if can?(:destroy, Membership) && @user.group?(:Webmasters) %>
+
+    <%= button_to("Add to Organizers", memberships_path(membership:{user_id: @user.id, group_id: organizers_group.id}), method: :post) if can?(:create, Membership) && !@user.group?(:Organizers) %>
+    <%= button_to("Remove from Organizers", Membership.where(user_id: @user.id, group_id: organizers_group.id).first, method: :delete) if can?(:destroy, Membership) && @user.group?(:Organizers) %>
+
+    <%= button_to("Add to Hosts", memberships_path(membership:{user_id: @user.id, group_id: hosts_group.id}), method: :post) if can?(:create, Membership) && !@user.group?(:Hosts) %>
+    <%= button_to("Remove from Hosts", Membership.where(user_id: @user.id, group_id: hosts_group.id).first, method: :delete) if can?(:destroy, Membership) && @user.group?(:Hosts) %>
+    
+  </section>
+<% end %>
+
+<% #TODO: Ability for user to leave group %>
+
+<%= form_for(@user, url: {action: "update"}, html: { method: :put }) do |f| %>
+
+
+  <fieldset class="field-full">
+    <p>These sections are all <b>optional</b>, but will be displayed next to your games!</p>
+    <p><h3><%= f.label :name %></h3>
+    <%= f.text_field :name %></p>
+
+    <p><h3><%= f.label :twitter_username %></h3>
+    <span style="float:left">@</span><%= f.text_field :twitter_username %></p>
+
+    <hr/>
+    <p>These sections are also <b>optional</b>, but only appear on your profile page!</p>
+    <p><h3><%= f.label :location %></h3>
+    <%= f.text_field :location %></p>
+
+    <p><h3><%= f.label :website %></h3>
+    <%= f.url_field :website %></p>
+
+    <p><h3><%= f.label :biography %></h3>
+    <%= f.text_area :biography %></p>
+  </fieldset>
+
+  
+
+  <fieldset>
+    <%= f.submit "Update", class: "btn" %>
+  </fieldset>
+
+  <fieldset>
+    <p><%= link_to "Back", :back %></p>
+  </fieldset>
+<% end %>
+

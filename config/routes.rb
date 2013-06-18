@@ -1,58 +1,47 @@
 MolySite::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :events
+  resources :venues do
+    post 'approve'
+    resources :sponsors do
+      put 'move_up'
+      put 'move_down'
+    end
+  end
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :users, only: [:index, :show, :edit, :update]
+  resources :groups, only: [:show, :edit, :update]
+  resources :memberships, only: [:create, :destroy]
+  resources :mail_forwarder, only: :create
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :attachments, only: [:create, :new]
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  get '/user_file_uploads' => 'user_file_uploads#index'
+  get '/user_file_uploads/upload' => 'user_file_uploads#upload'
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+  match '/news' => 'pages#news'
+  match '/about' => 'pages#about'
+  match '/dashboard' => 'pages#dashboard'
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  # Devise Routes
+  devise_for :users, :skip => [:sessions, :registrations, :passwords, :confirmations, :unlocks]
+  as :user do
+    get '/login' => 'devise/sessions#new', :as => :new_user_session
+    post '/login' => 'devise/sessions#create', :as => :user_session
+    delete '/logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get '/logout' => 'devise/sessions#destroy'
+    resource :registration,
+      only: [:new, :create, :edit, :update],
+      path: 'user',
+      path_names: { new: 'sign_up' },
+      controller: 'devise/registrations',
+      as: :user_registration do
+        get :cancel
+    end
+    resource :passwords,      only: [:new, :create, :edit, :update],  path: 'user/password',      controller: 'devise/passwords',       as: 'user_password'
+    resource :confirmations,  only: [:new, :create, :show],           path: 'user/confirmation',  controller: 'devise/confirmations',   as: 'user_confirmation'
+    resource :unlocks,        only: [:new, :create, :show],           path: 'user/unlock',        controller: 'devise/unlocks',         as: 'user_unlock'
+  end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

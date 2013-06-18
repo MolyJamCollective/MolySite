@@ -1,0 +1,100 @@
+<article style="min-height: 800px">
+  <% if can? :update, @venue %>
+  <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
+            :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
+  <% end %>
+
+  <header>
+    <h1 id="locationName"><%= @venue.display_name %></h1>
+  </header>
+
+  <%= raw(@venue.description) %>
+
+  <% if @venue.has_eventbrite? %>
+    <hr />
+    <h3>Get Tickets</h3>
+    <p>
+      <div style="width:100%; text-align:left;" ><iframe  src="https://www.eventbrite.com/tickets-external?eid=<%= @venue.remote_event_id %>&ref=etckt&v=2" frameborder="0" height="214" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com/r/etckt">Event management</a><span style="color:#ddd;"> for </span><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://molyjamto.eventbrite.com?ref=etckt">Molyjam 2013</a> <span style="color:#ddd;">powered by</span> <a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com?ref=etckt">Eventbrite</a></div></div>
+    </p>
+  <% end %>
+
+  <% if can? :update, @venue %>
+  <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
+            :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
+  <% end %>
+</article>
+<div class="map-container">
+  <div class="map-wrap">
+    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, display_name, longitude, latitude")} do %><% end %>
+  </div>
+</div>
+
+<% unless @venue.url.nil? %>
+  <a href="<%= @venue.url %>" target="_blank">
+      <aside class="facebook-event-container">
+        <div class="facebook-event-area">
+          <% if @venue.has_eventbrite? %>
+            <img src="https://www.eventbrite.com/custombutton?eid=7028284789" alt="Eventbrite" /></a>
+          <% else %>
+            <img src="/assets/facebook.png" class="facebook-event-logo"/>
+            <p>Join the Facebook Event for this jam site and tell others you're coming!</p>
+          <% end %>
+        </div>
+      </aside>
+  </a>
+<% end %>
+
+<div class="no-bg">
+
+  <aside>
+    <h3>Address</h3>
+    <p>
+      <span id="venueName" class="venueName"><%= @venue.name %></span><% unless @venue.name.empty? %><br/><% end %>
+      <span id="streetAddress"><%= @venue.address_street %></span><% unless @venue.name.empty? %><br/><% end %>
+      <span id="cityStateZip"><%= @venue.address_city_state_zip %></span><br/>
+    </p>
+  </aside>
+  <aside>
+    <h3>Contact</h3>
+      <p>
+        <% @venue.hosts.each do |host| %>
+          <span id="contactName"><%= host.name %></span><br />
+          <% if host.twitter_username.blank? == false %>
+            <span id="contactTwitter">
+              <a href="http://twitter.com/<%=host.twitter_username%>">@<%= host.twitter_username %></a>
+            </span><br/>
+          <% end %>
+        <% end %>
+        <%= mail_to @venue.email, nil, :encode => "javascript" %>
+      </p>
+  </aside>
+  <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
+    <aside>
+      <h3>Sponsors</h3>
+      <div class="admin-insert"><%= link_to "Add", new_venue_sponsor_path(@venue) %></div>
+    </aside>
+  <% elsif !@venue.sponsors.empty? %>
+    <aside>
+      <h3>Sponsors</h3>
+        <p>
+          <% sponsors_list = @venue.sponsors.sort{ |x,y| x.rank <=> y.rank } %>
+          <% sponsors_list.each do |sponsor| %>
+            <%
+            if(sponsor.temporary? && can?(:edit, Sponsor) == false)
+              next
+            end
+            %>
+
+            <%= sponsor_tag(sponsor) %>
+
+            <% if can?(:update || :destroy, sponsor) %>
+              <div class="admin-insert">
+                <%= link_to("Edit", edit_venue_sponsor_path(@venue, sponsor)) if can? :update, sponsor %> - <%= link_to("Remove", venue_sponsor_path(@venue, sponsor), :confirm => 'Are you sure?', :method => :delete) if can? :destroy, sponsor %> - <%= link_to("Up", venue_sponsor_move_up_path(@venue, sponsor), method: :put) if can? :move_up, sponsor %> - <%= link_to("Down", venue_sponsor_move_down_path(@venue, sponsor), method: :put) if can? :move_down, sponsor %>
+              </div>
+            <% end %>
+          <% end %>
+          <%= content_tag("div", class: "admin-insert") do link_to("Add", new_venue_sponsor_path(@venue)) end if can?(:create, Sponsor) && can?(:update, @venue) %>
+        </p>
+    </aside>
+  <% end %>
+</div>

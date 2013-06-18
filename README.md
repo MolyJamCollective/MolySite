@@ -55,6 +55,12 @@ git push -u origin develop
 # > Enter password
 ```
 
+### Installing Gem Dependencies
+The gem paperclip requires ```imagemagick``` to be installed. For OSX installation:
+```shell
+brew install imagemagick
+```
+
 ### Setup Database
 Now you must config and setup your database settings. Copy over the example configuration, edit it if necessary and allow rails to setup the database.
 ```shell
@@ -62,6 +68,14 @@ cp config/database.yml.example config/database.yml
 # Edit config/database.yml if needed
 rake db:setup
 ```
+
+### Setup Amazon S3 uploader using Fog
+The user file uploader and attachments system requires
+```shell
+cp config/fog.yml.example config/fog.yml
+# Edit config/fog.yml if needed (optional)
+```
+
 
 ### Test Application
 Everything should be up and working at this point, to start the rails app server run `rails s` and navigate to [http://localhost:3000/](http://localhost:3000/)

@@ -1,0 +1,21 @@
+<h1><%= @group.name %></h1>
+<p><%= @group.description %></p>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rank</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @memberships.each do |membership| %>
+  	  <tr>
+  	    <td><%= membership.user.name %></td>
+  	    <td><%= Membership::ROLES.invert[membership.role].to_s.titleize %></td>
+  	  </tr>
+  	<% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back", :back, class: "btn" %>
