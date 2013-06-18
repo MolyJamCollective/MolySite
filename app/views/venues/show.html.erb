@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<% unless @venue.url.nil? %>
+<% unless @venue.url.empty? %>
   <a href="<%= @venue.url %>" target="_blank">
       <aside class="facebook-event-container">
         <div class="facebook-event-area">
