@@ -1,4 +1,4 @@
-<article>
+<article style="min-height: 800px">
   <% if can? :update, @venue %>
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
             :confirm => 'Are you sure?', :method => :delete %> - <%= link_to "Approve", venue_approve_path(@venue), method: :post if can?(:approve, @venue)&& !@venue.approved %><br />Status: <%= @venue.approved ? "Approved" : "Pending" %></div>
@@ -25,7 +25,7 @@
 </article>
 <div class="map-container">
   <div class="map-wrap">
-    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, name, longitude, latitude")} do %><% end %>
+    <%= content_tag "div", class: "map", data: {venues: Venue.find(@venue.id, select: "id, display_name, longitude, latitude")} do %><% end %>
   </div>
 </div>
 
@@ -49,17 +49,21 @@
   <aside>
     <h3>Address</h3>
     <p>
-      <span id="venueName" class="venueName"><%= @venue.name %></span><br/>
-      <span id="streetAddress"><%= @venue.street %></span><br/>
-      <span id="cityStateZip"><%= @venue.city %>, <%= @venue.state %>, <%= @venue.country_name %></span><br/>
+      <span id="venueName" class="venueName"><%= @venue.name %></span><% unless @venue.name.empty? %><br/><% end %>
+      <span id="streetAddress"><%= @venue.address_street %></span><% unless @venue.name.empty? %><br/><% end %>
+      <span id="cityStateZip"><%= @venue.address_city_state_zip %></span><br/>
     </p>
   </aside>
   <aside>
     <h3>Contact</h3>
       <p>
         <% @venue.hosts.each do |host| %>
-          <span id="contactName"><%= host.name %></span><br/>
-          <span id="contactTwitter">@<%= host.twitter_username if host.twitter_username %></span><br/>
+          <span id="contactName"><%= host.name %></span><br />
+          <% if host.twitter_username.blank? == false %>
+            <span id="contactTwitter">
+              <a href="http://twitter.com/<%=host.twitter_username%>">@<%= host.twitter_username %></a>
+            </span><br/>
+          <% end %>
         <% end %>
         <%= mail_to @venue.email, nil, :encode => "javascript" %>
       </p>

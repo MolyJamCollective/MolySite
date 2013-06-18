@@ -18,11 +18,31 @@ class Venue < ActiveRecord::Base
   end
 
   def address
-    [self.street, self.city, self.state, self.country_name].compact.join(', ')
+    address = ""
+    address << self.street
+    address << ', ' unless address.empty? || address[-2, 2] == ', '
+    address << (self.city.empty? ? self.display_name : self.city)
+    address << ', ' unless address.empty? || address[-2, 2] == ', '
+    address << self.state
+    address << ', ' unless address.empty? || address[-2, 2] == ', '
+    address << self.country_name
+  end
+
+  def address_street
+    self.street
+  end
+
+  def address_city_state_zip
+    address = ""
+    address << (self.city.empty? ? self.display_name : self.city)
+    address << ', ' unless address.empty? || address[-2, 2] == ', '
+    address << self.state
+    address << ', ' unless address.empty? || address[-2, 2] == ', '
+    address << self.country_name
   end
 
   def address_changed?
-    self.street_changed? && self.city_changed? && self.state_changed? && self.country_changed?
+    self.street_changed? || self.city_changed? || self.display_name_changed? || self.state_changed? || self.country_changed?
   end
 
   def create_group
