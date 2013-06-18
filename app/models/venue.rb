@@ -11,7 +11,7 @@ class Venue < ActiveRecord::Base
 
   after_create :create_group
 
-  REGIONS = ["Australia", "North America", "South America", "Europe", "Asia"]
+  REGIONS = ["Oceania", "North America", "South America", "Europe", "Asia"]
 
   def email
     "#{self.display_name.gsub(/\s+/, "")}@MolyJam.com"
