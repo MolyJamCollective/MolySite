@@ -1,4 +1,11 @@
-<%= content_tag "div", class: "map", data: {venues: Venue.find(:all, select: "id, display_name, longitude, latitude")} do %>
+<% 
+  map_data = Array.new 
+  @venues.each do |venue| 
+    venue_map_data = "<div class=\"map-info\"><h1><a href=\"#{venue_path(venue)}\">#{venue.display_name}</a></h1><p>#{venue.address}</p></div>"
+    map_data.push({latLng: [venue.latitude, venue.longitude], data: venue_map_data})
+  end
+%>
+<%= content_tag "div", class: "map", "data-venues" => map_data.to_json do %>
 <% end %>
 
 <article>
@@ -16,8 +23,6 @@
                 <span class="flag-icon"><%= image_tag "flags/#{venue.country}.png" %></span>
                 <h4><span class="name"><%= venue.display_name %></span><span class="category"><%= venue.region %></span></h4>
                 <h5><span class="country"><%= venue.country_name %></span></h5>
-                <span class="venueName hidden"><%= venue.display_name %></span>
-                <span class="address hidden"><%= venue.address %></span>
                 <% if can? :approve, venue %>
                   <span>Status: <%= venue.approved ? "Approved" : "Pending" %></span>
                 <% end %>
