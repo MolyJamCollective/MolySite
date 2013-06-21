@@ -41,11 +41,11 @@
   <h3>Region Filter</h3>
   <ul class="filter">
     <li class="btn filter" data-category="none">Show all</li>
-    <li class="btn filter" data-category="Oceania">Only Oceania</li>
-    <li class="btn filter" data-category="North America">Only North America</li>
-    <li class="btn filter" data-category="South America">Only South America</li>
-    <li class="btn filter" data-category="Europe">Only Europe</li>
-    <li class="btn filter" data-category="Asia">Only Asia</li>
+    <% unless Venue.where(region: "Oceania").empty? %><li class="btn filter" data-category="Oceania">Only Oceania</li><% end %>
+    <% unless Venue.where(region: "North America").empty? %><li class="btn filter" data-category="North America">Only North America</li><% end %>
+    <% unless Venue.where(region: "South America").empty? %><li class="btn filter" data-category="South America">Only South America</li><% end %>
+    <% unless Venue.where(region: "Europe").empty? %><li class="btn filter" data-category="Europe">Only Europe</li><% end %>
+    <% unless Venue.where(region: "Asia").empty? %><li class="btn filter" data-category="Asia">Only Asia</li><% end %>
   </ul>
 
   <hr />
