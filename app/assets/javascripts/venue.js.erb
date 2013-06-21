@@ -19,10 +19,8 @@ function clickEventHandler(marker, event, context)
     }
 }
 
-function buildMap()
+function buildMap(filterCategory)
 {
-    console.log("buildMap");
-
     // Exit on Map Div Element Not Found
     if($('.map').length == 0)
     {
@@ -35,62 +33,47 @@ function buildMap()
         return;
     }
 
-    var venues = $('.map').data('venues');
+    // Load Venue Data, Array of Hashes
+    var venues = $('.map').data('venues').slice();
 
-    if(venues.length > 1)
+    console.log(filterCategory)
+    // Filter
+    if(filterCategory != 'none')
     {
-        $(".map").gmap3(
+        for(var i = 0; i < venues.length; i++)
         {
-            map:
+            if(venues[i].category != filterCategory)
             {
-                options:
-                {
-                    maxZoom: 6,
-                    minZoom: 2
-                }
-            },
-            marker:
-            {
-                values: venues,
-                options:
-                {
-                    icon: "http://maps.google.com/mapfiles/marker_green.png",
-                    clickable: true
-                },
-                events:
-                {
-                    click: clickEventHandler
-                }
+                venues.splice(i, 1);
+                i--;
             }
-        }, "autofit");
+        }
     }
-    else
+
+    $(".map").gmap3('destroy').gmap3(
     {
-        $(".map").gmap3(
+        map:
         {
-            map:
+            options:
             {
-                options:
-                {
-                    maxZoom: 15,
-                    minZoom: 6
-                }
-            },
-            marker:
-            {
-                values: venues,
-                options:
-                {
-                    icon: "http://maps.google.com/mapfiles/marker_green.png",
-                    clickable: true
-                },
-                events:
-                {
-                    click: clickEventHandler
-                }
+                maxZoom: (venues.length > 1) ? 6 : 15,
+                minZoom: (venues.length > 1) ? 2 : 6
             }
-        }, "autofit");
-    }
+        },
+        marker:
+        {
+            values: venues,
+            options:
+            {
+                icon: "http://maps.google.com/mapfiles/marker_green.png",
+                clickable: true
+            },
+            events:
+            {
+                click: clickEventHandler
+            }
+        }
+    }, "autofit");
     
 }
 
@@ -100,8 +83,6 @@ var venueList = new List('locations-list', options);
 
 function filterList(event) 
 {
-    console.log("filterList");
-
     var target = event.target;
     var category = 'none';
     event.preventDefault();
@@ -124,12 +105,13 @@ function filterList(event)
             return false;
         }
     });
-    buildMap();
+
+    buildMap(category);
 }
 
 // Init
 $(document).ready(function()
 {
-    $('.btn.filter').click(filterList);
-    buildMap();
+    buildMap('none');
+    $(document).on('click', '.btn.filter', filterList);
 });
