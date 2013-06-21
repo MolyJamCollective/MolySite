@@ -3,6 +3,8 @@
  */
 
 // Mapping
+var mapIcon = new google.maps.MarkerImage("<%= asset_path('venues/pixel-marker.png').to_s %>", new google.maps.Size(25, 25, "px", "px"))
+
 function clickEventHandler(marker, event, context)
 {
     var map = $(this).gmap3("get")
@@ -65,7 +67,7 @@ function buildMap(filterCategory)
             values: venues,
             options:
             {
-                icon: "http://maps.google.com/mapfiles/marker_green.png",
+                icon: mapIcon,//"http://maps.google.com/mapfiles/marker_green.png",
                 clickable: true
             },
             events:
