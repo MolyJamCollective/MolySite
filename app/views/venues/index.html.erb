@@ -1,8 +1,10 @@
 <% 
   map_data = Array.new 
   @venues.each do |venue| 
-    venue_map_data = "<div class=\"map-info\"><h1><a href=\"#{venue_path(venue)}\">#{venue.display_name}</a></h1><p>#{venue.address}</p></div>"
-    map_data.push({latLng: [venue.latitude, venue.longitude], data: venue_map_data, category: venue.region })
+    if can?(:approve, venue) || venue.approved
+      venue_map_data = "<div class=\"map-info\"><h1><a href=\"#{venue_path(venue)}\">#{venue.display_name}</a></h1><p>#{venue.address}</p></div>"
+      map_data.push({latLng: [venue.latitude, venue.longitude], data: venue_map_data, category: venue.region })
+    end
   end
 %>
 <%= content_tag "div", class: "map", "data-venues" => map_data.to_json do %>
