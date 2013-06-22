@@ -30,8 +30,8 @@
           <% if can? :update, venue %>
             <tr>
               <td class="venue-id"><%= venue.id %></td>
-              <td class="city"><%= venue.city %></td>
-              <td class="country"><%= venue.country %></td>
+              <td class="city"><%= venue.display_name %></td>
+              <td class="country"><%= venue.country_name %></td>
               <td class="region"><%= venue.region %></td>
               <td class="edit"><%= link_to "Edit", edit_venue_path(venue), class: "btn" %></td>
             </tr>
