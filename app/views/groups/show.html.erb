@@ -1,21 +1,36 @@
-<h1><%= @group.name %></h1>
-<p><%= @group.description %></p>
+<h1><% @group.name %></h1>
+<p><% @group.description %></p>
 
-<table class="table table-hover">
+<table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Twitter</th>
       <th>Rank</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-  	<% @memberships.each do |membership| %>
-  	  <tr>
-  	    <td><%= membership.user.name %></td>
-  	    <td><%= Membership::ROLES.invert[membership.role].to_s.titleize %></td>
-  	  </tr>
-  	<% end %>
+    <% @group.memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.user.name %></td>
+        <td>@<%= membership.user.twitter_username %></td>
+        <td><%= Membership::ROLES.invert[membership.role].to_s.titleize %></td>
+        <td><%= link_to 'Remove', membership_path(membership), :confirm => 'Are you sure?', :method => :delete if can? :destroy, membership %></td>
+      </tr>
+    <% end %>
   </tbody>
+  <tfoot>
+        <tr>
+          <%= form_for Membership.new do |f| %>
+            <td>Username</td>
+            <td colspan="2"><%= text_field :user, :username %></td>
+            <%= f.hidden_field :group_id, value: @group.id %>
+            <%= f.hidden_field :role, value: Membership::ROLES[:officer] %>
+            <td><%= f.submit "Add Host", class: "btn" %></td>
+          <% end %>
+        </tr>
+      </tfoot>
 </table>
 
 <%= link_to "Back", :back, class: "btn" %>

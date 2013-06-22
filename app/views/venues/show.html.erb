@@ -64,13 +64,16 @@
       <p>
         <% @venue.hosts.each do |host| %>
           <span id="contactName"><%= host.name %></span><br />
-          <% if host.twitter_username.blank? == false %>
+          <% unless host.twitter_username.blank? %>
             <span id="contactTwitter">
               <a href="http://twitter.com/<%=host.twitter_username%>">@<%= host.twitter_username %></a>
             </span><br/>
           <% end %>
         <% end %>
         <%= mail_to @venue.email, nil, :encode => "javascript" %>
+        <% if can? :show, @venue.group %>
+          <br /><div class="admin-insert"><%= link_to "Edit Hosts", group_path(@venue.group) %></div>
+        <% end %>
       </p>
   </aside>
   <% if (@venue.sponsors.empty?) && can?(:create, Sponsor) && can?(:update, @venue) %>
