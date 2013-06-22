@@ -29,6 +29,8 @@ class Ability
       can :manage, Attachment
 
       can :create, Venue
+
+      can :host_resources, :page
     end
 
     if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
