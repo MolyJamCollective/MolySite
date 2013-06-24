@@ -34,6 +34,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        Membership.set(current_user, @game.group_id, :founder)
+        Membership.set(current_user, Group.where(name: "Jammers").first)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
         format.html { render action: "new" }

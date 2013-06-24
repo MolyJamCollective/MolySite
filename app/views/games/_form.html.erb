@@ -20,16 +20,12 @@
     <%= f.text_area :inspiration %>
   </div>
   <div class="field">
-    <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
+    <%= f.label :event %><br />
+    <%= f.collection_select(:event_id, Event.all, :id, :name) %>
   </div>
   <div class="field">
-    <%= f.label :venue_id %><br />
-    <%= f.number_field :venue_id %>
-  </div>
-  <div class="field">
-    <%= f.label :group_id %><br />
-    <%= f.number_field :group_id %>
+    <%= f.label :venue %><br />
+    <%= f.collection_select(:venue_id, Venue.all, :id, :display_name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
