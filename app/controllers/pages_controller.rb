@@ -19,10 +19,18 @@ class PagesController < ApplicationController
   end
 
   def news 
-    authorize! :about, :page
+    authorize! :news, :page
 
     respond_to do |format|
       format.html
     end 
   end 
+
+  def host_resources
+    authorize! :host_resources, :page
+
+    respond_to do |format|
+      format.html
+    end 
+  end
 end
