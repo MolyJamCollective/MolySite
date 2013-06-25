@@ -1,0 +1,19 @@
+<% content_for :body do %>
+  <body id="list">
+<% end %>
+
+<div class="page">
+
+  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  
+  <% @inspirations.shuffle.each do |inspiration| %>
+    <div class="contain">
+      <div class="molybox">
+        <%= link_to inspiration.quote.to_s, inspiration, class: "molyquote"  %>
+        <div class="molycite">
+          <%= link_to "Peter Molyneux", inspiration.source %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

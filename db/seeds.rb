@@ -60,3 +60,41 @@ Members of the press are welcome to attend this jam. Contact Holden Link at losa
   UserFileUpload.create!(user_id: 1, file_size: 30, file_path: "http://www.google.com/1.jpg")
 
 end
+
+Inspiration.create!(quote: "When you rip your fingers on the screen and you tear the landscape apart with your physical hands, it just feels amazing, man. It feels amazing.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "When you're doing it in multiplayer, it feels incredible. I love that.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "The touch, the grab, the stroke, all of those things we're going to be obsessed about.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "I wish I had some time machine and could go back two weeks. You live by your mistakes, for sure.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "You sneak that little thing in there at the end.", source: "http://www.eurogamer.net/articles/2012-04-11-peter-molyneux-why-i-quit-microsoft-and-why-my-new-game-will-change-the-world")
+
+Inspiration.create!(quote: "The most powerful story I could possibly tell is a story that reminds you of your own childhood. We've all had times in our childhood, common experiences when we felt down, and we felt up, or we celebrated doing something for the first time, and I loved that thought.", source: "http://www.vg247.com/2012/03/14/molyneux-games-industry-wasnt-ready-for-milos-concept/")
+Inspiration.create!(quote: "I'm not punishing you for button mashing; I'm rewarding you for not button mashing, and that is a really big distinction.", source: "http://archive.videogamesdaily.com/news/200708/015_p1.asp")
+Inspiration.create!(quote: "You can actually break someone's neck on some railing during combat. It could be a spike on a fence or a solid brick wall, and you'll get increased experience for that as well.", source: "http://archive.videogamesdaily.com/news/200708/015_p1.asp")
+Inspiration.create!(quote: "I want you to think of the sword as a conductor's baton. As you're fighting, we'll be introducing different musical elements, the more successful you are. And we'll be upping the tempo of the music, the more abilities that you unlock. So you not only get more of a score, you get a cooler soundtrack.", source: "http://archive.videogamesdaily.com/news/200708/015_p1.asp")
+Inspiration.create!(quote: "The whole of your body, except for your private parts, can be scarred. You are clothed most of the time, but not in front of your wife, and not when you swim, either. Don't forget: it's the emotion of being scarred.", source: "http://archive.videogamesdaily.com/news/200708/015_p2.asp")
+
+Inspiration.create!(quote: "Freedom is... freedom can actually be boring, you've got to realize that.", source: "http://archive.videogamesdaily.com/features/petermolyneux_iv_jun06_p2.asp")
+Inspiration.create!(quote: "Some people leave artwork, some people do rude things, other people then turn those rude things into nice things.", source: "http://www.gamasutra.com/view/news/181114/Noct_even_Apple_knows_whats_inside_Curiositys_cube.php")
+Inspiration.create!(quote: "I keep finding myself rejected by men, which is a new experience for me.", source: "http://www.gamasutra.com/php-bin/news_index.php?story=17609")
+Inspiration.create!(quote: "Pull the right trigger to see The Most Interesting Thing in the World.", source: "http://www.gamasutra.com/php-bin/news_index.php?story=17609")
+Inspiration.create!(quote: "Will the first female nudity give you a success or will it turn off the audience?", source: "http://www.giantbomb.com/peter-molyneux/3040-3890/")
+
+Inspiration.create!(quote: "You know what this industry's like: As soon as there is the scent of death, everyone jumps on the hearse.", source: "http://beefjack.com/opinion/peter-molyneux-the-unstoppable-quote-machine/")
+Inspiration.create!(quote: "I still have nightmares about holding German sausages over my head.", source: "http://www.ign.com/articles/2011/03/17/peter-molyneux-the-man-behind-the-mask")
+Inspiration.create!(quote: "If you love your dog, we're gonna mess with your mind, man. You're not going to be able to go to bed.", source: "http://www.escapistmagazine.com/news/view/69427-GDC-2007-Peter-Molyneux")
+Inspiration.create!(quote: "You can eliminate starvation or you can double it, you can empty the treasury or fill it with gold and rub it all over your body.", source: "http://www.bit-tech.net/gaming/xbox-360/2010/03/23/peter-molyneux-fable-3-and-emotional-games/2")
+Inspiration.create!(quote: "Part of the fun of dogs is they misbehave and can be enormously embarrassing to the owner.", source: "http://www.bit-tech.net/gaming/xbox-360/2010/03/23/peter-molyneux-fable-3-and-emotional-games/2")
+
+Inspiration.create!(quote: "I have to be careful what I say. There are PR policeman in the audience with sniper rifles.", source:"http://www.bit-tech.net/gaming/xbox-360/2010/03/23/peter-molyneux-fable-3-and-emotional-games/3")
+Inspiration.create!(quote: "The touch, the grab, the stroke: All of those things we're going to be obsessed about.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "I wish I had some time machine and could go back two weeks. You live by your mistakes, for sure.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+Inspiration.create!(quote: "I could be alone in a pub drinking a pint of bitter. Come along!", source: "http://www.eurogamer.net/articles/2012-04-11-peter-molyneux-why-i-quit-microsoft-and-why-my-new-game-will-change-the-world")
+Inspiration.create!(quote: "The whole of your body, except for your private parts, can be scarred. You are clothed most of the time, but not in front of your wife, and not when you swim, either. Don't forget: It's the emotion of being scarred.", source: "http://archive.videogamesdaily.com/news/200708/015_p2.asp")
+
+Inspiration.create!(quote: "Some people leave artwork, some people do rude things, other people then turn those rude things into nice things.", source: "http://www.gamasutra.com/view/news/181114/Noct_even_Apple_knows_whats_inside_Curiositys_cube.php")
+Inspiration.create!(quote: "The engine isn't finished. Her buttocks are wrong.", source: "http://www.gamasutra.com/php-bin/news_index.php?story=17609")
+Inspiration.create!(quote: "It's you Americans. There's something about nipples you hate. If this were Germany, we'd be romping around naked on the stage here.", source: "http://www.gamasutra.com/php-bin/news_index.php?story=17609")
+Inspiration.create!(quote: "You and your girlfriend will enjoy this like you've never enjoyed anything else in your life.", source: "http://www.gamasutra.com/view/feature/132402/peter_molyneux_the_essence_of_.php?page=4")
+Inspiration.create!(quote: "His purpose in life-like Asimov's laws of robotics-is not to aggravate you, not to piss you off. His second thought is this: He absolutely loves you.", source: "http://www.escapistmagazine.com/news/view/69427-GDC-2007-Peter-Molyneux")
+
+Inspiration.create!(quote: "Part of the fun of dogs is they misbehave and can be enormously embarrassing to the owner.", source: "http://www.bit-tech.net/gaming/xbox-360/2010/03/23/peter-molyneux-fable-3-and-emotional-games/2")

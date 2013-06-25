@@ -46,6 +46,7 @@ class Ability
     can [:news, :about], :page
     can :show, Venue, approved: true
     can :index, Venue
+    can [:index, :show], Inspiration
 
   end
 end

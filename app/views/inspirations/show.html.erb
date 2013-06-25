@@ -1,0 +1,22 @@
+<% content_for :body do %>
+  <body id="single">
+<% end %>
+
+<div class="page">
+
+  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  
+    <div class="contain">
+      <div class="molybox">
+        <%= link_to @inspiration.quote.to_s, @inspiration, class: "molyquote"  %>
+        <div class="molycite">
+          <%= link_to "Peter Molyneux", @inspiration.source %>
+        </div>
+      </div>
+    </div>
+
+  <div id="nav">
+    <%= link_to "Tweet this wisdom", @inspiration %> &#8226; 
+    <%= link_to "List all wisdom", inspirations_path %>
+  </div>
+</div>

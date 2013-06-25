@@ -1,0 +1,140 @@
+// Place all the styles related to the inspirations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+	height: 100%;
+}
+html, body {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	box-shadow: inset 0px 0px 200px 50px rgb(255, 243, 195);
+	background-color: rgb(255, 253, 242);
+}
+body#single {
+	height: 100%;
+}
+body#list {
+	min-height: 100%;
+	padding: 120px 0px;
+}
+
+#single .page {
+	display: table;
+	overflow: hidden;
+	margin: 0px auto;
+	height: 100%;
+}
+
+.molyjam {
+	display: block;
+	position: fixed;
+	background-color: rgba(41, 255, 0, 0.6);
+	padding: 5px 13px 10px 13px;
+	top: 0px;
+	left: 0px;
+	font-family: "Noticia Text", serif;
+	font-weight: 700;
+	font-size: 24px;
+	color: #fff;
+	transition: background-color 0.3s;
+	text-shadow: 0px 0px 5px rgb(33,204,0);
+}
+	.molyjam:link, .molyjam:visited {
+		color: #fff;
+		text-decoration: none;
+	}
+	.molyjam:hover {
+		background-color: rgb(33, 204, 0);
+	}
+
+#single .contain {
+	display: table-cell;
+	vertical-align: middle;
+}
+.molybox {
+	width: 560px;
+	text-shadow: 0px 0px 10px rgb(255, 229, 161);
+	padding-bottom: 20px;
+}
+	#list .molybox {
+		margin: 0px auto;
+		padding: 120px 0px;
+	}
+	#single .molybox {
+		margin-top: -10px;
+	}
+
+	.molyquote {
+		font-family: "Old Standard TT", serif;
+		font-style: italic;
+		font-weight: 400;
+		font-size: 30px;
+		line-height: 1.4;
+		padding: 0px 30px;
+		position: relative;
+		display: block;
+	}
+		a.molyquote:link, a.molyquote:visited {
+			text-decoration: none;
+			color: #000;
+		}
+	.molyquote:before {
+		content: "\201C";
+		position: absolute;
+		left: -12px;
+		font-size: 90px;
+		top: -31px;
+		color: rgba(0,0,0,0.3);
+		transition: color 0.1s;
+	}
+		a.molyquote:hover:before {
+			color: #000;
+			transition: color 0.25s;
+		}
+	.molyquote:after {
+		content: "\201D";
+	}
+	.molycite {
+		font-family: "Noticia Text", serif;
+		font-weight: 700;
+		font-size: 20px;
+		text-align: right;
+		margin-top: 7px;
+		padding-right: 30px;
+	}
+	#single .molycite {
+		padding-bottom: 50px;
+	}
+	.molycite:before {
+		content: "\2015";
+	}
+		.molycite a:link, .molycite a:visited {
+			color: #000;
+			border-bottom: 1px dashed #000;
+			text-decoration: none;
+		}
+		.molycite a:hover {
+			color: rgba(0,0,0,0.3);
+			border-bottom: 1px dashed rgba(0,0,0,0.3);
+			text-decoration: none;
+		}
+
+
+#nav {
+	position: fixed;
+	right: 28px;
+	bottom: 20px;
+	font-family: "Noticia Text", serif;
+	font-style: italic;
+	text-shadow: 0px 0px 5px #fff;
+}
+	#nav a:link, #nav a:visited {
+		text-decoration: none;
+		color: #000;
+	}
+	#nav a:hover {
+		border-bottom: 1px dashed #000;
+	}

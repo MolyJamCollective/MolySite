@@ -7,7 +7,9 @@
     <%= link_to "Logout", logout_path %><br />
   	<%= link_to "Edit Profile", edit_user_path(current_user) %><br />
   	<%= link_to "Change Password/Email", edit_user_registration_path %><br />
-    <%= link_to "Host Resources", host_resources_path if can? :host_resources, :page%>
+    <%= link_to "Host Resources", host_resources_path if can? :host_resources, :page %><br />
+    <br />
+    <%= link_to "Add New Inspiration Quote", new_inspiration_path if can? :create, Inspiration %>
   	</p>
   </section>
 </article>
