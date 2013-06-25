@@ -3,10 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html {
-	
+	height: 100%;
 }
 html, body {
-	height: 100%;
 	padding: 0px;
 	margin: 0px;
 }
