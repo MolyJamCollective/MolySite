@@ -1,15 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% content_for :body do %>
+  <body id="single">
+<% end %>
 
-<p>
-  <b>Quote:</b>
-  <%= @inspiration.quote %>
-</p>
+<div class="page">
 
-<p>
-  <b>Source:</b>
-  <%= @inspiration.source %>
-</p>
+  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  
+    <div class="contain">
+      <div class="molybox">
+        <%= link_to @inspiration.quote.to_s, @inspiration, class: "molyquote"  %>
+        <div class="molycite">
+          <%= link_to "Peter Molyneux", @inspiration.source %>
+        </div>
+      </div>
+    </div>
 
-
-<%= link_to 'Edit', edit_inspiration_path(@inspiration) %> |
-<%= link_to 'Back', inspirations_path %>
+  <div id="nav">
+    <%= link_to "Tweet this wisdom", @inspiration %> &#8226; 
+    <%= link_to "List all wisdom", inspirations_path %>
+  </div>
+</div>
