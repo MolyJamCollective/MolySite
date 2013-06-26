@@ -2,7 +2,15 @@ class InspirationsController < ApplicationController
   load_and_authorize_resource
  
   def index
-    @inspirations = Inspiration.all
+    if(params[:show] == "all")
+      @inspirations = Inspiration.all
+      @mode = :all
+    else
+      @inspirations = Inspiration.find(:all, :order => "id asc", :limit => 22)
+      @mode = :some
+    end
+
+    logger.info "#{params[:action]}"
 
     respond_to do |format|
       format.html { render layout: "inspiration" }

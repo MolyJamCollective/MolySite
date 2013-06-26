@@ -4,7 +4,7 @@
 
 <div class="page">
 
-  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  <%= link_to "Molyjam 2013", news_path, class: 'molyjam' %>
   
   <% @inspirations.shuffle.each do |inspiration| %>
     <div class="contain">
@@ -16,4 +16,9 @@
       </div>
     </div>
   <% end %>
+
+  <div id="nav">
+    <%= link_to "show curated wisdom", inspirations_path if @mode == :all %>
+    <%= link_to "list all wisdom", inspirations_path(show: 'all') if @mode == :some %>
+  </div>
 </div>
