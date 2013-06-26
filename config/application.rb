@@ -55,6 +55,7 @@ module MolySite
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.precompile += ['inspirations.css', 'inspirations.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
