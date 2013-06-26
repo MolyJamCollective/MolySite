@@ -4,7 +4,7 @@
 
 <div class="page">
 
-  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  <%= link_to "Molyjam 2013", news_path, class: 'molyjam' %>
   
     <div class="contain">
       <div class="molybox">
@@ -16,7 +16,7 @@
     </div>
 
   <div id="nav">
-    <%= link_to "Tweet this wisdom", @inspiration %> &#8226; 
+    <% #link_to "Tweet this wisdom", @inspiration &#8226;  %> 
     <%= link_to "show curated wisdom", inspirations_path %> &#8226; 
     <%= link_to "list all wisdom", inspirations_path(show: 'all') %>
   </div>

@@ -4,7 +4,7 @@
 
 <div class="page">
 
-  <a class="molyjam" href="http://www.molyjam.com">Molyjam 2013</a>
+  <%= link_to "Molyjam 2013", news_path, class: 'molyjam' %>
   
   <% @inspirations.shuffle.each do |inspiration| %>
     <div class="contain">
