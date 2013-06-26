@@ -6,7 +6,7 @@ class InspirationsController < ApplicationController
       @inspirations = Inspiration.all
       @mode = :all
     else
-      @inspirations = Inspiration.find(:all, :order => "id desc", :limit => 22)
+      @inspirations = Inspiration.find(:all, :order => "id asc", :limit => 22)
       @mode = :some
     end
 
