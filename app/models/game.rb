@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
   belongs_to :group
   has_many :users, :through => :group
 
-  attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id
+  attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions
 
   after_create :create_group
 

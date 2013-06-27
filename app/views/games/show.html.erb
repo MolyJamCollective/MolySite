@@ -1,11 +1,13 @@
 <h1 id="gameTitle" class="game-title"><%= @game.name %></h1>
   <article>
-    
-    <header>
-      <h2>About</h2>
-      <p>Game description area. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </header>
-    <hr/>
+
+    <% unless @game.description.empty? %>
+      <header>
+        <h2>About</h2>
+        <p><%= @game.description %></p>
+      </header>
+      <hr/>
+    <% end %>
 
     <section>
       <% #@game.screenshot.each do |screenshots| %>
@@ -32,13 +34,13 @@
     </section>
     <hr/>
 
-    <% ### unless @game.directions.empty? %>
+    <% unless @game.directions.empty? %>
       <section>
         <h2>Directions</h2>
-        <p></p>
+        <p><%= @game.directions %></p>
       </section>
       <hr/>
-    <% ### end %>
+    <% end %>
 
   </article>
 

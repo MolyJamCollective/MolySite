@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624223019) do
+ActiveRecord::Schema.define(:version => 20130627033016) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20130624223019) do
     t.integer  "group_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.text     "description"
+    t.text     "directions"
   end
 
   create_table "groups", :force => true do |t|
