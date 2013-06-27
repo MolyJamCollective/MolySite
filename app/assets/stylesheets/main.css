@@ -921,3 +921,25 @@ li h1,h2,h3,h4,h5{
         page-break-after: avoid;
     }
 }
+
+.download-area aside{
+  background-color: ##555555;
+  border-width: 0px;
+  padding: 10px 4%;
+  margin-bottom: 10px;
+  float: right;
+  position: relative;
+}
+
+.download-link img{
+  float: right;
+  width: 15%;
+
+}
+
+.download-link p{
+  float:left;
+  position: absolute;
+  top: 30%;
+  font-size: 1.2em;
+}

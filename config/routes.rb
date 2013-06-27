@@ -1,8 +1,5 @@
 MolySite::Application.routes.draw do
 
-  resources :inspirations
-
-
   resources :events
   resources :venues do
     post 'approve'
@@ -18,6 +15,9 @@ MolySite::Application.routes.draw do
   resources :mail_forwarder, only: :create
 
   resources :attachments, only: [:create, :new]
+
+  resources :games
+  resources :inspirations
 
   get '/user_file_uploads' => 'user_file_uploads#index'
   get '/user_file_uploads/upload' => 'user_file_uploads#upload'

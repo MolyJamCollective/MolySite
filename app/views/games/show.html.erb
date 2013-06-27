@@ -1,0 +1,75 @@
+<h1 id="gameTitle" class="game-title"><%= @game.name %></h1>
+  <article>
+
+    <% unless @game.description.empty? %>
+      <header>
+        <h2>About</h2>
+        <p><%= @game.description %></p>
+      </header>
+      <hr/>
+    <% end %>
+
+    <section>
+      <% #@game.screenshot.each do |screenshots| %>
+        <!-- p><img src="img/kachina1.jpg" width="100%"></p -->
+      <% #end %>
+    </section>
+    <hr/>
+
+     <section>
+      <h2>Credits</h2>
+      <p>
+      <table width="100%">
+        <tbody class="list">
+          <% @game.group.users.each do |user| %>
+            <tr>
+              <td class="name"><%= user.name %></td>
+              <%= raw "<td class=\"twitter\">@#{user.twitter_username}</td>" unless user.twitter_username.empty? %>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+      </p>
+    </section>
+    <hr/>
+
+    <% unless @game.directions.empty? %>
+      <section>
+        <h2>Directions</h2>
+        <p><%= @game.directions %></p>
+      </section>
+      <hr/>
+    <% end %>
+
+  </article>
+
+    <div class="download-area">
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/flash.png" %><p>Play in Browser</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/html5.png" %><p>Play in Browser</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/unityweb.png" %><p>Play in Browser</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/ios.png" %><p>Find on App Store</p></aside></a><% end unless true %>
+      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/android.png" %><p>Find on Google Play</p></aside></a><% end unless true %>
+    </div>
+
+<div class="no-bg">
+  <aside>
+    <h3>Information</h3>
+    <p>
+      <!-- span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><a href="">Nextspace</a></span><br/ -->
+      <!-- span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><a href="">Unity</a></span><br/ -->
+      <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span>
+    </p>
+  </aside>
+
+  <% unless @game.inspiration.empty? %>
+    <aside>
+      <h3>Inspiration</h3>
+      <p><%= @game.inspiration %></p>
+    </aside>
+  <% end %>
+
+</div>

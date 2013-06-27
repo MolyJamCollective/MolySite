@@ -22,14 +22,9 @@ class Ability
         cannot :destroy, Membership, role: Membership::ROLES[:founder]
       end
 
-      can :manage, Sponsor
-      can :move_up, Sponsor
-      can :move_down, Sponsor
-
+      can [:manage, :move_up, :move_down], Sponsor
       can :manage, Attachment
-
       can :create, Venue
-
       can :host_resources, :page
     end
 
@@ -40,12 +35,14 @@ class Ability
     if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
       can :dashboard, :page
       can :manage, User, id: user.id
+      can :create, Game
     end
 
     can :show_current, Event
     can [:news, :about], :page
     can :show, Venue, approved: true
     can :index, Venue
+    can :read, Game
     can [:index, :show], Inspiration
 
   end
