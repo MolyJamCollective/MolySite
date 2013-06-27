@@ -48,9 +48,6 @@ gem 'redcarpet'
 # Gravatar
 gem 'gravtastic'
 
-# Paperclip
-gem 'paperclip'
-
 #Analytics
 gem 'google-analytics-rails'
 gem 'newrelic_rpm'
