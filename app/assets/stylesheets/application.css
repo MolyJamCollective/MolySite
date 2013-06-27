@@ -2,7 +2,10 @@
 *= require_self
 *= require normalize-rails
 *= require jquery.ui.autocomplete
-*= require_tree .
+*= require dashboard
+*= require main
+*= require sponsors
+*= require venues
 */
 
 

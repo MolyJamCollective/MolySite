@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/jquery.dropdown.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -35,119 +36,296 @@
 
         <div class="main-container">
             <div class="main wrapper clearfix">
+            <div id="big-ass-game-list">
+               <div class="gamelist-filters">
 
-                <div class="map"></div>
+                    
+                        <div class="dropdown-btn-container">
+                            
+                            <div data-dropdown="#dropdown-platform" class="btn-filter">
+                                <span class="dropdown-label">PLATFORM</span>
+                                <span class="dropdown-selected" id="current-platform">All</span>
+                            </div>
+                            <div data-dropdown="#dropdown-genre" class="btn-filter">
+                                <span class="dropdown-label">GENRE</span>
+                                <span class="dropdown-selected" id="current-genre">All</span>
+                            </div>
+                            <div data-dropdown="#dropdown-location" class="btn-filter">
+                                <span class="dropdown-label">LOCATION</span>
+                                <span class="dropdown-selected" id="current-location">All</span>
+                            </div>
+                            
+                            <img src="img/sort-grid.png" id="dropdown-grid-button" class="dropdown-sort active"/>
+                            <img src="img/sort-list.png" id="dropdown-list-button" class="dropdown-sort inactive"/>
+                            <div  class="dropdown-search">
+                                <input type="text" class="search" placeholder="Search Filtered Results">
+                            </div>
 
-                <article>
-                <div class="c1">
-                <div id="locations-list">
-                   <ul class="sort-by">
-                        <li class="sort btn" data-sort="name">Sort by City</li>
-                        <li class="sort btn" data-sort="country">Sort by Country</li>
-                    </ul>
-                    <ul class="list">
-                        <a href="location-example.html"><li>
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">Los Angeles</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">San Francisco</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/CA.png"/></span>
-                            <h4><span class="name">Montreal</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">Canada</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">Orlando</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">Austin</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/DE.png"/></span>
-                            <h4><span class="name">Dieburg</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Germany</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/AU.png"/></span>
-                            <h4><span class="name">Adelaide</span> <span class="category">australia</span></h4>
-                            <h5><span class="country">Australia</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/BR.png"/></span>
-                            <h4><span class="name">Rio de Janeiro</span> <span class="category">southamerica</span></h4>
-                            <h5><span class="country">Brazil</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/AU.png"/></span>
-                            <h4><span class="name">Sydney</span> <span class="category">australia</span></h4>
-                            <h5><span class="country">Australia</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/FI.png"/></span>
-                            <h4><span class="name">Terku</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Finland</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/NL.png"/></span>
-                            <h4><span class="name">Utrecht</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Netherlands</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/FI.png"/></span>
-                            <h4><span class="name">Helsinki</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Finland</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/CA.png"/></span>
-                            <h4><span class="name">Ottawa</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">Canada</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/DE.png"/></span>
-                            <h4><span class="name">Munich</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Germany</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">Phoenix</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/PT.png"/></span>
-                            <h4><span class="name">Lisbon</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Portugal</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/IL.png"/></span>
-                            <h4><span class="name">Tel Aviv</span> <span class="category">asia</span></h4>
-                            <h5><span class="country">Israel</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/NZ.png"/></span>
-                            <h4><span class="name">Christchurch</span> <span class="category">asia</span></h4>
-                            <h5><span class="country">New Zealand</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/GB.png"/></span>
-                            <h4><span class="name">Dundee</span> <span class="category">europe</span></h4>
-                            <h5><span class="country">Scotland</span></h5>
-                        </li></a><li><a href="location-example.html">
-                            <span class="flag-icon"><img src="img/flags/US.png"/></span>
-                            <h4><span class="name">Las Vegas</span> <span class="category">northamerica</span></h4>
-                            <h5><span class="country">United States</span></h5>                     
-                        </li></a></ul>
+
+
+                        </div>
+
+                    <div id="dropdown-platform" class="dropdown dropdown-tip">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-platform-link" id="platform-all">All</a></li>
+                            <li><a class="dropdown-platform-link" id="windows">Windows</a></li>
+                            <li><a class="dropdown-platform-link" id="mac">Mac OS X</a></li>
+                            <li><a class="dropdown-platform-link" id="linux">Linux</a></li>
+                            <li><a class="dropdown-platform-link" id="flash">Flash (Browser)</a></li>
+                            <li><a class="dropdown-platform-link" id="unity">Unity (Browser) 5</a></li>
+                            <li><a class="dropdown-platform-link" id="html5">HTML 5 (Browser)</a></li>
+                            <li><a class="dropdown-platform-link" id="ios">iOS (Mobile)</a></li>
+                            <li><a class="dropdown-platform-link" id="android">Android (Mobile)</a></li>
+                        </ul>
+                    </div>
+
+                     <div id="dropdown-genre" class="dropdown dropdown-tip">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-genre-link" id="genre-all">All</a></li>
+                            <li><a class="dropdown-genre-link" id="RPG">RPG</a></li>
+                            <li><a class="dropdown-genre-link" id="Simulation">Simulation</a></li>
+                            <li><a class="dropdown-genre-link" id="Social">Social</a></li>
+                            <li><a class="dropdown-genre-link" id="Strategy">Strategy</a></li>
+                        </ul>
+                    </div>
+
+                     <div id="dropdown-location" class="dropdown dropdown-tip">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-location-link" id="location-all">All</a></li>
+                            <li><a class="dropdown-location-link" id="Guildford">Guildford</a></li>
+                            <li><a class="dropdown-location-link" id="London">London</a></li>
+                            <li><a class="dropdown-location-link" id="New York">New York</a></li>
+                            <li><a class="dropdown-location-link" id="Seattle">Seattle</a></li>
+                        </ul>
+                    </div>
+
                 </div>
-                 </div>
-            </article>
+
+
+                <div id="game-list-toggle" class="layout-grid">
+                <div id="game-list">
+                    <ul class="list gamelist">
+                        <li>
+                                <span class="windows" style="display:none">windows</span>
+                                <div class="gamelist-container"> 
+                                    <a href="location-example.html">
+                                        <div class="list-screenshot-top" style="background-image: url(img/fable.jpg)"></div>
+                                    </a>
+                                    <div class="list-body-container">
+                                        <div class="list-body-grid">
+                                            <h4>
+                                                <a href="location-example.html"><span class="name">Fable</span></a>
+                                            </h4>
+                                            <h5>
+                                                <span class="genre">RPG</span>
+                                            </h5>
+                                            <div class="description">
+                                                Fable is a groundbreaking roleplaying-adventure game in which your every action determines your skills, appearance, and reputation.
+                                            </div>
+                                            <hr/>
+                                                <img src="img/platform-windows.png" class="list-platform"/>        
+                                            <h5>
+                                                <span class="location-filler">Made in </span><span class="location">London</span> 
+                                            </h5>
+                                                
+                                        </div>
+                                        <div class="list-body-list">
+                                            <img src="img/platform-windows.png" class="list-platform"/>
+                                            <span class="list-game-info">
+                                                <h4><span class="name">Fable</span></h4>
+                                                <h5><span class="genre">RPG</span>
+                                                    <span class="location-filler">Made in <span class="location">London</span></h5>
+                                                <hr/>
+                                                <div class="description">
+                                                    Fable is a groundbreaking roleplaying-adventure game in which your every action determines your skills, appearance, and reputation.
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="list-screenshot-bottom" style="background-image: url(img/fable.jpg)"></div>
+                                </div>
+                        </li>
+                          <li>
+                                <span class="ios" style="display:none">windows</span>
+                                <span class="android" style="display:none">android</span>
+                                <span class="unity" style="display:none">unity</span>
+                                <div class="gamelist-container"> 
+                                    <a href="location-example.html">
+                                        <div class="list-screenshot-top" style="background-image: url(img/godus.jpg)"></div>
+                                    </a>
+                                    <div class="list-body-container">
+                                        <div class="list-body-grid">
+                                            <h4>
+                                                <a href="location-example.html"><span class="name">Godus</span></a>
+                                            </h4>
+                                            <h5>
+                                                <span class="genre">Simulation</span>
+                                            </h5>
+                                            <div class="description">
+                                                Grant the power of life and blossom the world around your believers, or use godly powers to wreak havoc via natural disasters and defeat the armies of other gods.
+                                            </div>
+                                            <hr/>
+                                                <img src="img/platform-ios.png" class="list-platform"/>
+                                                <img src="img/platform-android.png" class="list-platform"/>
+                                                <img src="img/platform-unityweb.png" class="list-platform"/>                
+                                            <h5>
+                                                <span class="location-filler">Made in </span><span class="location">Guildford</span> 
+                                            </h5>
+                                                
+                                        </div>
+                                        <div class="list-body-list">
+                                            <img src="img/platform-windows.png" class="list-platform"/>
+                                            <img src="img/platform-android.png" class="list-platform"/>
+                                            <img src="img/platform-unityweb.png" class="list-platform"/>     
+                                            <span class="list-game-info">
+                                                <h4><span class="name">Godus</span></h4>
+                                                <h5><span class="genre">Simulation</span>
+                                                    <span class="location-filler">Made in <span class="location">Guildford</span></h5>
+                                                <hr/>
+                                                <div class="description">
+                                                    Whether it’s granting the power of life and blossoming the world around your believers, or using godly powers to wreak havoc via natural disasters to defeat the armies of other gods, prepare for the Ultimate God Game.
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="list-screenshot-bottom" style="background-image: url(img/godus.jpg)"></div>
+                                </div>
+                        </li>
+                          <li>
+                                <span class="windows" style="display:none">windows</span>
+                                <span class="mac" style="display:none">mac</span>
+                                <div class="gamelist-container"> 
+                                    <a href="location-example.html">
+                                        <div class="list-screenshot-top" style="background-image: url(img/dungeonkeeper.jpg)"></div>
+                                    </a>
+                                    <div class="list-body-container">
+                                        <div class="list-body-grid">
+                                            <h4>
+                                                <a href="location-example.html"><span class="name">Dungeon Keeper</span></a>
+                                            </h4>
+                                            <h5>
+                                                <span class="genre">Simulation</span>
+                                            </h5>
+                                            <div class="description">
+                                                Build your dungeon, protect it with a labyrinth of dark corridors, a web of deadly traps, an arsenal of powerful spells, and an army of bloodthirsty demons.
+                                            </div>
+                                            <hr/>
+                                                <img src="img/platform-windows.png" class="list-platform"/>     
+                                                <img src="img/platform-mac.png" class="list-platform"/> 
+
+                                            <h5>
+                                                <span class="location-filler">Made in </span><span class="location">New York</span> 
+                                            </h5>
+                                                
+                                        </div>
+                                        <div class="list-body-list">
+                                            <img src="img/platform-windows.png" class="list-platform"/>
+                                            <img src="img/platform-mac.png" class="list-platform"/> 
+                                            <span class="list-game-info">
+                                                <h4><span class="name">Dungeon Keeper</span></h4>
+                                                <h5><span class="genre">Simulation</span>
+                                                    <span class="location-filler">Made in <span class="location">New York</span></h5>
+                                                <hr/>
+                                                <div class="description">
+                                                    Build your dungeon, protect it with a labyrinth of dark corridors, a web of deadly traps, an arsenal of powerful spells, and an army of bloodthirsty demons.
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="list-screenshot-bottom" style="background-image: url(img/dungeonkeeper.jpg)"></div>
+                                </div>
+                        </li>
+                          <li>
+                                <span class="windows" style="display:none">windows</span>
+                                <span class="linux" style="display:none">linux</span>
+                                <div class="gamelist-container"> 
+                                    <a href="location-example.html">
+                                        <div class="list-screenshot-top" style="background-image: url(img/populous.jpg)"></div>
+                                    </a>
+                                    <div class="list-body-container">
+                                        <div class="list-body-grid">
+                                            <h4>
+                                                <a href="location-example.html"><span class="name">Populous</span></a>
+                                            </h4>
+                                            <h5>
+                                                <span class="genre">Strategy</span>
+                                            </h5>
+                                            <div class="description">
+                                                Miracles are child's play. Earthquakes are serious fun. The all-powerful can perform miracles in their sleep.
+                                            </div>
+                                            <hr/>
+                                                <img src="img/platform-windows.png" class="list-platform"/>  
+                                                <img src="img/platform-linux.png" class="list-platform"/>           
+                                            <h5>
+                                                <span class="location-filler">Made in </span><span class="location">Seattle</span> 
+                                            </h5>
+                                                
+                                        </div>
+                                        <div class="list-body-list">
+                                            <img src="img/platform-windows.png" class="list-platform"/>
+                                            <img src="img/platform-linux.png" class="list-platform"/>     
+                                            <span class="list-game-info">
+                                                <h4><span class="name">Populous</span></h4>
+                                                <h5><span class="genre">Strategy</span>
+                                                    <span class="location-filler">Made in <span class="location">Seattle</span></h5>
+                                                <hr/>
+                                                <div class="description">
+                                                    Miracles are child's play. Earthquakes are serious fun. The all-powerful can perform miracles in their sleep.
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="list-screenshot-bottom" style="background-image: url(img/populous.jpg)"></div>
+                                </div>
+                        </li>
+                          <li>
+                                <span class="ios" style="display:none">ios</span>
+                                <div class="gamelist-container"> 
+                                    <a href="location-example.html">
+                                        <div class="list-screenshot-top" style="background-image: url(img/curiosity.jpg)"></div>
+                                    </a>
+                                    <div class="list-body-container">
+                                        <div class="list-body-grid">
+                                            <h4>
+                                                <a href="location-example.html"><span class="name">Curiosity: What's Inside the Cube?</span></a>
+                                            </h4>
+                                            <h5>
+                                                <span class="genre">Social</span>
+                                            </h5>
+                                            <div class="description">
+                                               What is inside the cube is life-changingly amazing by any definition.
+                                            </div>
+                                            <hr/>
+                                                <img src="img/platform-ios.png" class="list-platform"/>        
+                                            <h5>
+                                                <span class="location-filler">Made in </span><span class="location">Guildford</span> 
+                                            </h5>
+                                                
+                                        </div>
+                                        <div class="list-body-list">
+                                            <img src="img/platform-ios.png" class="list-platform"/>
+                                            <span class="list-game-info">
+                                                <h4><span class="name">Curiosity: What's Inside the Cube?</span></h4>
+                                                <h5><span class="genre">Social</span>
+                                                    <span class="location-filler">Made in <span class="location">Guildford</span></h5>
+                                                <hr/>
+                                                <div class="description">
+                                                    What is inside the cube is life-changingly amazing by any definition.
+                                                </div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="list-screenshot-bottom" style="background-image: url(img/curiosity.jpg)"></div>
+                                </div>
+                        </li>
+                            
+
+                        </a>
+                </div>
+            </div>
+        </div>
         
-             <aside>
-                    <h3>Region Filter</h3>
-                    <ul class="filter">
-                        <li class="btn" id="filter-none">Show all</li>
-                        <li class="btn" id="filter-australia">Only Australia</li>
-                        <li class="btn" id="filter-northamerica">Only North America</li>
-                        <li class="btn" id="filter-southamerica">Only South America</li>
-                        <li class="btn" id="filter-europe">Only Europe</li>
-                        <li class="btn" id="filter-asia">Only Asia</li>
-                    </ul>
-
-                    <hr/>
-
-                    <h3>Want to host a jam site?</h3>
-                    <p>We'd love to hear from you! Click here for more information about what it takes to host a site, and how you can get in touch with us to make it official on the site.</p>
-                </aside>
-              
+             
                     
                    
             </div> <!-- #main -->
@@ -163,10 +341,10 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 
         <script src="js/vendor/list.min.js"></script>
-        <script src="js/vendor/gmap3.js"></script>
+        <script src="js/vendor/jquery.dropdown.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
-        <script src="js/location-list.js"></script>
+        <script src="js/game-list.js"></script>
 
     </body>
 </html>

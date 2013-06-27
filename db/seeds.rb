@@ -59,4 +59,10 @@ Members of the press are welcome to attend this jam. Contact Holden Link at losa
   #fake file upload for webmaster
   UserFileUpload.create!(user_id: 1, file_size: 30, file_path: "http://www.google.com/1.jpg")
 
+  Inspiration.create!(quote: "When you rip your fingers on the screen and you tear the landscape apart with your physical hands, it just feels amazing, man. It feels amazing.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+  Inspiration.create!(quote: "When you're doing it in multiplayer, it feels incredible. I love that.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+  Inspiration.create!(quote: "The touch, the grab, the stroke, all of those things we're going to be obsessed about.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+  Inspiration.create!(quote: "I wish I had some time machine and could go back two weeks. You live by your mistakes, for sure.", source: "http://www.rockpapershotgun.com/2012/11/22/interview-peter-molyneux-on-curiositys-failings-godus/")
+  Inspiration.create!(quote: "You sneak that little thing in there at the end.", source: "http://www.eurogamer.net/articles/2012-04-11-peter-molyneux-why-i-quit-microsoft-and-why-my-new-game-will-change-the-world")
 end
+

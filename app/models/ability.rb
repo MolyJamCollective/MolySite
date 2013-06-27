@@ -43,6 +43,7 @@ class Ability
     can :show, Venue, approved: true
     can :index, Venue
     can :read, Game
+    can [:index, :show], Inspiration
 
   end
 end
