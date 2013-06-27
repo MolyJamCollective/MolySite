@@ -11,7 +11,7 @@
 
     <section>
       <% #@game.screenshot.each do |screenshots| %>
-        <p><img src="img/kachina1.jpg" width="100%"></p>
+        <!-- p><img src="img/kachina1.jpg" width="100%"></p -->
       <% #end %>
     </section>
     <hr/>
@@ -59,9 +59,9 @@
   <aside>
     <h3>Information</h3>
     <p>
-      <span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><a href="">Nextspace</a></span><br/>
-      <span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><a href="">Unity</a></span><br/>
-      <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><a href="">Los Angeles</a></span>
+      <!-- span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><a href="">Nextspace</a></span><br/ -->
+      <!-- span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><a href="">Unity</a></span><br/ -->
+      <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span>
     </p>
   </aside>
 
