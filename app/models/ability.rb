@@ -4,17 +4,23 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    webmasters = user.group?(:Webmasters)
+    organizers = user.group?(:Organizers) 
+    hosts      = user.group?(:Hosts)
+    jammers    = user.group?(:Jammers)
+    users      = user.group?(:Users)
+
     # Want Cascading 'C' Style Switch Statment
-    if(user.group?(:Webmasters))
+    if(webmasters)
     end
 
-    if(user.group?(:Organizers) || user.group?(:Webmasters))
+    if(organizers || webmasters)
       can :manage, :all
       can :approve, Venue
       can :show, Venue
     end
 
-    if(user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+    if(hosts || organizers || webmasters)
       user.groups.each do |group|
         can [:read, :update, :destroy], Venue, group_id: group.id
         can :read, group
@@ -28,11 +34,11 @@ class Ability
       can :host_resources, :page
     end
 
-    if(user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+    if(jammers || hosts || organizers || webmasters)
       can :manage, UserFileUpload, user_id: user.id
     end
 
-    if(user.group?(:Users) || user.group?(:Jammers) || user.group?(:Hosts) || user.group?(:Organizers) || user.group?(:Webmasters))
+    if(users || jammers || hosts || organizers || webmasters)
       can :dashboard, :page
       can :manage, User, id: user.id
       can :create, Game
