@@ -1,10 +1,10 @@
-<h1 id="gameTitle" class="game-title"><%= @game.name %></h1>
+<h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :textarea, ok_button: "Save", cancel_button: "Cancel" %></h1>
+  
   <article>
-
-    <% unless @game.description.empty? %>
+    <% if !@game.description.empty? || can?(:edit, @game) %>
       <header>
         <h2>About</h2>
-        <p><%= @game.description %></p>
+        <p><%= best_in_place_if can?(:edit, @game),  @game, :description, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add a description" %></p>
       </header>
       <hr/>
     <% end %>
@@ -34,10 +34,10 @@
     </section>
     <hr/>
 
-    <% unless @game.directions.empty? %>
+    <% if !@game.directions.empty? || can?(:edit, @game) %>
       <section>
         <h2>Directions</h2>
-        <p><%= @game.directions %></p>
+        <p><%= best_in_place_if can?(:edit, @game), @game, :directions, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add some directions" %></p>
       </section>
       <hr/>
     <% end %>
@@ -59,16 +59,24 @@
   <aside>
     <h3>Information</h3>
     <p>
-      <!-- span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><a href="">Nextspace</a></span><br/ -->
-      <!-- span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><a href="">Unity</a></span><br/ -->
-      <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span>
+      <% if can? :edit, @game %>
+        <% 
+          locations = Array.new 
+          Venue.all.each{ |venue| locations.push [venue.id, venue.display_name]}
+        %>
+        <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= best_in_place_if can?(:edit, @game), @game, :venue_id, type: :select, collection: locations %></p></span>
+      <% else %>
+        <!-- span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><a href="">Nextspace</a></span><br/ -->
+        <!-- span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><a href="">Unity</a></span><br/ -->
+        <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span>
+      <% end %>
     </p>
   </aside>
 
-  <% unless @game.inspiration.empty? %>
+  <% if !@game.inspiration.empty? || can?(:edit, @game) %>
     <aside>
       <h3>Inspiration</h3>
-      <p><%= @game.inspiration %></p>
+      <p><%= best_in_place_if can?(:edit, @game), @game, :inspiration, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add the inspirating quote" %></p>
     </aside>
   <% end %>
 

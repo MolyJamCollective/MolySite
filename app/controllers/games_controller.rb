@@ -48,8 +48,10 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
+        format.json { head :ok }
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
       else
+        format.json { render json: @game.errors.full_messages, status: :uprocessable_entity}
         format.html { render action: "edit" }
       end
     end
