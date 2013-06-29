@@ -1,3 +1,4 @@
+<% title "MolyJam - #{@venue.display_name}" %>
 <article style="min-height: 800px">
   <% if can? :update, @venue %>
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,

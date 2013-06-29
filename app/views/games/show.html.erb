@@ -1,3 +1,4 @@
+<% title "MolyJam - #{@game.name}" %>
 <h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :textarea, ok_button: "Save", cancel_button: "Cancel" %></h1>
   
   <article>
