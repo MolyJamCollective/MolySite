@@ -15,7 +15,7 @@ class Venue < ActiveRecord::Base
   REGIONS = ["Oceania", "North America", "South America", "Europe", "Asia"]
 
   def email
-    "#{self.display_name.gsub(/\s+/, "")}@MolyJam.com"
+  ActiveSupport::Inflector.transliterate "#{self.display_name.gsub(/\s+/, "")}@MolyJam.com"
   end
 
   def address

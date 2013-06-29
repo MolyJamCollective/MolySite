@@ -7,6 +7,6 @@ class CreateSponsors < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_attachment :sponsors, :image
+    # add_attachment :sponsors, :image
   end
 end
