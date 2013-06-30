@@ -180,6 +180,7 @@ nav a:visited {
 }
 
 nav a:hover {
+  text-decoration: underline;
     background-color: #666666;
 }
 
@@ -543,6 +544,289 @@ footer p{
   color: #51c844;
 }
 
+
+
+
+
+
+
+
+.download-area aside{
+  background-color: ##555555;
+  border-width: 0px;
+  padding: 10px 4%;
+  margin-bottom: 10px;
+  float: right;
+  position: relative;
+}
+
+.download-link img{
+  float: right;
+  width: 15%;
+
+}
+
+.download-link p{
+  float:left;
+  position: absolute;
+  top: 30%;
+  font-size: 1.2em;
+}
+
+
+.html_carousel {
+}
+.html_carousel div.slide {
+  position: relative;
+} 
+.html_carousel div.slide img {
+  width: 100%;
+  height: 100%;
+}
+.html_carousel div.slide div {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: none;
+  position: absolute;
+  bottom: 0;
+}
+.html_carousel div.slide h1 {
+  font-size: 35px;
+  padding: 30px 0 0 100px;
+}
+.html_carousel div.slide p {
+  font-size: 16px;
+  padding: 0 0 30px 100px;
+}
+.html_carousel div.slide h1, .html_carousel div.slide p {
+  color: white;
+  margin: 0;
+}
+
+
+#header-image{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    overflow: visible;
+    z-index: 1;
+    
+    filter: alpha(opacity = 0); /* required for opacity to work in IE */
+    webkit-filter: blur(5px); filter: url(#blur-effect-1); 
+    
+}
+
+
+#css-filter-blur { margin: 0px;
+  -webkit-transition: all 0.3s ease-out; 
+     -moz-transition: all 0.3s ease-out; 
+      -ms-transition: all 0.3s ease-out; 
+       -o-transition: all 0.3s ease-out; 
+          transition: all 0.3s ease-out;
+ }
+
+.stretch {
+    width:100%;
+    height: 100%;
+}
+
+.game-title{
+  z-index: 4;
+  position: absolute;
+  margin-top: -125px;
+  font-size: 2.8em;
+  /* Fallback for web browsers that doesn't support RGBa */
+  background: rgb(0, 0, 0);
+  /* RGBa with 0.6 opacity */
+  background: rgba(0, 0, 0, 0.75);
+  padding: 30px 20px;
+  border-top: 10px solid #51c844;
+}
+
+
+
+.info-category{
+  float: left;
+}
+.info-fill{
+  float:right;
+}
+
+
+
+
+
+
+.layout-list .gamelist-container{
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.layout-grid .gamelist-container{
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.layout-list .list-screenshot-bottom{
+  width: 20%;
+  position: absolute;
+  height: 100%;
+  display: block;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.layout-grid .list-screenshot-top{
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  height: 200px;
+  display: block;
+  background-size: cover;
+  background-position: 50%;
+  margin-bottom: 7px;
+}
+
+.list-screenshot .top{
+
+}
+
+.layout-list .list-body-container{
+  float: right;
+  width: 80%;
+}
+
+.layout-list .list-body-list{
+  margin-left: 2%;
+}
+
+.layout-list .list-body-grid{
+  display: none;
+}
+
+.layout-grid .list-body-grid{
+  margin-right: 2%;
+}
+
+.layout-grid .list-body-list{
+  display: none;
+}
+
+
+.layout-list .list-body hr{
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+
+.layout-list .list-platform{
+  width: 5%;
+  margin-left: 5px;
+  float: right;
+  min-width: 30px;
+}
+
+.layout-grid .list-platform{
+  width: 4%;
+  margin-left: 2px;
+  float: right;
+  min-width: 30px;
+}
+
+.layout-list .gamelist .genre{
+  color: #999999;
+  padding-right: 2px;
+}
+
+.grid-list .gamelist .genre{
+  color: #999999;
+  padding-right: 2px;
+  margin: 0px;
+}
+
+.layout-list .gamelist .location, .layout-grid .gamelist .location{
+  color: #999999;
+}
+
+.layout-list .gamelist .location-filler, .layout-grid .gamelist .location-filler{
+  color: #999999;
+}
+
+.layout-list .gamelist .description, .layout-grid .gamelist .description{
+  font-size: 0.8em;
+  color: #888888;
+  line-height: 1.3em;
+}
+
+.layout-grid .gamelist .description{
+  height: 50px;
+}
+
+.layout-list .gamelist li{
+  width: 96%;
+  padding: 2%;
+  padding-bottom: 1.5%;
+  display: block;
+  float: left;
+}
+
+
+.gamelist-filters{
+  width: 98%;
+  padding: 1%;
+  background-color: #222222;
+  margin-bottom: 15px;
+  float: left;
+}
+
+.dropdown-label{
+  font-size: 0.6em;
+  padding-bottom: 0px;
+  position: relative;
+  display: block;
+  line-height: 0.8em;
+}
+
+.dropdown-selected{
+  font-size: 1.1em;
+  padding-top: 0px;
+  display: block;
+}
+
+.dropdown-search{
+  width: 95%;
+  float: left;
+  margin-right: 25px;
+  display: inline;
+  margin-top: 0px;
+}
+
+.dropdown-search .search{
+  padding: 4px 10px;
+  padding-top: 12px;
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.dropdown-sort{
+  width: 43px;
+  float: right;
+  margin-left: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.active{
+  opacity: 0.9;
+}
+.inactive{
+  opacity: 0.3;
+}
+
 /* ==========================================================================
    List.js CSS - via http://listjs.com/css/style.css
    ========================================================================== */
@@ -562,19 +846,38 @@ th {
 }
 
 .btn {
-  color: #ccc;
+  color: #CCC;
   margin-right: 5px;
   padding: 5px 10px;
-  border-radius: 10px;
   border: solid 1px #666;
   display: block;
+  margin: 0px;
   float: left;
-  background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   cursor: hand;
 }
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+
+.btn-filter {
+  color: #FFFFFF;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding: 5px 10px;
+  padding-bottom: 2px;
+  width: 95%;
+  min-width: 150px;
+  border: solid 1px #666;
+  display: block;
+  margin: 0px;
+  float: left;
+  background-color: #777777;
+  cursor: pointer;
+  cursor: hand;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.btn:hover, .btn-filter:hover {
+  background-color: #777777;
   color: #fafafa;
 }
 
@@ -604,7 +907,9 @@ li h1,h2,h3,h4,h5{
 }
 #locations-list .list li {
   padding: 20px;
+  width: 100%;
   cursor: pointer;
+  display: inline-block;
 }
 
 #locations-list .list a {
@@ -612,17 +917,28 @@ li h1,h2,h3,h4,h5{
   color: inherit;
 }
 
-#locations-list .list li:hover{
+#locations-list .list li:hover, #game-list .layout-list li:hover{
     background-color: rgba(255, 255, 255, 0.05);
     color: #fafafa;
-
 }
 
-#locations-list li:nth-child(2n+1) {
+#locations-list li:nth-child(2n+1), .layout-list #game-list li:nth-child(2n+1) {
   background-color: rgba(0, 0, 0, 0.1);
   border: solid 1px rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
 }
+
+.layout-grid .gamelist li{
+  width: 100%;
+  padding: 1%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+.layout-grid  #game-list li {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
 #locations-list li:nth-child(2n+1) .thumb {
   border: solid 1px #666;
 }
@@ -653,7 +969,6 @@ li h1,h2,h3,h4,h5{
 #contacts input {
   font-size: 13px;
   margin: 0;
-  border-radius: 5px;
   width: 200px;
 }
 #contacts {
@@ -714,6 +1029,60 @@ li h1,h2,h3,h4,h5{
       padding-bottom: 0;
     }
 
+    .layout-grid .gamelist li{
+      width: 100%;
+      padding: 1%;
+      float: left;
+      margin-bottom: 15px;
+    }
+    
+    .layout-grid  #game-list li {
+      background-color: rgba(0, 0, 0, 0.1);
+      border: solid 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-filter {
+      color: #FFFFFF;
+      margin-left: 1%;
+      margin-right: 1%;
+      padding: 5px 10px;
+      padding-bottom: 2px;
+      width: 96%;
+      min-width: 150px;
+      border: solid 1px #666;
+      display: block;
+      margin: 0px;
+      float: left;
+      background-color: #777777;
+      cursor: pointer;
+      cursor: hand;
+      margin-bottom: 10px;
+    }
+
+    .dropdown-search{
+      width: 96%;
+      float: left;
+      margin-right: 25px;
+      display: inline;
+      margin-top: 0px;
+    }
+
+    .dropdown-search .search{
+      padding: 4px 10px;
+      padding-top: 12px;
+      font-size: 1.1em;
+      width: 100%;
+
+    }
+
+    .dropdown-sort{
+      width: 43px;
+      float: right;
+      margin-left: 5px;
+      cursor: pointer;
+      display: none;
+    }
+
 
 
 /* ========================
@@ -742,8 +1111,64 @@ li h1,h2,h3,h4,h5{
                 box-shadow: 0 0px 8px #000;
     }
 
+  .layout-grid .gamelist li{
+      width: 46%;
+      padding: 1%;
+      float: left;
+      margin-bottom: 15px;
+  }
+  
+  .layout-grid  #game-list li {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid 1px rgba(255, 255, 255, 0.1);
+    margin-right: 1.7%;
+  }
 
+  .layout-grid  #game-list li:nth-child(2n) {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid 1px rgba(255, 255, 255, 0.1);
+    margin-right: 0%;
+  }
 
+  .btn-filter {
+    color: #FFFFFF;
+    margin-right: 5px;
+    padding: 5px 10px;
+    padding-bottom: 2px;
+    width: 23%;
+    min-width: 150px;
+    border: solid 1px #666;
+    display: block;
+    margin: 0px;
+    float: left;
+    background-color: #777777;
+    cursor: pointer;
+    cursor: hand;
+    margin-right: 10px;
+  }
+
+  .dropdown-search{
+    width: 97%;
+    float: left;
+    margin-right: 25px;
+    display: inline;
+    margin-top: 10px;
+  }
+
+  .dropdown-search .search{
+    padding: 4px 10px;
+    padding-top: 12px;
+    font-size: 1.1em;
+    width: 100%;
+  }
+
+  .dropdown-sort{
+    width: 43px;
+    float: right;
+    margin-left: 5px;
+    cursor: pointer;
+    display: block;
+  }
 
 .no-bg aside {
     box-shadow: none;
@@ -786,6 +1211,63 @@ li h1,h2,h3,h4,h5{
     .wrapper {
         width: 1026px; /* 1140px - 10% for margins */
         margin: 0 auto;
+    }
+    .layout-grid .gamelist li{
+      width: 30%;
+      padding: 1%;
+      float: left;
+      margin-bottom: 15px;
+    }
+
+    .layout-grid  #game-list li, .layout-grid  #game-list li:nth-child(2n) {
+      background-color: rgba(0, 0, 0, 0.1);
+      border: solid 1px rgba(255, 255, 255, 0.1);
+      margin-right: 1.7%;
+    }
+
+    .layout-grid  #game-list li:nth-child(3n) {
+      background-color: rgba(0, 0, 0, 0.1);
+      border: solid 1px rgba(255, 255, 255, 0.1);
+      margin-right: 0px;
+    }
+    .dropdown-search{
+      margin-left: 5px;
+      width: 30%;
+      float: right;
+      margin-right: 25px;
+      display: inline;
+      margin-top: 0px;
+    }
+
+    .btn-filter {
+      color: #FFFFFF;
+      margin-right: 5px;
+      padding: 5px 10px;
+      padding-bottom: 2px;
+      width: 15%;
+      min-width: 150px;
+      border: solid 1px #666;
+      display: block;
+      margin: 0px;
+      float: left;
+      background-color: #777777;
+      cursor: pointer;
+      cursor: hand;
+      margin-right: 10px;
+    }
+
+    .dropdown-search .search{
+      padding: 4px 10px;
+      padding-top: 12px;
+      font-size: 1.1em;
+      width: 100%;
+    }
+
+    .dropdown-sort{
+      width: 43px;
+      float: right;
+      margin-left: 5px;
+      cursor: pointer;
     }
 }
 
@@ -920,26 +1402,4 @@ li h1,h2,h3,h4,h5{
     h3 {
         page-break-after: avoid;
     }
-}
-
-.download-area aside{
-  background-color: ##555555;
-  border-width: 0px;
-  padding: 10px 4%;
-  margin-bottom: 10px;
-  float: right;
-  position: relative;
-}
-
-.download-link img{
-  float: right;
-  width: 15%;
-
-}
-
-.download-link p{
-  float:left;
-  position: absolute;
-  top: 30%;
-  font-size: 1.2em;
 }
