@@ -61,18 +61,18 @@
   <div id="game-list-toggle" class="layout-grid">
     <div id="game-list">
       <ul class="list gamelist">
-
+        <% @games.each do |game| %>
         <li>
           <span class="windows" style="display:none">windows</span>
           <div class="gamelist-container"> 
-            <a href="location-example.html">
-              <div class="list-screenshot-top" style="background-image: url(img/fable.jpg)"></div>
-            </a>
+            <%= link_to game_path(game) do %>
+              <div class="list-screenshot-top" style="background-image: url()"></div>
+            <% end %>
             <div class="list-body-container">
               <div class="list-body-grid">
-                <h4><a href="location-example.html"><span class="name">Fable</span></a></h4>
+                <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
                 <h5><span class="genre">RPG</span></h5>
-                <div class="description">Fable is a groundbreaking roleplaying-adventure game in which your every action determines your skills, appearance, and reputation.</div>
+                <div class="description"><%= game.description %></div>
                 <hr/>
                 <%= image_tag "games/platforms/windows.png", class: "list-platform" %> 
                 <h5><span class="location-filler">Made in </span><span class="location">London</span> </h5>
@@ -80,19 +80,22 @@
               <div class="list-body-list">
                 <%= image_tag "games/platforms/windows.png", class: "list-platform" %>
                 <span class="list-game-info">
-                  <h4><span class="name">Fable</span></h4>
+                  <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
                   <h5>
                     <span class="genre">RPG</span>
                     <span class="location-filler">Made in <span class="location">London</span>
                   </h5>
                   <hr/>
-                  <div class="description">Fable is a groundbreaking roleplaying-adventure game in which your every action determines your skills, appearance, and reputation.</div>
+                  <div class="description"><%= game.description %></div>
                 </span>
               </div>
             </div>
-            <div class="list-screenshot-bottom" style="background-image: url(img/fable.jpg)"></div>
+            <%= link_to game_path(game) do %>
+              <div class="list-screenshot-bottom" style="background-image: url()"></div>
+            <% end %>
           </div>
         </li>
+        <% end %>
         
       </div>
     </div>
