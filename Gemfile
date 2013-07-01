@@ -19,6 +19,7 @@ end
 gem 'normalize-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 
 group :development do
   gem 'sqlite3'
