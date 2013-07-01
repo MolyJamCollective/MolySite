@@ -1,6 +1,6 @@
 <% title "MolyJam - #{@venue.display_name}" %>
 
-<% unless @venue.twitch_username.empty? %>
+<% unless @venue.twitch_username.blank? %>
   <div class="livestream">
     <p>Click here to show livestream</p>
   </div>
@@ -36,8 +36,8 @@
 </article>
 <div class="map-container">
   <div class="map-wrap">
-    <% 
-      map_data = Array.new 
+    <%
+      map_data = Array.new
       venue_map_data = "<div class=\"map-info\"><h1><a href=\"#{venue_path(@venue)}\">#{@venue.display_name}</a></h1><p>#{@venue.address}</p></div>"
       map_data.push({latLng: [@venue.latitude, @venue.longitude], data: venue_map_data})
     %>
