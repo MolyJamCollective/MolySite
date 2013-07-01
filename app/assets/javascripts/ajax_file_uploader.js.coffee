@@ -11,13 +11,9 @@ jQuery ->
         alert("#{file.name} is not a gif, jpeg, or png image file")
 
     progress: (e, data) ->
-      console.log('prog');
       if data.context
         progress = parseInt(data.loaded / data.total * 100, 10)
-        console.log("progress", progress);
         data.context.find('.bar').css('width', progress + '%')
-        console.log('width set');
-      console.log('done');
 
 
     done: (e, data) ->
