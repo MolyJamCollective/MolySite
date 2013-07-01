@@ -15,4 +15,5 @@
 //= require jquery.purr
 //= require best_in_place
 //= require jquery.ui.autocomplete
+//= require jquery-fileupload
 //= require_tree .

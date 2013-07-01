@@ -1,4 +1,27 @@
-<%= direct_upload_form_for @uploader do |f| %>
+<style>
+ .progress {
+    width: 300px;
+    border: 1px solid black;
+ }
+ .bar {
+  height: 20px;
+  background: green;
+ }
+</style>
+<%= direct_upload_form_for @uploader, {:html => {:id => "fileupload", "data-post" => user_file_uploads_upload_url(:attach_redirect => true)}} do |f| %>
   <%= f.file_field :file_uploader %> <br />
   <%= f.submit "Upload", :class => "btn" %>
 <% end %>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+<li class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</li>
+</script>
+
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+  <div class="downloadstub"></div>
+</script>
