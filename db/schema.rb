@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701063244) do
+ActiveRecord::Schema.define(:version => 20130701075237) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20130701063244) do
     t.text     "directions"
     t.string   "play_in_browser_url"
     t.string   "play_in_browser_type"
+    t.string   "android_url"
+    t.string   "ios_url"
   end
 
   create_table "groups", :force => true do |t|

@@ -1,5 +1,9 @@
+<br />
+<br />
+<br />
+<br />
+
 <h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :input, ok_button: "Save", cancel_button: "Cancel" %></h1>
-  
   <article>
     <% if !@game.description.empty? || can?(:edit, @game) %>
       <header>
@@ -48,7 +52,7 @@
       <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless true %>
       <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless true %>
       <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless true %>
-      
+
       <%= link_to @game.play_in_browser_url do %>
       <aside class="download-link">
         <%= image_tag "games/platforms/flash.png" if @game.play_in_browser_type == "flash"%>
@@ -58,20 +62,29 @@
       </aside>
       <% end unless @game.play_in_browser_url.to_s.empty? %>
 
-      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/ios.png" %><p>Find on App Store</p></aside></a><% end unless true %>
-      <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/android.png" %><p>Find on Google Play</p></aside></a><% end unless true %>
+      <%= link_to @game.ios_url do %><aside class="download-link"><%= image_tag "games/platforms/ios.png" %><p>Find on App Store</p></aside></a><% end unless @game.ios_url.to_s.empty? %>
+      <%= link_to @game.android_url do %><aside class="download-link"><%= image_tag "games/platforms/android.png" %><p>Find on Google Play</p></aside></a><% end unless @game.android_url.to_s.empty? %>
       
       <% if can? :edit, @game %>
       <aside>
         <%= form_for(@game) do |f| %>
         <div class="field">
           <%= f.label :play_in_browser_url, "Play in Browser URL" %>
-          <%= f.text_field :play_in_browser_url %>
+          <%= f.url_field :play_in_browser_url %>
         </div>
         <div class="field">
           <%= f.label :play_in_browser_type %>
           <%= f.select(:play_in_browser_type, [["Flash", "flash"], ["HTML 5", "html"], ["Unity Web Player", "unity"]]) %>
         </div>
+        <div class="field">
+          <%= f.label :android_url, "Android Marketplace URL" %>
+          <%= f.url_field(:android_url) %>
+        </div>
+        <div class="field">
+          <%= f.label :ios_url, "iOS App Store URL" %>
+          <%= f.url_field(:ios_url) %>
+        </div>
+        <br />
         <div class="actions">
           <%= f.submit %>
         </div>
