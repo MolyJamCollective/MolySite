@@ -22,8 +22,13 @@ jQuery ->
       path = $('#fileupload input[name=key]').val().replace('${filename}', file.name)
       to = $('#fileupload').data('post')
       content = {}
-      content[$('#fileupload').data('as')] = domain + path
-      $.post(to, content)
+      content['full_path'] = domain + path
+      content['file_size'] = file.size
+      content['file_name'] = file.name
+      console.log('sending TO:',to,'content',content)
+      $.post(to, content, success: (obj1, obj2) ->
+        console.log(obj1,obj2)
+      , 'json')
       data.context.remove() if data.context # remove progress bar
 
     fail: (e, data) ->

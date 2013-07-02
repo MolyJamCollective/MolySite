@@ -1,12 +1,10 @@
 class UserFileUploadsController < ApplicationController
   load_and_authorize_resource
 
+
   def index
     @files = current_user.user_file_uploads
-
-    @user_file_upload = UserFileUpload.new
-    @uploader = @user_file_upload.file_uploader
-    @uploader.success_action_redirect = user_file_uploads_upload_url
+    @after_upload_path = user_file_uploads_upload_url
   end
 
   def upload
@@ -19,21 +17,21 @@ class UserFileUploadsController < ApplicationController
     log = UserFileUpload.new()
 
     log.user_id = current_user.id
-    log.file_bucket = params[:bucket]
+    #log.file_bucket = params[:bucket]
 
-    #not really sure why this stopped returning the file name, but carrierwave is a pain
-    #log.file_path = log.file_uploader.direct_fog_url(:with_path => true)
-    log.file_path = "#{log.file_uploader.direct_fog_url()}#{params[:key]}"
-
-    log.file_size = 20 #todo find a way to get thie uploaded file size
+    log.file_size = params[:file_size]
+    log.file_path = params[:full_path]
     log.save!
 
     if(params[:attach_redirect].present?)
-      redirect_to(new_attachment_url(:file_id => log.id))
+     # redirect_to(new_attachment_url(:file_id => log.id))
     else
-      redirect_to(user_file_uploads_url)
+      #redirect_to(user_file_uploads_url)
     end
 
+    respond_to do |format|
+      format.json {render json: log}
+    end
 
   end
 

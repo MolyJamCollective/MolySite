@@ -8,9 +8,9 @@
   background: green;
  }
 </style>
-<%= direct_upload_form_for @uploader, {:html => {:id => "fileupload", "data-post" => user_file_uploads_upload_url(:attach_redirect => true)}} do |f| %>
-  <%= f.file_field :file_uploader %> <br />
-  <%= f.submit "Upload", :class => "btn" %>
+
+<%= s3_uploader_form post: @after_upload_path, as: "full_path" do %>
+  <%= file_field_tag :file %>
 <% end %>
 
 <!-- The template to display files available for upload -->
