@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def attachment_link(source_model, attachment_type, options = {})
     options = {
-      :max_attachments => 3,
+      :max_attachments => 10,
       :show_wraper => true
     }.merge(options)
 
