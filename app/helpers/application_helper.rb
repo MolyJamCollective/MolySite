@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
+
   def attachment_thumbnail(attachment)
     #TODO logic for other media, assuming images for now
     return "<img src=\"#{attachment.file_path}\" />"
