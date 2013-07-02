@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   # File upload quota in MB
   # In the future if this is per event we may want to move this off user
   def upload_quota
-    return 2000
+    return 2000.megabytes
   end
 
   def upload_quota_used

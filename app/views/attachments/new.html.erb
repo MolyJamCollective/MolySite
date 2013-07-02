@@ -81,7 +81,7 @@
 <% if @files.count > 0 %>
 <div id="select_file">
   <div id="quota">
-    <%= current_user.upload_quota_used %> MB
+    <%= number_to_human_size(current_user.upload_quota_used) %>
   </div>
   <h3>Select an uploaded file</h3>
   <ul id="files">
@@ -93,6 +93,8 @@
     %>
       <li class="<%= class_str %>">
         <%= user_file.file_name %>
+        -
+        <%= number_to_human_size(user_file.file_size) %>
         <% if user_file.is_an_image? %>
         -
         <img src="<%= user_file.file_path %>" />
