@@ -30,7 +30,7 @@
         <li><a class="dropdown-platform-link" id="mac">Mac OS X</a></li>
         <li><a class="dropdown-platform-link" id="linux">Linux</a></li>
         <li><a class="dropdown-platform-link" id="flash">Flash (Browser)</a></li>
-        <li><a class="dropdown-platform-link" id="unity">Unity (Browser) 5</a></li>
+        <li><a class="dropdown-platform-link" id="unity">Unity (Browser)</a></li>
         <li><a class="dropdown-platform-link" id="html5">HTML 5 (Browser)</a></li>
         <li><a class="dropdown-platform-link" id="ios">iOS (Mobile)</a></li>
         <li><a class="dropdown-platform-link" id="android">Android (Mobile)</a></li>
@@ -62,10 +62,23 @@
       <ul class="list gamelist">
         <% @games.each do |game| %>
         <li>
-          <span class="windows" style="display:none">windows</span>
+
+          <% unless true %><span class="windows" style="display:none">windows</span><% end %>
+          <% unless true %><span class="mac" style="display:none">mac</span><% end %>
+          <% unless true %><span class="linux" style="display:none">linux</span><% end %>
+
+          <% unless game.play_in_browser_url.to_s.empty? %>
+          <% if game.play_in_browser_type == "flash" %><span class="flash" style="display:none">flash</span><% end %>
+          <% if game.play_in_browser_type == "html" %><span class="html" style="display:none">html</span><% end %>
+          <% if game.play_in_browser_type == "unity" %><span class="unity" style="display:none">unity</span><% end %>
+          <% end %>
+
+          <% unless game.ios_url.to_s.empty? %><span class="ios" style="display:none">ios</span><% end %>
+          <% unless game.android_url.to_s.empty? %><span class="android" style="display:none">android</span><% end %>
+
           <div class="gamelist-container"> 
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-top" style="background-image: url()"></div>
+              <div class="list-screenshot-top" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
             <% end %>
             <div class="list-body-container">
               <div class="list-body-grid">
@@ -73,11 +86,36 @@
                 <h5><span class="genre"><%= game.genre %></span></h5>
                 <div class="description"><%= game.description %></div>
                 <hr/>
-                <%= image_tag "games/platforms/windows.png", class: "list-platform" %> 
+
+                <% # image_tag "games/platforms/windows.png", class: "list-platform" %>
+                <% # image_tag "games/platforms/mac.png", class: "list-platform" %>
+                <% # image_tag "games/platforms/linux.png", class: "list-platform" %>
+
+                <% unless game.play_in_browser_url.to_s.empty? %>
+                <%= image_tag "games/platforms/flash.png", class: "list-platform" if game.play_in_browser_type == "flash"%>
+                <%= image_tag "games/platforms/html5.png", class: "list-platform" if game.play_in_browser_type == "html"%>
+                <%= image_tag "games/platforms/unityweb.png", class: "list-platform" if game.play_in_browser_type == "unity"%>
+                <% end %>
+
+                <%= image_tag "games/platforms/ios.png", class: "list-platform" unless game.ios_url.to_s.empty? %>
+                <%= image_tag "games/platforms/android.png", class: "list-platform" unless game.android_url.to_s.empty? %>
+
                 <h5><span class="location-filler">Made in </span><span class="location"><%= game.venue.display_name %></span> </h5>
               </div>
               <div class="list-body-list">
-                <%= image_tag "games/platforms/windows.png", class: "list-platform" %>
+                <% # image_tag "games/platforms/windows.png", class: "list-platform" %>
+                <% # image_tag "games/platforms/mac.png", class: "list-platform" %>
+                <% # image_tag "games/platforms/linux.png", class: "list-platform" %>
+
+                <% unless game.play_in_browser_url.to_s.empty? %>
+                <%= image_tag "games/platforms/flash.png", class: "list-platform" if game.play_in_browser_type == "flash"%>
+                <%= image_tag "games/platforms/html5.png", class: "list-platform" if game.play_in_browser_type == "html"%>
+                <%= image_tag "games/platforms/unityweb.png", class: "list-platform" if game.play_in_browser_type == "unity"%>
+                <% end %>
+
+                <%= image_tag "games/platforms/ios.png", class: "list-platform" unless game.ios_url.to_s.empty? %>
+                <%= image_tag "games/platforms/android.png", class: "list-platform" unless game.android_url.to_s.empty? %>
+
                 <span class="list-game-info">
                   <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
                   <h5>
@@ -90,7 +128,7 @@
               </div>
             </div>
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-bottom" style="background-image: url()"></div>
+              <div class="list-screenshot-bottom" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
             <% end %>
           </div>
         </li>
