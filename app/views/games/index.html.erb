@@ -65,7 +65,7 @@
           <span class="windows" style="display:none">windows</span>
           <div class="gamelist-container"> 
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-top" style="background-image: url()"></div>
+              <div class="list-screenshot-top" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
             <% end %>
             <div class="list-body-container">
               <div class="list-body-grid">
@@ -90,7 +90,7 @@
               </div>
             </div>
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-bottom" style="background-image: url()"></div>
+              <div class="list-screenshot-bottom" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
             <% end %>
           </div>
         </li>
