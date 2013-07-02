@@ -12,6 +12,8 @@
 <%= s3_uploader_form post: @after_upload_path, as: "full_path" do %>
   <%= file_field_tag :file %>
 <% end %>
+<div id="files">
+</div>
 
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">

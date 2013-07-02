@@ -23,14 +23,19 @@ class UserFileUploadsController < ApplicationController
     log.file_path = params[:full_path]
     log.save!
 
-    if(params[:attach_redirect].present?)
-     # redirect_to(new_attachment_url(:file_id => log.id))
-    else
-      #redirect_to(user_file_uploads_url)
+    responseJson = {
+      :file_log => log
+    }
+    if(params[:attachment].present?)
+      attachment = Attachment.new(params[:attachment])
+      attachment.user_file_upload_id = log.id
+      attachment.save!()
+
+      responseJson[:attachment_id] = attachment.id
     end
 
     respond_to do |format|
-      format.json {render json: log}
+      format.json {render json: responseJson}
     end
 
   end

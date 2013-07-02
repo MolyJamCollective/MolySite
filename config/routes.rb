@@ -21,6 +21,7 @@ MolySite::Application.routes.draw do
 
   get '/user_file_uploads' => 'user_file_uploads#index'
   post '/user_file_uploads/upload' => 'user_file_uploads#upload'
+  get '/attachments/reload/:id' => 'attachments#reload'
 
   match '/news' => 'pages#news'
   match '/about' => 'pages#about'
