@@ -16,7 +16,10 @@ MolySite::Application.routes.draw do
 
   resources :attachments, only: [:create, :new]
 
-  resources :games
+  resources :games do
+    post 'add_user'
+    post 'remove_user'
+  end
   resources :inspirations
 
   get '/user_file_uploads' => 'user_file_uploads#index'

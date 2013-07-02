@@ -40,10 +40,9 @@
     <div id="dropdown-genre" class="dropdown dropdown-tip">
       <ul class="dropdown-menu">
         <li><a class="dropdown-genre-link" id="genre-all">All</a></li>
-        <li><a class="dropdown-genre-link" id="RPG">RPG</a></li>
-        <li><a class="dropdown-genre-link" id="Simulation">Simulation</a></li>
-        <li><a class="dropdown-genre-link" id="Social">Social</a></li>
-        <li><a class="dropdown-genre-link" id="Strategy">Strategy</a></li>
+        <% Game.select(:genre).map(&:genre).uniq.each do |genre| %>
+          <li><a class="dropdown-genre-link" id="<%= genre.to_s %>"><%= genre.to_s %></a></li>
+        <% end %>
       </ul>
     </div>
 
@@ -71,7 +70,7 @@
             <div class="list-body-container">
               <div class="list-body-grid">
                 <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
-                <h5><span class="genre">RPG</span></h5>
+                <h5><span class="genre"><%= game.genre %></span></h5>
                 <div class="description"><%= game.description %></div>
                 <hr/>
                 <%= image_tag "games/platforms/windows.png", class: "list-platform" %> 
@@ -82,7 +81,7 @@
                 <span class="list-game-info">
                   <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
                   <h5>
-                    <span class="genre">RPG</span>
+                    <span class="genre"><%= game.genre %></span>
                     <span class="location-filler">Made in <span class="location"><%= game.venue.display_name %></span>
                   </h5>
                   <hr/>
