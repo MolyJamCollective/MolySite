@@ -9,9 +9,15 @@ class Game < ActiveRecord::Base
 
   after_create :create_group
 
+  has_many :attachments, :as => :attachable, :dependent => :destroy
+
   def create_group
     self.group_id = Group.create(name: self.name).id
     self.save
     true
+  end
+
+  def screenshots
+    return attachments.where(attachment_type: "screenshot")
   end
 end

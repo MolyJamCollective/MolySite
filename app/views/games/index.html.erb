@@ -62,6 +62,14 @@
     <div id="game-list">
       <ul class="list gamelist">
         <% @games.each do |game| %>
+        <%
+        unless game.screenshots.empty?
+          game_screenshot = game.screenshots.shuffle.first.file_path
+        else
+          game_screenshot = asset_path "pixel-bg.jpg"
+        end
+        %>
+
         <li>
 
           <% unless true %><span class="windows" style="display:none">windows</span><% end %>
@@ -79,7 +87,7 @@
 
           <div class="gamelist-container"> 
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-top" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
+              <div class="list-screenshot-top" style="background-image: url(<%= game_screenshot %>)"></div>
             <% end %>
             <div class="list-body-container">
               <div class="list-body-grid">
@@ -133,7 +141,7 @@
               </div>
             </div>
             <%= link_to game_path(game) do %>
-              <div class="list-screenshot-bottom" style="background-image: url(<%= asset_path "pixel-bg.jpg"%>)"></div>
+            <div class="list-screenshot-bottom" style="background-image: url(<%= game_screenshot %>)"></div>
             <% end %>
           </div>
         </li>
