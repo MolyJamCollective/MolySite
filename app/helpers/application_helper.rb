@@ -16,19 +16,19 @@ module ApplicationHelper
   def attachment_link(source_model, attachment_type, options = {})
     options = {
       :max_attachments => 10,
-      :show_wraper => true
+      :show_wrapper => true
     }.merge(options)
 
     buffer = []
 
-    if(options[:show_wraper] == true)
+    if(options[:show_wrapper] == true)
       buffer.push('<div id="attachments_')
       buffer.push(source_model.id)
       buffer.push("_")
       buffer.push(source_model.class)
       buffer.push("_")
       buffer.push(attachment_type)
-      buffer.push('">')
+      buffer.push('" class="attachments">')
     end
     buffer.push('<div class="thumbs">')
     existing_attachments = source_model.attachments.where(:attachment_type => attachment_type)
@@ -48,7 +48,7 @@ module ApplicationHelper
       buffer.push(link_to "Add Attachment", new_attachment_path(:at_id => source_model.id, :at_type => source_model.class.to_s, :type_cd => attachment_type), :class => "attachment_link", :onclick => "return false;")
     end
 
-    if(options[:show_wraper] == true)
+    if(options[:show_wrapper] == true)
       buffer.push('</div>')
     end
 
