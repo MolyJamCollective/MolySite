@@ -1,0 +1,46 @@
+<section>
+  <h2>Credits</h2>
+  <table class="credits">
+    <tbody>
+
+      <% @game.group.users.each do |user| %>
+      <tr>
+        <td class="name"><%= user.name %></td>
+        <td class="twitter">
+          <%= link_to "@#{user.twitter_username}", "http://www.twitter.com/#{user.twitter_username}" unless user.twitter_username.empty? %>
+        </td>
+
+        <% if can?(:remove_user, @game) && user.memberships.where(group_id: @game.group_id).first.role < Membership::ROLES[:founder] %>
+        <td class="admin-insert">
+          <%= form_for :user, url: game_remove_user_path(@game) do |f| %>
+          <%= f.hidden_field :id, value: user.id %>
+          <%= f.submit "Remove" %>
+          <% end %>
+        </td>
+        <% end %>
+
+      </tr>
+      <% end %>
+
+    </tbody>
+
+    <% if can? :edit, @game %>
+    <tfoot class="admin-insert">
+      <tr>
+        <% if can? :add_user, @game %>
+        <%= form_for :user, url: game_add_user_path(@game) do |f| %>
+        <td>Username:</td>
+        <td><%= f.text_field :username %></td>
+        <td><%= f.submit "Add" %></td>
+        <% end %>
+        <% else %>
+        <td colspan="3">Note: Only the orginal creator of the game page can edit users</td>
+        <% end %>
+      </tr>
+    </tfoot>
+    <% end %>
+
+  </table>
+
+</section>
+<hr/>
