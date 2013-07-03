@@ -23,7 +23,7 @@
   </div>
   <% end %>
 
-  <% if !@game.description.empty? || can?(:edit, @game) %>
+  <% if !@game.description.to_s.empty? || can?(:edit, @game) %>
   <header>
     <h2>About</h2>
     <p><%= best_in_place_if can?(:edit, @game),  @game, :description, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add a description" %></p>
@@ -79,7 +79,7 @@
   </section>
   <hr/>
 
-  <% if !@game.directions.empty? || can?(:edit, @game) %>
+  <% if !@game.directions.to_s.empty? || can?(:edit, @game) %>
   <section>
     <h2>Directions</h2>
     <p><%= best_in_place_if can?(:edit, @game), @game, :directions, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add some directions" %></p>
@@ -154,7 +154,7 @@
     </p>
   </aside>
 
-  <% if !@game.inspiration.empty? || can?(:edit, @game) %>
+  <% if !@game.inspiration.to_s.empty? || can?(:edit, @game) %>
     <aside>
       <h3>Inspiration</h3>
       <p><%= best_in_place_if can?(:edit, @game), @game, :inspiration, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add the inspirating quote" %></p>

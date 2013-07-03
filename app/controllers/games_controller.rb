@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @game = Game.new if can? :create, Game
 
     respond_to do |format|
       format.html
@@ -15,18 +16,6 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html
     end
-  end
-
-  def new
-    @game = Game.new
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def edit
-    @game = Game.find(params[:id])
   end
 
   def create
