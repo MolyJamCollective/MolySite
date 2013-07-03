@@ -156,9 +156,9 @@
         <span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><%= best_in_place_if can?(:edit, @game), @game, :engine %></span><br/>
         <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= best_in_place_if can?(:edit, @game), @game, :venue_id, type: :select, collection: locations %></p></span>
       <% else %>
-        <span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><%= @game.genre.to_s.titleize %></span><br/>
-        <span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><%= @game.engine.to_s.titleize %></span><br/>
-        <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span>
+        <% unless @game.genre.to_s.empty? %><span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><%= @game.genre.to_s %></span><br/><% end %>
+        <% unless @game.engine.to_s.empty? %><span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><%= @game.engine.to_s %></span><br/><% end %>
+        <% unless @game.venue.to_s.empty? %><span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span><% end %>
       <% end %>
     </p>
   </aside>
