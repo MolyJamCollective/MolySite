@@ -1,34 +1,9 @@
-<style>
-  #attach_file > div {
-    float: left;
-  }
-  .or_delim {
-    margin: 20px;
-  }
-
-  #select_file {
-    margin-top: 40px;
-  }
-
-  #quota {
-    float: right;
-    clear: both;
-  }
-
-  #attachment_popup {
-    position: fixed;
-    top: 100px;
-    margin: 0 100px;
-    background: black;
-    padding: 20px;
-  }
-
-</style>
 <h2>Attach a file</h2>
+<a id="cancel_attachment" href="#" onclick="$('#attachment_popup').hide(); return false;">Cancel</a>
 <div id="attach_file" class="clearfix">
   <div>
     <h3>Remote file:</h3>
-    <%= form_for(@attachment) do |f| %>
+    <%= form_for(@attachment, :remote => true, :format => "json", :html => {:id => "link_attachment_form"}) do |f| %>
       <%= f.text_field :remote_path %>
       <%= f.hidden_field :attachable_id %>
       <%= f.hidden_field :attachable_type %>
