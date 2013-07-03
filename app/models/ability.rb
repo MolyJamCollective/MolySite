@@ -41,6 +41,7 @@ class Ability
           can :destroy, Venue, group_id: group.id
           can :destroy, Game, group_id: group.id 
           can :manage, Membership, group_id: group.id
+          can [:add_user, :remove_user], Game, group_id: group.id
           cannot :destroy, Membership, role: Membership::ROLES[:founder]
         end
       end

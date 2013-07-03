@@ -4,7 +4,8 @@ class Game < ActiveRecord::Base
   belongs_to :group
   has_many :users, :through => :group
 
-  attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions, :play_in_browser_url, :play_in_browser_type, :android_url, :ios_url
+  attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions, :play_in_browser_url,
+   :play_in_browser_type, :android_url, :ios_url, :genre, :engine
 
   after_create :create_group
 
