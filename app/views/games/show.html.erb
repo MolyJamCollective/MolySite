@@ -15,11 +15,11 @@
 
 <% end %>
 
-<h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :input, ok_button: "Save", cancel_button: "Cancel" %></h1>
+<h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :input %></h1>
 <article>
   <% if can?(:edit, @game) %>
   <div class="admin-insert">
-    To edit any of your game data, simply click on the text you wish to edit.
+    To edit any of your game data, simply click on the text you wish to edit. (You can even change the name of your game)
   </div>
   <% end %>
 
