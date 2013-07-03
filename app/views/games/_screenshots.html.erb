@@ -1,12 +1,11 @@
 <section>
-  
-  <% @game.screenshots.each do |screenshot| %>
-  <p><%= image_tag screenshot.file_path, width: "100%" %></p>
+
+  <%# @game.screenshots.each do |screenshot| %>
+  <p><%# image_tag screenshot.file_path, width: "100%" %></p>
   <% end %>
 
   <% if can? :edit, @game %>
   <div class="admin-insert">
-    <%= attachment_link(@game, "screenshot", {}, "Upload Screenshot")%>
   </div>
   <% end %>
 
