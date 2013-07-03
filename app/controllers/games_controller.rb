@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @games = Game.all
+    @games = Game.all.shuffle
     @game = Game.new if can? :create, Game
 
     respond_to do |format|
