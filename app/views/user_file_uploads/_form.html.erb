@@ -1,4 +1,29 @@
-<%= direct_upload_form_for @uploader do |f| %>
-  <%= f.file_field :file_uploader %> <br />
-  <%= f.submit "Upload", :class => "btn" %>
+<style>
+ .progress {
+    width: 300px;
+    border: 1px solid black;
+ }
+ .bar {
+  height: 20px;
+  background: green;
+ }
+</style>
+
+<%= s3_uploader_form post: @after_upload_path, as: "full_path" do %>
+  <%= file_field_tag :file %>
 <% end %>
+<div id="files">
+</div>
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+<li class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</li>
+</script>
+
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+  <div class="downloadstub"></div>
+</script>
