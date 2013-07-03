@@ -1,5 +1,8 @@
 MolySite::Application.routes.draw do
 
+  resources :screenshots
+
+
   resources :events
   resources :venues do
     post 'approve'
