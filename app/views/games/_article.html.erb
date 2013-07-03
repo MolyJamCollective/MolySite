@@ -1,0 +1,82 @@
+<article>
+
+  <% if can?(:edit, @game) %>
+  <div class="admin-insert">
+    <p>To edit any of your game data, simply click on the text you wish to edit. (You can even change the name of your game)</p>
+  </div>
+  <% end %>
+
+  <% if !@game.description.to_s.empty? || can?(:edit, @game) %>
+  <section>
+    <header>
+      <h2>About</h2>
+    </header>
+    <p><%= best_in_place_if can?(:edit, @game),  @game, :description, type: :textarea, nil: "click here to add a description" %></p>
+  </section>
+  <hr />
+  <% end %>
+
+  <section>
+    <% @game.screenshots.each do |screenshot| %>
+    <p><%= image_tag screenshot.file_path, width: "100%" %></p>
+    <% end %>
+    <% if can? :edit, @game %>
+    <div class="admin-insert">
+      <%= attachment_link(@game, "screenshot", {}, "Upload Screenshot")%>
+    </div>
+    <% end %>
+  </section>
+  <hr/>
+
+  <section>
+    <h2>Credits</h2>
+    <p>
+      <table width="100%">
+        <tbody class="list">
+          <% @game.group.users.each do |user| %>
+          <tr>
+            <td class="name"><%= user.name %></td>
+            <td class="twitter"><%= link_to "@#{user.twitter_username}", "http://www.twitter.com/#{user.twitter_username}" unless user.twitter_username.empty? %></td>
+            <% if can?(:remove_user, @game) && user.memberships.where(group_id: @game.group_id).first.role < Membership::ROLES[:founder] %>
+            <td>
+              <%= form_for :user, url: game_remove_user_path(@game) do |f| %>
+              <%= f.hidden_field :id, value: user.id %>
+              <%= f.submit "Remove" %>
+              <% end %>
+            </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <% if can? :add_user, @game %>
+          <tr>
+            <%= form_for :user, url: game_add_user_path(@game) do |f| %>
+            <td>Username</td>
+            <td><%= f.text_field :username %></td>
+            <td><%= f.submit "Add" %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tfoot>
+      </table>
+      <% if can? :edit, @game %>
+      <div class="admin-insert">
+        Note: Only the orginal creator of the game page can edit users
+      </div>
+      <% end %>
+    </p>
+  </section>
+  <hr/>
+
+  <% if !@game.directions.to_s.empty? || can?(:edit, @game) %>
+  <section>
+    <header>
+      <h2>Directions</h2>
+    </header>
+    <p><%= best_in_place_if can?(:edit, @game),  @game, :directions, type: :textarea, nil: "click here to add a directions" %></p>
+  </section>
+  <hr />
+  <% end %>
+
+</article>
