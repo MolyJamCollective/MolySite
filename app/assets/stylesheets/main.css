@@ -857,6 +857,12 @@ th {
   cursor: hand;
 }
 
+.admin-insert .btn {
+  color: #CCC;
+  background-color: #111;
+  text-decoration: none;
+}
+
 .btn-filter {
   color: #FFFFFF;
   margin-left: 1%;
@@ -994,6 +1000,9 @@ li h1,h2,h3,h4,h5{
   overflow: scroll;
 }
 
+table.credits {
+  width: 100%;
+}
 
 /* ==========================================================================
    Media Queries

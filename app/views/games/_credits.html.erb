@@ -14,8 +14,12 @@
         <td class="admin-insert">
           <%= form_for :user, url: game_remove_user_path(@game) do |f| %>
           <%= f.hidden_field :id, value: user.id %>
-          <%= f.submit "Remove" %>
+          <%= f.submit "Remove", class: "btn" %>
           <% end %>
+        </td>
+        <% elsif user.id == current_user.id %>
+        <td class="admin-insert">
+          <%= link_to "Edit", edit_user_path, class: "btn" %>
         </td>
         <% end %>
 
@@ -25,13 +29,13 @@
     </tbody>
 
     <% if can? :edit, @game %>
-    <tfoot class="admin-insert">
+    <tfoot>
       <tr>
         <% if can? :add_user, @game %>
         <%= form_for :user, url: game_add_user_path(@game) do |f| %>
-        <td>Username:</td>
-        <td><%= f.text_field :username %></td>
-        <td><%= f.submit "Add" %></td>
+        <td class="admin-insert">Username:</td>
+        <td class="admin-insert"><%= f.text_field :username %></td>
+        <td class="admin-insert"><%= f.submit "Add", class: "btn" %></td>
         <% end %>
         <% else %>
         <td colspan="3">Note: Only the orginal creator of the game page can edit users</td>
