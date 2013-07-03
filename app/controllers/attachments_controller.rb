@@ -42,6 +42,14 @@ class AttachmentsController < ApplicationController
 
 
     @attachment.save!()
+
+    responseJson = {
+      :attachment_id => @attachment.id
+    }
+
+    respond_to do |format|
+      format.json {render json: responseJson}
+    end
   end
 
 end

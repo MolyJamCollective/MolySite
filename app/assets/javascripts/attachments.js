@@ -66,7 +66,6 @@ var FILEUPLOAD_CONFIG = {
 };
 $('#fileupload').fileupload(FILEUPLOAD_CONFIG);
 
-
 $("a.attachment_link").on('click', function(event) {
   //Don't follow the link, pop it up
   event.preventDefault();
@@ -89,6 +88,9 @@ $("a.attachment_link").on('click', function(event) {
     $attachmentPopup.html(response).show();
 
     $('#fileupload').fileupload(FILEUPLOAD_CONFIG);
+    $("#link_attachment_form").bind("ajax:success", function(xhr, data, status) {
+      userFileAttachedFn(data);
+    });
   });
 
 
