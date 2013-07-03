@@ -1,0 +1,23 @@
+<%
+if @game.screenshots.empty?
+  image_path = asset_path "pixel-bg.jpg"
+else
+  image_path = @game.screenshots.shuffle.first.file_path
+end
+%>
+
+<% content_for :header do %>
+
+<div id="header-image">
+  <svg id="svg-image-blur" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+    <defs>
+      <filter id="blur-effect-1">
+        <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+      </filter>
+    </defs>
+    <image xlink:href="<%= image_path%>" id="css-filter-blur" class="stretch" alt="" width="100%" height="100%" filter="url(#blur-effect-1)" preserveAspectRatio="xMidYMid slice"></image>
+  </svg>
+</div>
+
+<% end %>
+<h1 id="gameTitle" class="game-title"><%= best_in_place_if can?(:edit, @game), @game, :name, type: :input %></h1>
