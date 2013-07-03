@@ -6,7 +6,11 @@ module ApplicationHelper
 
   def attachment_thumbnail(attachment)
     #TODO logic for other media, assuming images for now
-    return "<img src=\"#{attachment.file_path}\" />"
+    if(attachment.is_an_image?)
+      return "<img src=\"#{attachment.file_path}\" />"
+    else
+      return "<a href=\"#{attachment.file_path}\">#{attachment.file_name}</a>"
+    end
   end
 
   def attachment_link(source_model, attachment_type, options = {})
