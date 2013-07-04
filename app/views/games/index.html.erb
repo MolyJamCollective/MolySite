@@ -64,7 +64,7 @@
         <% @games.each do |game| %>
         <%
         unless game.screenshots.empty?
-          game_screenshot = game.screenshots.shuffle.first.file_path
+          game_screenshot = game.screenshots.shuffle.first.image_url(:thumb_grid)
         else
           game_screenshot = asset_path "pixel-bg.jpg"
         end

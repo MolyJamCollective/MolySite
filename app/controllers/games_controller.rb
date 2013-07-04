@@ -3,7 +3,6 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all.shuffle
-    @game = Game.new if can? :create, Game
 
     respond_to do |format|
       format.html

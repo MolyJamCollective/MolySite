@@ -4,3 +4,13 @@
 
 jQuery ->
   $('.best_in_place').best_in_place()
+  $('#new_screenshot').fileupload
+    dataType: "script"
+    add: (e, data) ->
+      data.context = $(tmpl("template-upload", data.files[0]))
+      $('#new_screenshot').append(data.context)
+      data.submit()
+    progress: (e, data) ->
+      if data.context
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        data.context.find('.bar').css('width', progress + '%')

@@ -3,6 +3,7 @@ class Game < ActiveRecord::Base
   belongs_to :venue
   belongs_to :group
   has_many :users, :through => :group
+  has_many :screenshots, dependent: :destroy
 
   attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions, :play_in_browser_url,
    :play_in_browser_type, :android_url, :ios_url, :genre, :engine
@@ -14,8 +15,5 @@ class Game < ActiveRecord::Base
     self.save
     true
   end
-
-  def screenshots
-    return attachments.where(attachment_type: "screenshot")
-  end
+  
 end

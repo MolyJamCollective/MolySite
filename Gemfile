@@ -53,8 +53,12 @@ gem 'gravtastic'
 gem 'google-analytics-rails'
 gem 'newrelic_rpm'
 
-#AWS
+#AWS/Files
 gem 'aws-ses', '~> 0.5.0', :require => 'aws/ses'
 gem 'carrierwave_direct'
+gem 'carrierwave'
+gem 'mini_magick' # RMagick
+gem 'fog'
 
+# Forms
 gem 'best_in_place'

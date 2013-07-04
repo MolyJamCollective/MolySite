@@ -1,11 +1,14 @@
 <section>
-
-  <%# @game.screenshots.each do |screenshot| %>
-  <p><%# image_tag screenshot.file_path, width: "100%" %></p>
-  <% end %>
-
+  <div id="screenshots">
+    <% @game.screenshots.each do |screenshot| %>
+    <% @screenshot = screenshot %>
+    <%= render 'screenshots/show_article' %>
+    <% end %>
+  </div>
+  
   <% if can? :edit, @game %>
   <div class="admin-insert">
+  	<%= render 'screenshots/form' %>
   </div>
   <% end %>
 

@@ -2,7 +2,7 @@
 if @game.screenshots.empty?
   image_path = asset_path "pixel-bg.jpg"
 else
-  image_path = @game.screenshots.shuffle.first.file_path
+  image_path = @game.screenshots.shuffle.first.image_url
 end
 %>
 
