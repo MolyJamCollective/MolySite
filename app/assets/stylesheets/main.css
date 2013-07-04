@@ -1010,9 +1010,9 @@ table.credits {
 
     nav a {
         float: right;
-        margin: 0 1.0%;
+        margin: 0 4px;
         margin-top: 20px;
-        padding: 10px 2.7%;
+        padding: 10px 15px;
         margin-bottom: 0;
     }
 
