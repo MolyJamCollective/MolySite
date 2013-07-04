@@ -1,0 +1,22 @@
+<%= form_for @game, :html => {:multipart => true} do |f| %>
+
+<%= f.label :windows_file, "Windows: " %>
+<%= f.file_field :windows_file %>
+
+<%= f.label :mac_file, "Mac: " %>
+<%= f.file_field :mac_file %>
+
+<%= f.label :linux_file, "Linux: " %>
+<%= f.file_field :linux_file %>
+
+<%= f.submit %>
+
+<p>Acceptable file formats are zip, tar, gz</p>
+<% end %>
+
+<script id="template-upload-file" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
