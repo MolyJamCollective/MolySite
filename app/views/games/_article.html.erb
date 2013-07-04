@@ -1,0 +1,34 @@
+<article>
+
+  <% if can?(:edit, @game) %>
+  <div class="admin-insert">
+    <p>To edit any of your game data, simply click on the text you wish to edit. (You can even change the name of your game)</p>
+    <p>To delete your game, <%= link_to "click here", game_path(@game), :method => :delete, :confirm => "Are you sure?" %></p>
+  </div>
+  <% end %>
+
+  <% if !@game.description.to_s.empty? || can?(:edit, @game) %>
+  <section>
+    <header>
+      <h2>About</h2>
+    </header>
+    <p><%= best_in_place_if can?(:edit, @game),  @game, :description, type: :textarea, nil: "click here to add a description" %></p>
+  </section>
+  <hr />
+  <% end %>
+
+  <%= render 'screenshots' %>
+
+  <%= render 'credits' %>
+
+  <% if !@game.directions.to_s.empty? || can?(:edit, @game) %>
+  <section>
+    <header>
+      <h2>Directions</h2>
+    </header>
+    <p><%= best_in_place_if can?(:edit, @game),  @game, :directions, type: :textarea, nil: "click here to add a directions" %></p>
+  </section>
+  <hr />
+  <% end %>
+
+</article>

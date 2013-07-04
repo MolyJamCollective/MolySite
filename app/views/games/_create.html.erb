@@ -1,0 +1,14 @@
+<div style="padding: 1em; background-color: #555;">
+	<% if can? :create, Game %>
+	<h4>Ready to share your game with the world?</h4>
+	
+	<%= form_for Game.new do |f| %>
+		<p>Whats your game called? <%= f.text_field :name %></p>
+		<%= f.submit "Create!", class: "button" %>
+	<% end %>
+
+	<% else %>
+	<h4>You need to login before you can submit a game. <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "login in", new_user_session_path %> to continue.</h4>
+
+	<% end %>
+</div>

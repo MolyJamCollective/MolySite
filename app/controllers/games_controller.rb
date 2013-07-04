@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @games = Game.all
+    @games = Game.all.shuffle
 
     respond_to do |format|
       format.html
@@ -15,18 +15,6 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html
     end
-  end
-
-  def new
-    @game = Game.new
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-  def edit
-    @game = Game.find(params[:id])
   end
 
   def create
