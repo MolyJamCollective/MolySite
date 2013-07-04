@@ -206,6 +206,7 @@ DEPENDENCIES
   carrierwave_direct
   coffee-rails
   devise
+  fog
   geocoder
   google-analytics-rails
   gravtastic
