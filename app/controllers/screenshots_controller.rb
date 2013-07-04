@@ -12,17 +12,8 @@ class ScreenshotsController < ApplicationController
   def create
     @game = Game.find(params[:game_id])
     @screenshot = Screenshot.new(params[:screenshot])
-    @screenshot.game_id = @game.id
-
-    respond_to do |format|
-      if @screenshot.save
-        format.html { redirect_to @screenshot.game, notice: 'Screenshot was successfully created.' }
-        format.json { render json: @screenshot.game, status: :created, location: @screenshot }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @screenshot.errors, status: :unprocessable_entity }
-      end
-    end
+    @screenshot.game_id = params[:game_id];
+    @screenshot.save
   end
 
   def update

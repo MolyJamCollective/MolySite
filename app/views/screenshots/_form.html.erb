@@ -1,9 +1,15 @@
-
-<%= form_for [@game, @screenshot], :html => {:multipart => true} do |f| %>
+<%= form_for [@game, Screenshot.new], :html => {:multipart => true} do |f| %>
 <table width="100%">
 <tr>
-	<td><%= f.file_field :image %></td>
-	<td><%= f.submit "Upload Screenshot", class: "btn", style: "float: right" %></td>
+	<td><%= f.label :image, "Upload Screenshot:" %></td>
+	<td><%= f.file_field :image, multiple: true, accept: 'image/png,image/gif,image/jpeg', name: "screenshot[image]" %></td>
 </tr>
 </table>
 <% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>

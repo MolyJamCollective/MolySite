@@ -2,7 +2,7 @@
 	<% if can? :create, Game %>
 	<h4>Ready to share your game with the world?</h4>
 	
-	<%= form_for(@game) do |f| %>
+	<%= form_for Game.new do |f| %>
 		<p>Whats your game called? <%= f.text_field :name %></p>
 		<%= f.submit "Create!", class: "button" %>
 	<% end %>

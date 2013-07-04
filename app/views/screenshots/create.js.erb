@@ -1,0 +1,5 @@
+<% if @screenshot.new_record? %>
+  alert("Failed to upload screenshot: <%= j @screenshot.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  $("#screenshots").append("<%= j render 'screenshots/show_article' %>");
+<% end %>

@@ -1,0 +1,6 @@
+<p style="margin-bottom: 0"><%= image_tag @screenshot.image_url(:thumb_article), width: "100%" %></p>
+<% if can? :edit, @game %>
+<div class="admin-insert">
+	<%= link_to "Delete", game_screenshot_path(@game, @screenshot), :method => :delete, :confirm => "Are you sure?" %>
+</div>
+<% end %>
