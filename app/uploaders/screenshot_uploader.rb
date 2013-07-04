@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class ScreenshotUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include Sprockets::Helpers::RailsHelper
@@ -20,11 +18,11 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   # end
 
   version :thumb_grid do
-    process scale: [50, 50]
+    process resize_to_limit: [320, 320]
   end
 
   version :thumb_article do
-    process scale: [50, 50]
+    process resize_to_limit: [600, 600]
   end
 
   def extension_white_list

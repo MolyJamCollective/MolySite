@@ -12,6 +12,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @screenshot = Screenshot.new if can? :edit, @game
 
     respond_to do |format|
       format.html

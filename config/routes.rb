@@ -1,8 +1,5 @@
 MolySite::Application.routes.draw do
 
-  resources :screenshots
-
-
   resources :events
   resources :venues do
     post 'approve'
@@ -20,6 +17,7 @@ MolySite::Application.routes.draw do
   resources :attachments, only: [:create, :new]
 
   resources :games, only: [:index, :show, :create, :update, :destroy] do
+    resources :screenshots
     post 'add_user'
     post 'remove_user'
   end
