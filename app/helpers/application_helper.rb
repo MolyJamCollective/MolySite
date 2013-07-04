@@ -21,13 +21,11 @@ module ApplicationHelper
 
     buffer = []
 
+    attachmentsContainerId = "attachments_#{source_model.id}_#{source_model.class}_#{attachment_type}"
+
     if(options[:show_wrapper] == true)
-      buffer.push('<div id="attachments_')
-      buffer.push(source_model.id)
-      buffer.push("_")
-      buffer.push(source_model.class)
-      buffer.push("_")
-      buffer.push(attachment_type)
+      buffer.push('<div id="')
+      buffer.push(attachmentsContainerId)
       buffer.push('" class="attachments">')
     end
     buffer.push('<div class="thumbs">')
@@ -36,7 +34,14 @@ module ApplicationHelper
       # render existing attachments
 
       existing_attachments.each do |a|
+        buffer.push('<div class="attachment">')
         buffer.push(attachment_thumbnail(a))
+        buffer.push('<a href="javascript: removeAttachment(')
+        buffer.push(a.id)
+        buffer.push(', \'')
+        buffer.push(attachmentsContainerId)
+        buffer.push('\');">Remove</a>')
+        buffer.push('</div>')
       end
     end
 

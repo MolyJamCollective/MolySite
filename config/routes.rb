@@ -14,7 +14,7 @@ MolySite::Application.routes.draw do
   resources :memberships, only: [:create, :destroy]
   resources :mail_forwarder, only: :create
 
-  resources :attachments, only: [:create, :new]
+  resources :attachments, only: [:create, :new, :destroy]
 
   resources :games do
     post 'add_user'
