@@ -5,24 +5,26 @@
       <ul>
         <% if user_signed_in? %>
           <li>
-          <%= link_to "My Account", dashboard_path %>
+          <%= link_to "Dashboard", dashboard_path %>
         </li>
         <% else %>
           <li><%= link_to "Login", :new_user_session %></li>
         <% end %>
         <li><%= link_to "Theme", inspirations_path %></li>
         <li><%= link_to "About", "/about" %></li>
+        <li><%= link_to "Games", Game %></a></li>
         <li><%= link_to "Locations", Venue %></a></li>
         <li><%= link_to "News", "/news" %></li>
+        <li><%= link_to "Watch Live", "http://www.twitch.tv/team/molyjam/"%></li>
       </ul>
     </nav>
   </header>
 </div>
 <% flash.each do |type, message|
-          case type 
-            when :alert %><div class="alert alert-error"><strong>Alert</strong><%= message %></div><% 
-            when :notice %><div class="alert alert-success"><strong>Notice</strong><%= message %></div><% 
-            when :message %><div class="alert alert-info"><strong>Message</strong><%= message %></div><% 
-          end %>
-        <% end %>
+  case type 
+  when :alert %><div class="alert alert-error"><strong>Alert</strong><%= message %></div><% 
+  when :notice %><div class="alert alert-success"><strong>Notice</strong><%= message %></div><% 
+  when :message %><div class="alert alert-info"><strong>Message</strong><%= message %></div><% 
+    end %>
+    <% end %>
 <%= yield :header %>

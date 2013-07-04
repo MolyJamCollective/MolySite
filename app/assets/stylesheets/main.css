@@ -571,7 +571,7 @@ footer p{
 }
 .html_carousel div.slide {
   position: relative;
-} 
+}
 .html_carousel div.slide img {
   width: 100%;
   height: 100%;
@@ -603,16 +603,15 @@ footer p{
     height: 40%;
     overflow: visible;
     z-index: 1;
-    
     filter: alpha(opacity = 0); /* required for opacity to work in IE */
     webkit-filter: blur(5px); filter: url(#blur-effect-1); 
 }
 
 #css-filter-blur { margin: 0px;
-  -webkit-transition: all 0.3s ease-out; 
-     -moz-transition: all 0.3s ease-out; 
-      -ms-transition: all 0.3s ease-out; 
-       -o-transition: all 0.3s ease-out; 
+  -webkit-transition: all 0.3s ease-out;
+     -moz-transition: all 0.3s ease-out;
+      -ms-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
           transition: all 0.3s ease-out;
  }
 
@@ -1011,9 +1010,9 @@ table.credits {
 
     nav a {
         float: right;
-        margin: 0 1.0%;
+        margin: 0 4px;
         margin-top: 20px;
-        padding: 10px 2.7%;
+        padding: 10px 15px;
         margin-bottom: 0;
     }
 
@@ -1039,7 +1038,7 @@ table.credits {
       float: left;
       margin-bottom: 15px;
     }
-    
+
     .layout-grid  #game-list li {
       background-color: rgba(0, 0, 0, 0.1);
       border: solid 1px rgba(255, 255, 255, 0.1);
@@ -1121,7 +1120,7 @@ table.credits {
       float: left;
       margin-bottom: 15px;
   }
-  
+
   .layout-grid  #game-list li {
     background-color: rgba(0, 0, 0, 0.1);
     border: solid 1px rgba(255, 255, 255, 0.1);
@@ -1188,7 +1187,7 @@ table.credits {
 
     nav {
         float: right;
-        width: 50%;
+        width: 68%;
     }
 
 /* ============

@@ -25,6 +25,20 @@
  };
 
 
+var removeAttachment = function(attachmentId, attachmentsContainerId) {
+  attachmentsContainer = $('#'+attachmentsContainerId);
+  attachmentsContainer.html('reloading...');
+  $.ajax({
+    url: "/attachments/" + attachmentId,
+    type: "post",
+    data: {"_method":"delete"},
+    success: function(response) {
+      attachmentsContainer.html(response);
+      attachmentsContainer = null;
+    }
+  });
+};
+
 
 
 var FILEUPLOAD_CONFIG = {
