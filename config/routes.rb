@@ -20,6 +20,7 @@ MolySite::Application.routes.draw do
     resources :screenshots, only: [:show, :create, :destroy]
     post 'add_user'
     post 'remove_user'
+    get 'upload_file'
   end
   resources :inspirations
 

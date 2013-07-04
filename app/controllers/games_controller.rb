@@ -12,6 +12,10 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
 
+    @game.windows_file.success_action_redirect = game_upload_file_url(@game)
+    @game.mac_file.success_action_redirect = game_upload_file_url(@game)
+    @game.linux_file.success_action_redirect = game_upload_file_url(@game)
+
     respond_to do |format|
       format.html
     end
@@ -26,7 +30,7 @@ class GamesController < ApplicationController
         Membership.set(current_user, Group.where(name: "Jammers").first)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to @game, error: 'Something broke!' }
       end
     end
   end
@@ -52,6 +56,18 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to games_url }
     end
+  end
+
+  def upload_file
+    @game = Game.find(params[:game_id])
+
+    @game.windows_file.key = params[:key] if params[:key] =~ /windows_file/
+    @game.mac_file.key = params[:key] if params[:key] =~ /mac_file/
+    @game.linux_file.key = params[:key] if params[:key] =~ /linux_file/
+
+    @game.save
+
+    redirect_to @game, notice: 'file was successfully updated.'
   end
 
   def add_user
