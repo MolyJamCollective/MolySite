@@ -72,9 +72,9 @@
 
         <li>
 
-          <% unless true %><span class="windows" style="display:none">windows</span><% end %>
-          <% unless true %><span class="mac" style="display:none">mac</span><% end %>
-          <% unless true %><span class="linux" style="display:none">linux</span><% end %>
+          <% unless game.windows_file.to_s.empty? %><span class="windows" style="display:none">windows</span><% end %>
+          <% unless game.mac_file.to_s.empty? %><span class="mac" style="display:none">mac</span><% end %>
+          <% unless game.linux_file.to_s.empty? %><span class="linux" style="display:none">linux</span><% end %>
 
           <% unless game.play_in_browser_url.to_s.empty? %>
           <% if game.play_in_browser_type == "flash" %><span class="flash" style="display:none">flash</span><% end %>
@@ -96,9 +96,9 @@
                 <div class="description"><%= game.description %></div>
                 <hr/>
 
-                <% # image_tag "games/platforms/windows.png", class: "list-platform" %>
-                <% # image_tag "games/platforms/mac.png", class: "list-platform" %>
-                <% # image_tag "games/platforms/linux.png", class: "list-platform" %>
+                <%= image_tag "games/platforms/windows.png", class: "list-platform" unless game.windows_file.to_s.empty? %>
+                <%= image_tag "games/platforms/mac.png", class: "list-platform" unless game.mac_file.to_s.empty? %>
+                <%= image_tag "games/platforms/linux.png", class: "list-platform" unless game.linux_file.to_s.empty? %>
 
                 <% unless game.play_in_browser_url.to_s.empty? %>
                 <%= image_tag "games/platforms/flash.png", class: "list-platform" if game.play_in_browser_type == "flash"%>
@@ -114,9 +114,9 @@
                 <% end %>
               </div>
               <div class="list-body-list">
-                <% # image_tag "games/platforms/windows.png", class: "list-platform" %>
-                <% # image_tag "games/platforms/mac.png", class: "list-platform" %>
-                <% # image_tag "games/platforms/linux.png", class: "list-platform" %>
+                <%= image_tag "games/platforms/windows.png", class: "list-platform" unless game.windows_file.to_s.empty? %>
+                <%= image_tag "games/platforms/mac.png", class: "list-platform" unless game.mac_file.to_s.empty? %>
+                <%= image_tag "games/platforms/linux.png", class: "list-platform" unless game.linux_file.to_s.empty? %>
 
                 <% unless game.play_in_browser_url.to_s.empty? %>
                 <%= image_tag "games/platforms/flash.png", class: "list-platform" if game.play_in_browser_type == "flash"%>

@@ -6,7 +6,11 @@ class Game < ActiveRecord::Base
   has_many :screenshots, dependent: :destroy
 
   attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions, :play_in_browser_url,
-   :play_in_browser_type, :android_url, :ios_url, :genre, :engine
+   :play_in_browser_type, :android_url, :ios_url, :genre, :engine, :windows_file, :mac_file, :linux_file
+
+  mount_uploader :windows_file, FileUploader
+  mount_uploader :mac_file, FileUploader
+  mount_uploader :linux_file, FileUploader
 
   after_create :create_group
 

@@ -3,9 +3,9 @@
 <%= render 'article' %>
 
 <div class="download-area">
-  <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless true %>
-  <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless true %>
-  <%= link_to "" do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless true %>
+  <%= link_to @game.windows_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless @game.windows_file_url.to_s.empty? %>
+  <%= link_to @game.mac_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless @game.mac_file_url.to_s.empty? %>
+  <%= link_to @game.linux_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless @game.linux_file_url.to_s.empty? %>
 
   <%= link_to @game.play_in_browser_url do %>
   <aside class="download-link">
@@ -21,6 +21,9 @@
 
   <% if can? :edit, @game %>
   <aside>
+    <%= render 'form_files' %>
+
+    <hr />
     <%= form_for(@game) do |f| %>
     <div class="field">
       <%= f.label :play_in_browser_url, "Play in Browser URL" %>
