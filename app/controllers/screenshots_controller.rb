@@ -16,21 +16,6 @@ class ScreenshotsController < ApplicationController
     @screenshot.save
   end
 
-  def update
-    @game = Game.find(params[:game_id])
-    @screenshot = Screenshot.find(params[:id])
-
-    respond_to do |format|
-      if @screenshot.update_attributes(params[:screenshot])
-        format.html { redirect_to @screenshot.game, notice: 'Screenshot was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @screenshot.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def destroy
     @game = Game.find(params[:game_id])
     @screenshot = Screenshot.find(params[:id])
@@ -38,7 +23,6 @@ class ScreenshotsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to @game }
-      format.json { head :no_content }
     end
   end
 end
