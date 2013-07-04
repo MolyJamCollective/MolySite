@@ -21,6 +21,14 @@ class AttachmentsController < ApplicationController
     @attachment_type = attachment.attachment_type
   end
 
+  def destroy
+    attachment = Attachment.find(params[:id])
+    attachment.destroy()
+
+    @attachable = attachment.attachable
+    @attachment_type = attachment.attachment_type
+  end
+
   def create
     attachment_info_hash = {}
     if(params[:attachment])
