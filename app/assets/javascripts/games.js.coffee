@@ -4,6 +4,7 @@
 
 jQuery ->
   $('.best_in_place').best_in_place()
+
   $('#new_screenshot').fileupload
     dataType: "script"
     add: (e, data) ->
@@ -14,11 +15,37 @@ jQuery ->
       if data.context
         progress = parseInt(data.loaded / data.total * 100, 10)
         data.context.find('.bar').css('width', progress + '%')
-  $('#edit_game').fileupload
-    dataType: "script"
+
+  $('#new_windows_file_uploader').fileupload
+    forceIframeTransport: true
+    maxChunkSize: 1048576
     add: (e, data) ->
       data.context = $(tmpl("template-upload-files", data.files[0]))
-      $('#edit_game').append(data.context)
+      $('#windows-file').append(data.context)
+      data.submit()
+    progress: (e, data) ->
+      if data.context
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        data.context.find('.bar').css('width', progress + '%')
+
+  $('#new_mac_file_uploader').fileupload
+    forceIframeTransport: true
+    maxChunkSize: 1048576
+    add: (e, data) ->
+      data.context = $(tmpl("template-upload-files", data.files[0]))
+      $('#mac-file').append(data.context)
+      data.submit()
+    progress: (e, data) ->
+      if data.context
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        data.context.find('.bar').css('width', progress + '%')
+
+  $('#new_linux_file_uploader').fileupload
+    forceIframeTransport: true
+    maxChunkSize: 1048576
+    add: (e, data) ->
+      data.context = $(tmpl("template-upload-files", data.files[0]))
+      $('#linux-file').append(data.context)
       data.submit()
     progress: (e, data) ->
       if data.context

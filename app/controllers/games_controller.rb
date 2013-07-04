@@ -70,6 +70,18 @@ class GamesController < ApplicationController
     redirect_to @game, notice: 'file was successfully updated.'
   end
 
+  def remove_file
+    @game = Game.find(params[:game_id])
+
+    @game.remove_windows_file! if params[:game][:file] == "windows_file"
+    @game.remove_mac_file! if params[:game][:file] == "mac_file"
+    @game.remove_linux_file! if params[:game][:file] == "linux_file"
+
+    @game.save
+
+    redirect_to @game, notice: 'file was successfully removed.'
+  end
+
   def add_user
     @game = Game.find(params[:game_id])
     redirect_to @game, error: "Invalid username" if params[:user][:username].nil?

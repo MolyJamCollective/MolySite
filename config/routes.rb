@@ -21,6 +21,7 @@ MolySite::Application.routes.draw do
     post 'add_user'
     post 'remove_user'
     get 'upload_file'
+    post 'remove_file'
   end
   resources :inspirations
 
