@@ -18,7 +18,6 @@ jQuery ->
 
   $('#new_windows_file_uploader').fileupload
     forceIframeTransport: true
-    maxChunkSize: 1048576
     add: (e, data) ->
       data.context = $(tmpl("template-upload-files", data.files[0]))
       $('#windows-file').append(data.context)
@@ -30,7 +29,6 @@ jQuery ->
 
   $('#new_mac_file_uploader').fileupload
     forceIframeTransport: true
-    maxChunkSize: 1048576
     add: (e, data) ->
       data.context = $(tmpl("template-upload-files", data.files[0]))
       $('#mac-file').append(data.context)
@@ -42,7 +40,6 @@ jQuery ->
 
   $('#new_linux_file_uploader').fileupload
     forceIframeTransport: true
-    maxChunkSize: 1048576
     add: (e, data) ->
       data.context = $(tmpl("template-upload-files", data.files[0]))
       $('#linux-file').append(data.context)
