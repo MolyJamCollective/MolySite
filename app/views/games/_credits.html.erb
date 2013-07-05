@@ -7,7 +7,7 @@
       <tr>
         <td class="name"><%= user.name %></td>
         <td class="twitter">
-          <%= link_to "@#{user.twitter_username}", "http://www.twitter.com/#{user.twitter_username}" unless user.twitter_username.empty? %>
+          <%= link_to "@#{user.twitter_username}", "http://www.twitter.com/#{user.twitter_username}" unless user.twitter_username.to_s.empty? %>
         </td>
 
         <% if can?(:remove_user, @game) && user.memberships.where(group_id: @game.group_id).first.role < Membership::ROLES[:founder] %>
