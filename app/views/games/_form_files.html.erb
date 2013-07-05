@@ -1,11 +1,11 @@
 <p>Acceptable file formats are zip, tar, gz. Max file size is 500mb.</p>
 
-<div id="windows-file">
+<div id="windows-file" data-url="<%= game_upload_file_url(@game) %>">
   <hr />
   <% if @game.windows_file.to_s.empty? %>
   <%= direct_upload_form_for @game.windows_file, html: {id: "new_windows_file_uploader"} do |f| %>
   <%= f.label :windows_file, "Windows: " %>
-  <%= f.file_field :windows_file, style: "width: 100%", name: "game[windows_file]" %>
+  <%= f.file_field :windows_file, use_action_status: true, style: "width: 100%", name: "game[windows_file]" %>
   <% end %>
   <% else %>
   <%= form_for @game, url: game_remove_file_path(@game), method: "post" do |f| %>
@@ -16,12 +16,12 @@
   <% end %>
 </div>
 
-<div id="mac-file">
+<div id="mac-file" data-url="<%= game_upload_file_url(@game) %>">
   <hr />
   <% if @game.mac_file.to_s.empty? %>
   <%= direct_upload_form_for @game.mac_file, html: {id: "new_mac_file_uploader"} do |f| %>
   <%= f.label :mac_file, "Mac: " %>
-  <%= f.file_field :mac_file, style: "width: 100%", name: "game[mac_file]" %>
+  <%= f.file_field :mac_file, use_action_status: true, style: "width: 100%", name: "game[mac_file]" %>
   <% end %>
   <% else %>
   <%= form_for @game, url: game_remove_file_path(@game), method: "post" do |f| %>
@@ -32,12 +32,12 @@
   <% end %>
 </div>
 
-<div id="linux-file">
+<div id="linux-file" data-url="<%= game_upload_file_url(@game) %>">
   <hr />
   <% if @game.linux_file.to_s.empty? %>
   <%= direct_upload_form_for @game.linux_file, html: {id: "new_linux_file_uploader"} do |f| %>
   <%= f.label :linux_file, "Linux: " %>
-  <%= f.file_field :linux_file, style: "width: 100%", name: "game[linux_file]" %>
+  <%= f.file_field :linux_file, use_action_status: true, style: "width: 100%", name: "game[linux_file]" %>
   <% end %>
   <% else %>
   <%= form_for @game, url: game_remove_file_path(@game), method: "post" do |f| %>

@@ -55,7 +55,7 @@ gem 'newrelic_rpm'
 
 #AWS/Files
 gem 'aws-ses', '~> 0.5.0', :require => 'aws/ses'
-gem 'carrierwave_direct'
+gem 'carrierwave_direct', :git => 'https://github.com/dwilkie/carrierwave_direct.git'
 gem 'carrierwave'
 gem 'mini_magick' # RMagick
 gem 'fog'

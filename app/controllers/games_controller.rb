@@ -12,9 +12,9 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
 
-    @game.windows_file.success_action_redirect = game_upload_file_url(@game)
-    @game.mac_file.success_action_redirect = game_upload_file_url(@game)
-    @game.linux_file.success_action_redirect = game_upload_file_url(@game)
+    @game.windows_file.success_action_status = "201"
+    @game.mac_file.success_action_status = "201"
+    @game.linux_file.success_action_status = "201"
 
     respond_to do |format|
       format.html

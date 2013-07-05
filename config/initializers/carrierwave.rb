@@ -20,6 +20,7 @@ begin
     #config.validate_unique_filename = false        # defaults to true
     #config.validate_filename_format = false        # defaults to true
     #config.validate_remote_net_url_format = false  # defaults to true
+    config.use_action_status = true                 # defaults to false
   
     #config.min_file_size     = 5.kilobytes         # defaults to 1.byte
     config.max_file_size     = 500.megabytes        # defaults to 5.megabytes
