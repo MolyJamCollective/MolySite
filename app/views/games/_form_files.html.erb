@@ -48,8 +48,22 @@
   <% end %>
 </div>
 
-<script id="template-upload-files" type="text/x-tmpl">
-<div class="upload">
+<script id="template-upload-windows-files" type="text/x-tmpl">
+<div class="upload" id="upload-windows">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
+
+<script id="template-upload-mac-files" type="text/x-tmpl">
+<div class="upload" id="upload-mac">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
+
+<script id="template-upload-linux-files" type="text/x-tmpl">
+<div class="upload" id="upload-linux">
   {%=o.name%}
   <div class="progress"><div class="bar" style="width: 0%"></div></div>
 </div>
