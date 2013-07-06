@@ -31,8 +31,10 @@
 <hr/>
 <% end %>
 
+<% if can? :show, Game %>
 <div class="admin-panel-expander" id="admin-venue-link">Game Administration</div>
 <div id="admin-venue-section" class="admin-panel" style="display: none">
   <%= render "admin_games"  %>
 </div>
 <hr/>
+<% end %>
