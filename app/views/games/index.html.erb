@@ -93,7 +93,7 @@
               <div class="list-body-grid">
                 <h4><%= link_to game_path(game) do %><span class="name"><%= game.name %></span><% end %></h4>
                 <h5><span class="genre"><%= game.genre %></span></h5>
-                <div class="description"><%= game.description %></div>
+                <div class="description"><%= truncate game.description, length: 140 %></div>
                 <hr/>
 
                 <%= image_tag "games/platforms/windows.png", class: "list-platform" unless game.windows_file.to_s.empty? %>
@@ -136,7 +136,7 @@
                     <% end %>
                   </h5>
                   <hr/>
-                  <div class="description"><%= game.description %></div>
+                  <div class="description"><%= truncate game.description, length: 140 %></div>
                 </span>
               </div>
             </div>
