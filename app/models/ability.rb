@@ -56,8 +56,6 @@ class Ability
     can :read, Game
     can :read, Screenshot
     can [:index, :show], Inspiration
-
-    cannot [:index, :show, :create], Game unless user_groups[:webmasters]
-
+    
   end
 end
