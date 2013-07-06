@@ -1,8 +1,5 @@
 MolySite::Application.routes.draw do
 
-  resources :inspirations
-
-
   resources :events
   resources :venues do
     post 'approve'
@@ -17,10 +14,20 @@ MolySite::Application.routes.draw do
   resources :memberships, only: [:create, :destroy]
   resources :mail_forwarder, only: :create
 
-  resources :attachments, only: [:create, :new]
+  resources :attachments, only: [:create, :new, :destroy]
+
+  resources :games, only: [:index, :show, :create, :update, :destroy] do
+    resources :screenshots, only: [:show, :create, :destroy]
+    post 'add_user'
+    post 'remove_user'
+    get 'upload_file'
+    post 'remove_file'
+  end
+  resources :inspirations
 
   get '/user_file_uploads' => 'user_file_uploads#index'
-  get '/user_file_uploads/upload' => 'user_file_uploads#upload'
+  post '/user_file_uploads/upload' => 'user_file_uploads#upload'
+  get '/attachments/reload/:id' => 'attachments#reload'
 
   match '/news' => 'pages#news'
   match '/about' => 'pages#about'

@@ -1,0 +1,16 @@
+<section>
+  <div id="screenshots">
+    <% @game.screenshots.each do |screenshot| %>
+    <% @screenshot = screenshot %>
+    <%= render 'screenshots/show_article' %>
+    <% end %>
+  </div>
+  
+  <% if can? :edit, @game %>
+  <div class="admin-insert">
+  	<%= render 'screenshots/form' %>
+  </div>
+  <% end %>
+
+</section>
+<hr/>

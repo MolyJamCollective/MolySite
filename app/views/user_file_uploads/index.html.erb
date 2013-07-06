@@ -1,12 +1,12 @@
 <div id="quota">
-  <%= current_user.upload_quota_used %> MB of <%= current_user.upload_quota %> MB
+  <%= number_to_human_size(current_user.upload_quota_used) %>  of <%= number_to_human_size(current_user.upload_quota) %>
 </div>
 <br />
 <ul id="files">
 
 <% @files.each do |user_file| %>
   <li>
-    <a href="<%= user_file.file_path %>"><%= user_file.file_name %></a> - <%= user_file.file_size %> MB
+    <a href="<%= user_file.file_path %>"><%= user_file.file_name %></a> - <%= number_to_human_size(user_file.file_size) %>
   </li>
 <% end %>
 

@@ -19,6 +19,7 @@ end
 gem 'normalize-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 
 group :development do
   gem 'sqlite3'
@@ -48,13 +49,16 @@ gem 'redcarpet'
 # Gravatar
 gem 'gravtastic'
 
-# Paperclip
-gem 'paperclip'
-
 #Analytics
 gem 'google-analytics-rails'
 gem 'newrelic_rpm'
 
-#AWS
-gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
+#AWS/Files
+gem 'aws-ses', '~> 0.5.0', :require => 'aws/ses'
 gem 'carrierwave_direct'
+gem 'carrierwave'
+gem 'mini_magick' # RMagick
+gem 'fog'
+
+# Forms
+gem 'best_in_place'

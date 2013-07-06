@@ -2,6 +2,7 @@ class Venue < ActiveRecord::Base
   belongs_to :event
   belongs_to :group
   has_many :sponsors
+  has_many :users, :through => :group
 
   attr_accessible :street, :state, :country, :city, :region, :url, :contact, :description,
     :description_raw, :latitude, :longitude, :name, :event_id, :group_id, :twitch_username, :display_name, :approved
@@ -74,10 +75,6 @@ class Venue < ActiveRecord::Base
     self.users.each do |user|
       host_list.push(user) if user.memberships.where(group_id: self.group_id).first.role >= Membership::ROLES[:officer]
     end
-  end
-
-  def users
-    self.group.users
   end
 
   def register_user(user, host = false)

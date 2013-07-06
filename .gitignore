@@ -65,3 +65,5 @@ config/environments/production.rb
 config/environments/staging.rb
 config/initializers/devise.rb
 
+# Uploads
+public/uploads/

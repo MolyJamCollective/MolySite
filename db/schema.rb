@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624223019) do
+ActiveRecord::Schema.define(:version => 20130704093343) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -31,6 +31,27 @@ ActiveRecord::Schema.define(:version => 20130624223019) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "group_id"
+  end
+
+  create_table "games", :force => true do |t|
+    t.string   "name"
+    t.text     "inspiration"
+    t.integer  "event_id"
+    t.integer  "venue_id"
+    t.integer  "group_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.text     "description"
+    t.text     "directions"
+    t.string   "play_in_browser_url"
+    t.string   "play_in_browser_type"
+    t.string   "android_url"
+    t.string   "ios_url"
+    t.string   "genre"
+    t.string   "engine"
+    t.string   "windows_file"
+    t.string   "mac_file"
+    t.string   "linux_file"
   end
 
   create_table "groups", :force => true do |t|
@@ -55,16 +76,19 @@ ActiveRecord::Schema.define(:version => 20130624223019) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "screenshots", :force => true do |t|
+    t.integer  "game_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sponsors", :force => true do |t|
     t.integer  "venue_id"
     t.integer  "rank"
     t.string   "url"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "name"
   end
 

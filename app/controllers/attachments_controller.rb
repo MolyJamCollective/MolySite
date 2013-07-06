@@ -1,21 +1,32 @@
 class AttachmentsController < ApplicationController
   load_and_authorize_resource
 
-  layout "minimal"
+  layout false
 
   def new
-    @attachment = Attachment.new()
-    session[:attachment_info] = {
+    attachment_info = {
       :attachment_type => params[:type_cd],
       :attachable_id => params[:at_id],
       :attachable_type => params[:at_type]
     }
-
-    @user_file_upload = UserFileUpload.new
-    @uploader = @user_file_upload.file_uploader
-    @uploader.success_action_redirect = user_file_uploads_upload_url(:attach_redirect => true)
+    @attachment = Attachment.new(attachment_info)
+    @after_upload_path = user_file_uploads_upload_url(:attachment => attachment_info)
 
     @files = current_user.user_file_uploads
+  end
+
+  def reload
+    attachment = Attachment.find(params[:id])
+    @attachable = attachment.attachable
+    @attachment_type = attachment.attachment_type
+  end
+
+  def destroy
+    attachment = Attachment.find(params[:id])
+    attachment.destroy()
+
+    @attachable = attachment.attachable
+    @attachment_type = attachment.attachment_type
   end
 
   def create
@@ -39,6 +50,14 @@ class AttachmentsController < ApplicationController
 
 
     @attachment.save!()
+
+    responseJson = {
+      :attachment_id => @attachment.id
+    }
+
+    respond_to do |format|
+      format.json {render json: responseJson}
+    end
   end
 
 end

@@ -1,3 +1,14 @@
+<% title "MolyJam - #{@venue.display_name}" %>
+
+<% unless true #@venue.twitch_username.blank? %>
+  <div class="livestream">
+    <p>Click here to show livestream</p>
+  </div>
+  <div class="video-container">
+    <object type="application/x-shockwave-flash" height="100%" width="100%" id="live_embed_player_flash" data="http://www.twitch.tv/widgets/live_embed_player.swf?channel=<%= @venue.twitch_username %>" bgcolor="#000000"><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="allowNetworking" value="all" /><param name="movie" value="http://www.twitch.tv/widgets/live_embed_player.swf" /><param name="flashvars" value="hostname=www.twitch.tv&channel=<%= @venue.twitch_username %>&auto_play=true&start_volume=25" /></object>
+  </div>
+<% end %>
+
 <article style="min-height: 800px">
   <% if can? :update, @venue %>
   <div class="admin-insert"><%= link_to "Edit", edit_venue_path(@venue) %> - <%= link_to "Destroy", @venue,
@@ -25,8 +36,8 @@
 </article>
 <div class="map-container">
   <div class="map-wrap">
-    <% 
-      map_data = Array.new 
+    <%
+      map_data = Array.new
       venue_map_data = "<div class=\"map-info\"><h1><a href=\"#{venue_path(@venue)}\">#{@venue.display_name}</a></h1><p>#{@venue.address}</p></div>"
       map_data.push({latLng: [@venue.latitude, @venue.longitude], data: venue_map_data})
     %>

@@ -6,6 +6,8 @@
 *= require main
 *= require sponsors
 *= require venues
+*= require jquery.dropdown.css
+*= require attachments
 */
 
 

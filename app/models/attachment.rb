@@ -7,8 +7,26 @@ class Attachment < ActiveRecord::Base
 
   validate :validate_path_set
 
+  def is_an_image?
+    if(user_file_upload.present?)
+      return user_file_upload.is_an_image?()
+    else
+      #TODO stole this from user_file_uploads, there's a better home for both of these methods
+      extension = file_path.split(".").last.downcase
+      if(extension == "jpg" || extension == "png" || extension == "gif" || extension == "tga")
+        return true
+      end
+    end
+
+    return false
+  end
+
   def file_path
     return remote_path || user_file_upload.file_path
+  end
+
+  def file_name
+    return file_path.split('/').last
   end
 
   ###

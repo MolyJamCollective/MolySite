@@ -1,0 +1,80 @@
+<% title "MolyJam - #{@game.name}" %>
+<%= render 'header' %>
+<%= render 'article' %>
+
+<div class="download-area">
+  <%= link_to @game.windows_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless @game.windows_file_url.to_s.empty? %>
+  <%= link_to @game.mac_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless @game.mac_file_url.to_s.empty? %>
+  <%= link_to @game.linux_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless @game.linux_file_url.to_s.empty? %>
+
+  <%= link_to @game.play_in_browser_url do %>
+  <aside class="download-link">
+    <%= image_tag "games/platforms/flash.png" if @game.play_in_browser_type == "flash"%>
+    <%= image_tag "games/platforms/html5.png" if @game.play_in_browser_type == "html"%>
+    <%= image_tag "games/platforms/unityweb.png" if @game.play_in_browser_type == "unity"%>
+    <p>Play in Browser</p>
+  </aside>
+  <% end unless @game.play_in_browser_url.to_s.empty? %>
+
+  <%= link_to @game.ios_url do %><aside class="download-link"><%= image_tag "games/platforms/ios.png" %><p>Find on App Store</p></aside></a><% end unless @game.ios_url.to_s.empty? %>
+  <%= link_to @game.android_url do %><aside class="download-link"><%= image_tag "games/platforms/android.png" %><p>Find on Google Play</p></aside></a><% end unless @game.android_url.to_s.empty? %>
+
+  <% if can? :edit, @game %>
+  <aside>
+    <%= render 'form_files' %>
+
+    <hr />
+    <%= form_for(@game) do |f| %>
+    <div class="field">
+      <%= f.label :play_in_browser_url, "Play in Browser URL" %>
+      <%= f.url_field :play_in_browser_url %>
+    </div>
+    <div class="field">
+      <%= f.label :play_in_browser_type %>
+      <%= f.select(:play_in_browser_type, [["Flash", "flash"], ["HTML 5", "html"], ["Unity Web Player", "unity"]]) %>
+    </div>
+    <div class="field">
+      <%= f.label :android_url, "Android Marketplace URL" %>
+      <%= f.url_field(:android_url) %>
+    </div>
+    <div class="field">
+      <%= f.label :ios_url, "iOS App Store URL" %>
+      <%= f.url_field(:ios_url) %>
+    </div>
+    <br />
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </aside>
+  <% end %>
+</div>
+
+<div class="no-bg">
+  <aside>
+    <h3>Information</h3>
+    <p>
+      <% if can? :edit, @game %>
+        <% 
+          locations = Array.new 
+          Venue.all.each{ |venue| locations.push [venue.id, venue.display_name]}
+        %>
+        <span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><%= best_in_place_if can?(:edit, @game), @game, :genre %></span><br/>
+        <span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><%= best_in_place_if can?(:edit, @game), @game, :engine %></span><br/>
+        <span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= best_in_place_if can?(:edit, @game), @game, :venue_id, type: :select, collection: locations %></p></span>
+      <% else %>
+        <% unless @game.genre.to_s.empty? %><span class="info-category">Genre: </span> <span class="info-fill" id="genreName"><%= @game.genre.to_s %></span><br/><% end %>
+        <% unless @game.engine.to_s.empty? %><span class="info-category">Engine / Tool: </span> <span class="info-fill" id="gameEngine"><%= @game.engine.to_s %></span><br/><% end %>
+        <% unless @game.venue.to_s.empty? %><span class="info-category">Location: </span><span class="info-fill" id="gameLocation"><%= link_to @game.venue.display_name, venue_path(@game.venue) %></span><% end %>
+      <% end %>
+    </p>
+  </aside>
+
+  <% if !@game.inspiration.to_s.empty? || can?(:edit, @game) %>
+    <aside>
+      <h3>Inspiration</h3>
+      <p><%= best_in_place_if can?(:edit, @game), @game, :inspiration, type: :textarea, ok_button: "Save", cancel_button: "Cancel", nil: "click here to add the inspirating quote" %></p>
+    </aside>
+  <% end %>
+
+</div>
