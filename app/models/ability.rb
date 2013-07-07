@@ -56,6 +56,6 @@ class Ability
     can :read, Game
     can :read, Screenshot
     can [:index, :show], Inspiration
-
+    
   end
 end
