@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   gravtastic
 
   validates :username, :uniqueness => true
+  validates :email, :uniqueness => true
   after_create :add_to_user_group
 
 	has_many :memberships
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
   	# Include default devise modules. Others available are:
   	# :omniauthable
   	devise 	:database_authenticatable, :registerable,
-  		:recoverable, :rememberable, :trackable, :validatable,
+  		:recoverable, :rememberable, :trackable, :validatable, :invitable,
   		:token_authenticatable, :confirmable, :lockable, :timeoutable,
       :authentication_keys => [:login]
 

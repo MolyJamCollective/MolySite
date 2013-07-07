@@ -36,7 +36,8 @@ group :development do
 end
 
 # User Auth
-gem 'devise'
+gem 'devise', '>= 2.0.0'
+gem 'devise_invitable', '~> 1.1.0'
 gem 'cancan'
 
 # Geolocation
