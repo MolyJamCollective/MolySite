@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   before_update :revert_username_if_changed, :if => Proc.new { |u| u.username_changed? }
 
   def revert_username_if_changed
-    self.username = self.username_was
+    self.username = self.username_was unless self.username_was.to_s.empty?
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)

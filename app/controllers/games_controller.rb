@@ -23,11 +23,11 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(params[:game])
-
+  
     respond_to do |format|
       if @game.save
-        Membership.set(current_user, @game.group_id, :founder)
-        Membership.set(current_user, Group.where(name: "Jammers").first)
+        Credit.create!(user_id: current_user.id, game_id: @game.id)
+        @game.add_user(current_user, :founder)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
         format.html { redirect_to @game, error: 'Something broke!' }
