@@ -69,42 +69,4 @@ class GamesController < ApplicationController
 
     redirect_to @game, notice: 'file was successfully updated.'
   end
-
-  def remove_file
-    @game = Game.find(params[:game_id])
-
-    @game.remove_windows_file! if params[:game][:file] == "windows_file"
-    @game.remove_mac_file! if params[:game][:file] == "mac_file"
-    @game.remove_linux_file! if params[:game][:file] == "linux_file"
-
-    @game.save
-
-    redirect_to @game, notice: 'file was successfully removed.'
-  end
-
-  def add_user
-    @game = Game.find(params[:game_id])
-    redirect_to @game, error: "Invalid username" if params[:user][:username].nil?
-
-    user = User.where(username: params[:user][:username]).first
-    redirect_to @game, error: "User not found." if user.nil?
-
-    Membership.set(user.id, @game.group_id, :member)
-    Membership.set(user.id, Group.where(name: "Jammers").first)
-
-    redirect_to @game, notice: "#{user.username} was successfully added."
-  end
-
-  def remove_user
-    @game = Game.find(params[:game_id])
-    redirect_to @game, error: "Invalid user id" if params[:user][:id].nil?
-
-    user = User.find(params[:user][:id])
-    redirect_to @game, error: "User not found." if user.nil?
-
-    Membership.where(user_id: user.id, group_id: @game.group_id).first.destroy
-    Membership.where(user_id: user.id, group_id: Group.where(name: "Jammers").first).first.destroy
-
-    redirect_to @game, notice: "User was successfully removed."
-  end
 end

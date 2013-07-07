@@ -1,5 +1,7 @@
 MolySite::Application.routes.draw do
 
+  root to: 'pages#games'
+
   resources :events
   resources :venues do
     post 'approve'
@@ -49,7 +51,10 @@ MolySite::Application.routes.draw do
       controller: 'devise/registrations',
       as: :user_registration do
         get :cancel
-    end
+      end
+    resource :invitation,
+      path: 'user/invitation',
+      controller: 'invitations'
     resource :passwords,      only: [:new, :create, :edit, :update],  path: 'user/password',      controller: 'devise/passwords',       as: 'user_password'
     resource :confirmations,  only: [:new, :create, :show],           path: 'user/confirmation',  controller: 'devise/confirmations',   as: 'user_confirmation'
     resource :unlocks,        only: [:new, :create, :show],           path: 'user/unlock',        controller: 'devise/unlocks',         as: 'user_unlock'

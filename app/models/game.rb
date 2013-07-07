@@ -20,5 +20,10 @@ class Game < ActiveRecord::Base
     self.save
     true
   end
+
+  def add_user(user, role = :member)
+    Membership.set(user.id, self.group_id, role)
+    Membership.set(user.id, Group.where(name: "Jammers").first)
+  end
   
 end

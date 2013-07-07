@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/login/ || request.fullpath =~ /\/logout/ || request.fullpath =~ /\/dashboard/
+    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/login/ || request.fullpath =~ /\/logout/ || request.fullpath =~ /\/dashboard/ || request.fullpath =~ /\/users/ || request.fullpath =~ /\/user/
   end
 
   def after_sign_in_path_for(resource)
