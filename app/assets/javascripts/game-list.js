@@ -32,7 +32,7 @@ $('.dropdown-platform-link').click(function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 var gameOptions = {
-        valueNames: [ 'name', 'genre', 'location', 'description', 'windows', 'linux', 'mac', 'unity', 'flash', 'html', 'ios', 'android' ] //List out categories here, including searchable ones
+        valueNames: [ 'name', 'genre', 'location', 'description', 'windows', 'linux', 'mac', 'unity', 'flash', 'html', 'ios', 'android', 'traditional' ] //List out categories here, including searchable ones
     };
 
 var gameList = new List('big-ass-game-list', gameOptions);
@@ -62,7 +62,9 @@ $('.dropdown-platform-link').click(function(e) {
             } else if (item.values().ios   == targetId) {
                 return true;
             } else if (item.values().android == targetId) {
-                return true;   
+                return true;
+            } else if (item.values().traditional == targetId) {
+                return true;
             } else if (targetId == "platform-all") {
                 gameList.filter();
                 return false;

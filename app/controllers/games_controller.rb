@@ -15,6 +15,7 @@ class GamesController < ApplicationController
     @game.windows_file.success_action_status = "201"
     @game.mac_file.success_action_status = "201"
     @game.linux_file.success_action_status = "201"
+    @game.traditional_file.success_action_status = "201"
 
     respond_to do |format|
       format.html
@@ -65,6 +66,7 @@ class GamesController < ApplicationController
     @game.windows_file.key = params[:key] if params[:key] =~ /windows_file/
     @game.mac_file.key = params[:key] if params[:key] =~ /mac_file/
     @game.linux_file.key = params[:key] if params[:key] =~ /linux_file/
+    @game.traditional_file.key = params[:key] if params[:key] =~ /traditional_file/
 
     @game.save
 
@@ -77,6 +79,7 @@ class GamesController < ApplicationController
     @game.remove_windows_file! if params[:game][:file] == "windows_file"
     @game.remove_mac_file! if params[:game][:file] == "mac_file"
     @game.remove_linux_file! if params[:game][:file] == "linux_file"
+    @game.remove_traditional_file! if params[:game][:file] == "traditional_file"
 
     @game.save
 

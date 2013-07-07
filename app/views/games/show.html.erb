@@ -6,6 +6,7 @@
   <%= link_to @game.windows_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/windows.png" %><p>Download</p></aside><% end unless @game.windows_file_url.to_s.empty? %>
   <%= link_to @game.mac_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/mac.png" %><p>Download</p></aside></a><% end unless @game.mac_file_url.to_s.empty? %>
   <%= link_to @game.linux_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/linux.png" %><p>Download</p></aside></a><% end unless @game.linux_file_url.to_s.empty? %>
+  <%= link_to @game.traditional_file_url.to_s do %><aside class="download-link"><%= image_tag "games/platforms/traditional.png" %><p>Download</p></aside></a><% end unless @game.traditional_file_url.to_s.empty? %>
 
   <%= link_to @game.play_in_browser_url do %>
   <aside class="download-link">
@@ -18,6 +19,7 @@
 
   <%= link_to @game.ios_url do %><aside class="download-link"><%= image_tag "games/platforms/ios.png" %><p>Find on App Store</p></aside></a><% end unless @game.ios_url.to_s.empty? %>
   <%= link_to @game.android_url do %><aside class="download-link"><%= image_tag "games/platforms/android.png" %><p>Find on Google Play</p></aside></a><% end unless @game.android_url.to_s.empty? %>
+
 
   <% if can? :edit, @game %>
   <aside>
