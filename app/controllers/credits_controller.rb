@@ -6,8 +6,8 @@ class CreditsController < ApplicationController
     @game = Game.find(params[:game_id])
     return redirect_to games_path, alert: 'Game not found' if @game.nil?
 
-    return redirect_to @game, alert: 'Invalid Name' if params[:credit][:name].to_s.empty?
-    return redirect_to @game, alert: 'Invalid Email' if params[:credit][:name].to_s.empty?
+    return redirect_to @game, alert: 'Invalid Name' if params[:user][:name].to_s.empty?
+    return redirect_to @game, alert: 'Invalid Email' if params[:user][:email].to_s.empty?
 
     @credit = Credit.new(params[:credit])
     @credit.game = @game
