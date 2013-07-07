@@ -34,8 +34,11 @@ class Ability
      
       if group.memberships.where(user_id: user.id).first.role >= Membership::ROLES[:officer]
         can [:read, :update], Venue, group_id: group.id 
+        
         can [:read, :update, :upload_file, :remove_file], Game, group_id: group.id
         can [:read, :create, :destroy], Screenshot, game: {group_id: group.id}
+        can [:create, :update, :destroy], Credit, game: {group_id: group.id}
+
         can :read, Group, id: group.id
 
         if group.memberships.where(user_id: user.id).first.role >= Membership::ROLES[:founder]
