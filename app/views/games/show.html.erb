@@ -23,6 +23,7 @@
   <aside>
     <%= render 'form_files' %>
 
+    <div id="browser_urls">
     <hr />
     <%= form_for(@game) do |f| %>
     <div class="field">
@@ -46,6 +47,7 @@
       <%= f.submit %>
     </div>
     <% end %>
+  </div>
   </aside>
   <% end %>
 </div>

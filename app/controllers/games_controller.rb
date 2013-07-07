@@ -12,9 +12,9 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
 
-    @game.windows_file.success_action_redirect = game_upload_file_url(@game)
-    @game.mac_file.success_action_redirect = game_upload_file_url(@game)
-    @game.linux_file.success_action_redirect = game_upload_file_url(@game)
+    @game.windows_file.success_action_status = "201"
+    @game.mac_file.success_action_status = "201"
+    @game.linux_file.success_action_status = "201"
 
     respond_to do |format|
       format.html
@@ -22,6 +22,7 @@ class GamesController < ApplicationController
   end
 
   def create
+    return redirect_to @game, alert: 'Invalid game name!' if params[:game][:name].to_s.empty?
     @game = Game.new(params[:game])
 
     respond_to do |format|
@@ -30,7 +31,7 @@ class GamesController < ApplicationController
         Membership.set(current_user, Group.where(name: "Jammers").first)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
-        format.html { redirect_to @game, error: 'Something broke!' }
+        format.html { redirect_to @game, alert: 'Something broke!' }
       end
     end
   end
@@ -84,27 +85,27 @@ class GamesController < ApplicationController
 
   def add_user
     @game = Game.find(params[:game_id])
-    redirect_to @game, error: "Invalid username" if params[:user][:username].nil?
+    return redirect_to(@game, alert: "Invalid username") if params[:user][:username].nil?
 
     user = User.where(username: params[:user][:username]).first
-    redirect_to @game, error: "User not found." if user.nil?
+    return redirect_to(@game, alert: "User not found.") if user.nil?
 
     Membership.set(user.id, @game.group_id, :member)
     Membership.set(user.id, Group.where(name: "Jammers").first)
 
-    redirect_to @game, notice: "#{user.username} was successfully added."
+    return redirect_to @game, notice: "#{user.username} was successfully added."
   end
 
   def remove_user
     @game = Game.find(params[:game_id])
-    redirect_to @game, error: "Invalid user id" if params[:user][:id].nil?
+    return redirect_to @game, alert: "Invalid user id" if params[:user][:id].nil?
 
     user = User.find(params[:user][:id])
-    redirect_to @game, error: "User not found." if user.nil?
+    return redirect_to @game, alert: "User not found." if user.nil?
 
     Membership.where(user_id: user.id, group_id: @game.group_id).first.destroy
     Membership.where(user_id: user.id, group_id: Group.where(name: "Jammers").first).first.destroy
 
-    redirect_to @game, notice: "User was successfully removed."
+    return redirect_to @game, notice: "User was successfully removed."
   end
 end
