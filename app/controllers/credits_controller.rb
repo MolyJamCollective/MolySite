@@ -1,7 +1,11 @@
 class CreditsController < ApplicationController
 
   def create
+    @game = Game.find(params[:game_id])
+    return redirect_to games_path, alert: 'Game not found' if @game.nil?
+
     @credit = Credit.new(params[:credit])
+    @credit.game = @game
 
     respond_to do |format|
       if @credit.save
@@ -13,6 +17,9 @@ class CreditsController < ApplicationController
   end
 
   def update
+    @game = Game.find(params[:game_id])
+    return redirect_to games_path, alert: 'Game not found' if @game.nil?
+
     @credit = Credit.find(params[:id])
 
     respond_to do |format|
@@ -25,6 +32,9 @@ class CreditsController < ApplicationController
   end
 
   def destroy
+    @game = Game.find(params[:game_id])
+    return redirect_to games_path, alert: 'Game not found' if @game.nil?
+    
     @credit = Credit.find(params[:id])
     @credit.destroy
 

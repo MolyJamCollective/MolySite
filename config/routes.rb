@@ -1,8 +1,5 @@
 MolySite::Application.routes.draw do
 
-  resources :credits
-
-
   resources :events
   resources :venues do
     post 'approve'
@@ -21,6 +18,7 @@ MolySite::Application.routes.draw do
 
   resources :games, only: [:index, :show, :create, :update, :destroy] do
     resources :screenshots, only: [:show, :create, :destroy]
+    resources :credits, only: [:create, :update, :destroy]
     post 'add_user'
     post 'remove_user'
     post 'upload_file'

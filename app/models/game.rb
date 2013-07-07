@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   belongs_to :group
   has_many :users, :through => :group
   has_many :screenshots, dependent: :destroy
+  has_many :credits, dependent: :destroy
 
   attr_accessible :event_id, :group_id, :inspiration, :name, :venue_id, :description, :directions, :play_in_browser_url,
    :play_in_browser_type, :android_url, :ios_url, :genre, :engine, :windows_file, :mac_file, :linux_file
