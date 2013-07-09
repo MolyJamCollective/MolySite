@@ -72,3 +72,21 @@ jQuery ->
       $('#linux-file').append("File Uploaded")
     stop: (e, data) ->
       $('#upload-linux').hide()
+
+  $('#new_traditional_file_uploader').fileupload
+    dataType: "xml"
+    add: (e, data) ->
+      data.context = $(tmpl("template-upload-traditional-files", data.files[0]))
+      $('#traditional-file').append(data.context)
+      $('#new_traditional_file_uploader').hide()
+      $('#browser_urls').hide()
+      data.submit()
+    progress: (e, data) ->
+      if data.context
+        progress = parseInt(data.loaded / data.total * 100, 10)
+        data.context.find('.bar').css('width', progress + '%')
+    done: (e, data) ->
+      $.post($('#traditional-file').data('url'), {key: data.jqXHR.responseXML.getElementsByTagName("Key")[0].childNodes[0].nodeValue})
+      $('#traditional-file').append("File Uploaded")
+    stop: (e, data) ->
+      $('#upload-traditional').hide()

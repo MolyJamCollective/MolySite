@@ -89,6 +89,14 @@ $('#admin-venue-link').click(function() {
   });
 });
 
+$('#admin-game-link').click(function() {
+  $('#admin-game-link').slideUp('slow', function() {
+    $('#admin-game-section').slideDown('slow', function() {
+    // Animation complete.
+     });
+  });
+});
+
 $('#admin-user-link-close').click(function() {
   $('#admin-user-section').slideUp('slow', function() {
     $('#admin-user-link').slideDown('slow', function() {
@@ -101,6 +109,14 @@ $('#admin-user-link-close').click(function() {
 $('#admin-venue-link-close').click(function() {
   $('#admin-venue-section').slideUp('slow', function() {
     $('#admin-venue-link').slideDown('slow', function() {
+    // Animation complete.
+     });
+  });
+});
+
+$('#admin-game-link-close').click(function() {
+  $('#admin-game-section').slideUp('slow', function() {
+    $('#admin-game-link').slideDown('slow', function() {
     // Animation complete.
      });
   });

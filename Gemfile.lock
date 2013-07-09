@@ -80,6 +80,10 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    devise_invitable (1.1.8)
+      actionmailer (~> 3.0)
+      devise (>= 2.1.2)
+      railties (~> 3.0)
     erubis (2.7.0)
     excon (0.23.0)
     execjs (1.4.0)
@@ -210,7 +214,8 @@ DEPENDENCIES
   carrierwave
   carrierwave_direct!
   coffee-rails
-  devise
+  devise (>= 2.0.0)
+  devise_invitable (~> 1.1.0)
   fog
   geocoder
   google-analytics-rails

@@ -3,23 +3,16 @@
   <table class="credits">
     <tbody>
 
-      <% @game.group.users.each do |user| %>
+      <% @game.credits.each do |credit| %>
       <tr>
-        <td class="name"><%= user.name %></td>
+        <td class="name"><%= credit.user.name %></td>
         <td class="twitter">
-          <%= link_to "@#{user.twitter_username}", "http://www.twitter.com/#{user.twitter_username}" unless user.twitter_username.to_s.empty? %>
-        </td>
+          <%= link_to "@#{credit.user.twitter_username}", "http://www.twitter.com/#{credit.user.twitter_username}" unless credit.user.twitter_username.to_s.empty? %></td>
+        <td class="name"><%= best_in_place_if can?(:edit, credit), credit, :title, path: game_credit_path(@game.id, credit.id), nil: "click here to add a title" %></title>
 
-        <% if can?(:remove_user, @game) && user.memberships.where(group_id: @game.group_id).first.role < Membership::ROLES[:founder] %>
+        <% if can?(:destroy, credit) && credit.user.memberships.where(group_id: @game.group_id).first.role < Membership::ROLES[:founder] %>
         <td class="admin-insert">
-          <%= form_for :user, url: game_remove_user_path(@game) do |f| %>
-          <%= f.hidden_field :id, value: user.id %>
-          <%= f.submit "Remove", class: "btn" %>
-          <% end %>
-        </td>
-        <% elsif !current_user.nil? && user.id == current_user.id %>
-        <td class="admin-insert">
-          <%= link_to "Edit", edit_user_path, class: "btn" %>
+          <%= link_to "Remove", game_credit_path(@game.id, credit.id), :method => :delete, :confirm => "Are you sure?" %>
         </td>
         <% end %>
 
@@ -30,12 +23,23 @@
 
     <% if can? :edit, @game %>
     <tfoot>
-      <tr>
-        <% if can? :add_user, @game %>
-        <%= form_for :user, url: game_add_user_path(@game) do |f| %>
-        <td class="admin-insert">Username:</td>
-        <td class="admin-insert"><%= f.text_field :username %></td>
-        <td class="admin-insert"><%= f.submit "Add", class: "btn" %></td>
+        <% if can? :create, User %>
+        <%= form_for :credit, url: game_credits_path(@game) do |f| %>
+        <tr>
+          <td class="admin-insert">Name:</td>
+          <td class="admin-insert" colspan="2"><%= text_field :user, :name %></td>
+        </tr>
+        <tr>
+          <td class="admin-insert">Email:</td>
+          <td class="admin-insert" colspan="2"><%= email_field :user, :email %></td>
+        </tr>
+        <tr>
+          <td class="admin-insert">Title:</td>
+          <td class="admin-insert" colspan="2"><%= f.text_field :title %></td>
+        </tr>
+        <tr>
+          <td class="admin-insert" colspan="3"><%= f.submit "Add User", class: "btn" %></td>
+        </tr>
         <% end %>
         <% else %>
         <td colspan="3">Note: Only the orginal creator of the game page can edit users</td>
