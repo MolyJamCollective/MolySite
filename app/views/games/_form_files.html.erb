@@ -48,6 +48,22 @@
   <% end %>
 </div>
 
+<div id="traditional-file" data-url="<%= game_upload_file_url(@game) %>">
+  <hr />
+  <% if @game.traditional_file.to_s.empty? %>
+  <%= direct_upload_form_for @game.traditional_file, html: {id: "new_traditional_file_uploader"} do |f| %>
+  <%= f.label :traditional_file, "Traditional: " %>
+  <%= f.file_field :traditional_file, use_action_status: true, style: "width: 100%", name: "game[traditional_file]" %>
+  <% end %>
+  <% else %>
+  <%= form_for @game, url: game_remove_file_path(@game), method: "post" do |f| %>
+  <%= f.label :traditional_file, "Traditional: " %>
+  <%= f.hidden_field :file, value: "traditional_file" %>
+  <%= f.submit "Delete" %>
+  <% end %>
+  <% end %>
+</div>
+
 <script id="template-upload-windows-files" type="text/x-tmpl">
 <div class="upload" id="upload-windows">
   {%=o.name%}
@@ -64,6 +80,13 @@
 
 <script id="template-upload-linux-files" type="text/x-tmpl">
 <div class="upload" id="upload-linux">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
+
+<script id="template-upload-traditional-files" type="text/x-tmpl">
+<div class="upload" id="upload-traditional">
   {%=o.name%}
   <div class="progress"><div class="bar" style="width: 0%"></div></div>
 </div>
