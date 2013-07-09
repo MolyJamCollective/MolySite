@@ -1,6 +1,6 @@
 MolySite::Application.routes.draw do
 
-  root to: 'pages#games'
+  root to: 'pages#news'
 
   resources :events
   resources :venues do
