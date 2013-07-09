@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704093343) do
+ActiveRecord::Schema.define(:version => 20130707205233) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20130704093343) do
     t.integer  "user_file_upload_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "credits", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130704093343) do
     t.string   "windows_file"
     t.string   "mac_file"
     t.string   "linux_file"
+    t.string   "traditional_file"
   end
 
   create_table "groups", :force => true do |t|
@@ -102,12 +111,12 @@ ActiveRecord::Schema.define(:version => 20130704093343) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -116,23 +125,31 @@ ActiveRecord::Schema.define(:version => 20130704093343) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        :default => 0
+    t.integer  "failed_attempts",                      :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "name"
     t.text     "biography"
     t.string   "location"
     t.string   "website"
     t.string   "twitter_username"
-    t.string   "username",               :default => "", :null => false
+    t.string   "username",                             :default => "", :null => false
+    t.string   "invitation_token",       :limit => 60
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["invitation_token"], :name => "index_users_on_invitation_token", :unique => true
+  add_index "users", ["invited_by_id"], :name => "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 

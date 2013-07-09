@@ -15,6 +15,7 @@ class GamesController < ApplicationController
     @game.windows_file.success_action_status = "201"
     @game.mac_file.success_action_status = "201"
     @game.linux_file.success_action_status = "201"
+    @game.traditional_file.success_action_status = "201"
 
     respond_to do |format|
       format.html
@@ -24,11 +25,11 @@ class GamesController < ApplicationController
   def create
     return redirect_to @game, alert: 'Invalid game name!' if params[:game][:name].to_s.empty?
     @game = Game.new(params[:game])
-
+  
     respond_to do |format|
       if @game.save
-        Membership.set(current_user, @game.group_id, :founder)
-        Membership.set(current_user, Group.where(name: "Jammers").first)
+        Credit.create!(user_id: current_user.id, game_id: @game.id)
+        @game.add_user(current_user, :founder)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
         format.html { redirect_to @game, alert: 'Something broke!' }
@@ -65,6 +66,7 @@ class GamesController < ApplicationController
     @game.windows_file.key = params[:key] if params[:key] =~ /windows_file/
     @game.mac_file.key = params[:key] if params[:key] =~ /mac_file/
     @game.linux_file.key = params[:key] if params[:key] =~ /linux_file/
+    @game.traditional_file.key = params[:key] if params[:key] =~ /traditional_file/
 
     @game.save
 
@@ -77,35 +79,11 @@ class GamesController < ApplicationController
     @game.remove_windows_file! if params[:game][:file] == "windows_file"
     @game.remove_mac_file! if params[:game][:file] == "mac_file"
     @game.remove_linux_file! if params[:game][:file] == "linux_file"
+    @game.remove_traditional_file! if params[:game][:file] == "traditional_file"
 
     @game.save
 
     redirect_to @game, notice: 'file was successfully removed.'
   end
 
-  def add_user
-    @game = Game.find(params[:game_id])
-    return redirect_to(@game, alert: "Invalid username") if params[:user][:username].nil?
-
-    user = User.where(username: params[:user][:username]).first
-    return redirect_to(@game, alert: "User not found.") if user.nil?
-
-    Membership.set(user.id, @game.group_id, :member)
-    Membership.set(user.id, Group.where(name: "Jammers").first)
-
-    return redirect_to @game, notice: "#{user.username} was successfully added."
-  end
-
-  def remove_user
-    @game = Game.find(params[:game_id])
-    return redirect_to @game, alert: "Invalid user id" if params[:user][:id].nil?
-
-    user = User.find(params[:user][:id])
-    return redirect_to @game, alert: "User not found." if user.nil?
-
-    Membership.where(user_id: user.id, group_id: @game.group_id).first.destroy
-    Membership.where(user_id: user.id, group_id: Group.where(name: "Jammers").first).first.destroy
-
-    return redirect_to @game, notice: "User was successfully removed."
-  end
 end
