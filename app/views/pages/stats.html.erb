@@ -1,0 +1,15 @@
+<% title "MolyJam - Stats" %>
+<h1>Stats</h1>
+<p>
+	<b>Venues:</b> <%= Venue.all.count - 1 %><br />
+	<b>Games:</b> <%= Game.all.count %><br />
+	<b>Credited:</b> 
+	<% 
+	credited = 0
+	Game.all.each do |game|
+		credited += game.credits.count
+	end
+	%>
+	<%= credited.to_s %><br />
+	<b>User Accounts:</b> <%= User.all.count %><br />
+</p>

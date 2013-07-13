@@ -36,6 +36,7 @@ MolySite::Application.routes.draw do
   match '/about' => 'pages#about'
   match '/dashboard' => 'pages#dashboard'
   match '/host_resources' => 'pages#host_resources'
+  match '/stats' => 'pages#stats'
 
   # Devise Routes
   devise_for :users, :skip => [:sessions, :registrations, :passwords, :confirmations, :unlocks]

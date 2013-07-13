@@ -33,4 +33,12 @@ class PagesController < ApplicationController
       format.html
     end 
   end
+
+  def stats
+    authorize! :stats, :page
+
+    respond_to do |format|
+      format.html
+    end 
+  end
 end
