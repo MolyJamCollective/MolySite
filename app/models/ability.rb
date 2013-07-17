@@ -27,7 +27,7 @@ class Ability
     if(user_groups[:users] || user_groups[:jammers] || user_groups[:hosts] || user_groups[:organizers] || user_groups[:webmasters])
       can :dashboard, :page
       can :manage, User, id: user.id
-      can :create, Game
+      # can :create, Game
     end
 
     user.groups.each do |group|
