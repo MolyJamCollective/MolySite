@@ -18,7 +18,7 @@ MolySite::Application.routes.draw do
 
   resources :attachments, only: [:create, :new, :destroy]
 
-  resources :games, only: [:index, :show, :create, :update, :destroy] do
+  resources :games do
     resources :screenshots, only: [:show, :create, :destroy]
     resources :credits, only: [:create, :update, :destroy]
     post 'add_user'
