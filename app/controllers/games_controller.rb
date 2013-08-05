@@ -23,8 +23,12 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all.shuffle
-
+    if params[:event_id].nil?
+      @games = Game.all.shuffle
+    else
+      @games = Game.where(event_id: params[:event_id]).shuffle
+    end
+    
     respond_to do |format|
       format.html
     end
