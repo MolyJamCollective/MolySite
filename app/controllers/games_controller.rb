@@ -22,8 +22,24 @@ class GamesController < ApplicationController
     end
   end
 
+  def index
+    @games = Game.all.shuffle
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def new
+    @game = Game.new
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def create
-    return redirect_to @game, alert: 'Invalid game name!' if params[:game][:name].to_s.empty?
+    return render action: "new", alert: 'Invalid game name!' if params[:game][:name].to_s.empty?
     @game = Game.new(params[:game])
   
     respond_to do |format|
@@ -32,7 +48,7 @@ class GamesController < ApplicationController
         @game.add_user(current_user, :founder)
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
       else
-        format.html { redirect_to @game, alert: 'Something broke!' }
+        format.html { render action: "new", alert: 'Something broke!' }
       end
     end
   end
