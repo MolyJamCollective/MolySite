@@ -4,6 +4,9 @@
 
 	<%= form_for Game.new do |f| %>
 	<p>Whats your game called? <%= f.text_field :name %></p>
+
+	<p>When did you create your game? <br />
+	<%= f.collection_select(:event_id, Event.all, :id, :name) %></p>
 	<%= f.submit "Create!", class: "button" %>
 	<% end %>
 </div>
